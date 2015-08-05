@@ -1,0 +1,36 @@
+﻿@model PSS_Weltec.Models.User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<hgroup class="title">
+    <h1>Create a new account!</h1>
+</hgroup>
+<section id="loginForm">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend></legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.user_Name_Model)
+                @Html.TextBoxFor(m => m.user_Name_Model)
+                @Html.ValidationMessageFor(m => m.user_Name_Model)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.user_Password_Model)
+                @Html.PasswordFor(m => m.user_Password_Model)
+                @Html.ValidationMessageFor(m => m.user_Password_Model)
+            </li>
+            <li>
+               @Html.LabelFor(m => m.user_confire_Password_Model)
+               @Html.PasswordFor(m => m.user_confire_Password_Model)
+            </li>
+        </ol>
+        <input type="submit" value="Register" />
+    </fieldset>
+}
+</section>
+

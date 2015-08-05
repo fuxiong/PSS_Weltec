@@ -1,0 +1,36 @@
+﻿@model PSS_Weltec.Models.User
+
+@{
+    ViewBag.Title = "Welcom to PSS_WelTec!";
+}
+
+<section id="loginForm">
+<h1>@ViewBag.Title</h1>
+@using (Html.BeginForm()){
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend></legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.user_Name_Model)
+                @Html.TextBoxFor(m => m.user_Name_Model)
+                @Html.ValidationMessageFor(m => m.user_Name_Model)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.user_Password_Model)
+                @Html.PasswordFor(m => m.user_Password_Model)
+                @Html.ValidationMessageFor(m => m.user_Password_Model)
+            </li>
+            @*<li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>*@
+        </ol>
+        <input type="submit" value="Submit" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Register", "RegisterIndex") (If you don't have an account).
+    </p>
+    }
+</section>
