@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>CPS_Weltec1111</title>
+    <title>PSS_Weltec</title>
     <link rel="stylesheet" type="text/css" href="../../Scripts/jquery-easyui-1.4.3/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../Scripts/jquery-easyui-1.4.3/themes/icon.css">
     <script type="text/javascript" src="../../Scripts/jquery-easyui-1.4.3/jquery.min.js"></script>
@@ -19,10 +19,10 @@
     <body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
         <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;background: url(Images/layout-header.gif) #7f99be repeat-x center 50%; line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
             <span style="float:right; padding-right:20px;" class="head">@*欢迎 管理员 <a href="#" id="editpass">修改密码</a>*@ <a href="#" id="loginOut">Log Out</a></span> 
-            <span style="padding-left:10px; font-size: 16px; "><img src="Images/blocks.gif" width="20" height="20"/>Welcome To Choose Project System</span>
+            <span style="padding-left:10px; font-size: 16px; "><img src="Images/blocks.gif" width="20" height="20"/>Welcome to Project Selection System</span>
         </div>
         <div region="south" split="true" style="height: 25px; background: #D2E0F2; ">
-            <div class="footer">   @DateTime.Now.Year CPS_Weltec</div>
+            <div class="footer">   @DateTime.Now.Year PSS_Weltec</div>
         </div>
         <div region="west" hide="true" split="true" title="Navigation" style="width:180px;" id="west">
             <div id="nav" class="easyui-accordion" fit="true" border="false"> 
@@ -32,7 +32,7 @@
         <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
             <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
                 <div title="Main" style="padding:20px;overflow:hidden; color:red; " >
-                    <h1 style="font-size:24px;">欢迎使用项目管理系统</h1>
+                    <h1 style="font-size:24px;">Welcome to Project Selection System!</h1>
                 </div>
             </div>
         </div>
@@ -41,11 +41,11 @@
           <div class="menu-sep"></div>
           <div id="mm-tabclose">Close</div>
           <div id="mm-tabcloseall">All Close</div>
-          <div id="mm-tabcloseother">除此之外全部关闭</div>
+          @*<div id="mm-tabcloseother">除此之外全部关闭</div>
           <div class="menu-sep"></div>
           <div id="mm-tabcloseright">当前页右侧全部关闭</div>
           <div id="mm-tabcloseleft">当前页左侧全部关闭</div>
-          <div class="menu-sep"></div>
+          <div class="menu-sep"></div>*@
           <div id="mm-exit">Exit</div>
         </div>
     </body>
@@ -55,46 +55,42 @@
     var _menus = {
         "menus": [
                   {
-                      "menuid": "1", "icon": "icon-sys", "menuname": "项目修改",
+                      "menuid": "1", "icon": "icon-sys", "menuname": "User Management",
                       "menus": [
-                        { "menuid": "12", "menuname": "网页", "icon": "icon-page", "url": "menu1/treegrid.html" },
-                        { "menuid": "13", "menuname": "类", "icon": "icon-class", "url": "menu1/class.html" },
-                        { "menuid": "14", "menuname": "菜单", "icon": "icon-role", "url": "demo2.html" },
-                        { "menuid": "15", "menuname": "菜单", "icon": "icon-set", "url": "demo.html" },
-                        { "menuid": "16", "menuname": "菜单", "icon": "icon-log", "url": "demo1.html" }
+                        { "menuid": "12", "menuname": "User List", "icon": "icon-page", "url": "../User/Index" },
+                        { "menuid": "13", "menuname": "Personal Profile", "icon": "icon-class", "url": "menu1/class.html" },
+                        { "menuid": "14", "menuname": "Change Password", "icon": "icon-role", "url": "demo2.html" }
+                        //{ "menuid": "15", "menuname": "菜单", "icon": "icon-set", "url": "demo.html" },
+                        //{ "menuid": "16", "menuname": "菜单", "icon": "icon-log", "url": "demo1.html" }
                       ]
                   },
        {
-           "menuid": "8", "icon": "icon-sys", "menuname": "项目设计",
-           "menus": [{ "menuid": "21", "menuname": "项目分析", "icon": "icon-nav", "url": "menu2/tree2.html" },
-                   { "menuid": "22", "menuname": "菜单", "icon": "icon-nav", "url": "demo1.html" }
+           "menuid": "8", "icon": "icon-sys", "menuname": "Project Management",
+           "menus": [{ "menuid": "21", "menuname": "Project List", "icon": "icon-nav", "url": "menu2/tree2.html" },
+                   { "menuid": "22", "menuname": "Project Dicussion", "icon": "icon-nav", "url": "demo1.html" }
            ]
        }, {
-           "menuid": "56", "icon": "icon-sys", "menuname": "菜单",
-           "menus": [{ "menuid": "31", "menuname": "菜单", "icon": "icon-nav", "url": "demo1.html" },
-                   { "menuid": "32", "menuname": "菜单", "icon": "icon-nav", "url": "demo2.html" }
+           "menuid": "56", "icon": "icon-sys", "menuname": "New Idea Management",
+           "menus": [{ "menuid": "31", "menuname": "New Idea List", "icon": "icon-nav", "url": "demo1.html" },
+                   { "menuid": "32", "menuname": "Propose a New Idea", "icon": "icon-nav", "url": "demo2.html" },
+                   { "menuid": "33", "menuname": "Idea Discussion", "icon": "icon-nav", "url": "demo2.html" },
+                   { "menuid": "34", "menuname": "Approve Ideas", "icon": "icon-nav", "url": "demo2.html" }
            ]
        }, {
-           "menuid": "28", "icon": "icon-sys", "menuname": "菜单",
-           "menus": [{ "menuid": "41", "menuname": "菜单", "icon": "icon-nav", "url": "demo.html" },
-                   { "menuid": "42", "menuname": "菜单", "icon": "icon-nav", "url": "demo1.html" },
-                   { "menuid": "43", "menuname": "菜单", "icon": "icon-nav", "url": "demo2.html" }
-           ]
-       }, {
-           "menuid": "39", "icon": "icon-sys", "menuname": "菜单",
-           "menus": [{ "menuid": "51", "menuname": "菜单", "icon": "icon-nav", "url": "demo.html" },
-                   { "menuid": "52", "menuname": "菜单", "icon": "icon-nav", "url": "demo1.html" },
-                   { "menuid": "53", "menuname": "菜单", "icon": "icon-nav", "url": "demo2.html" }
+           "menuid": "28", "icon": "icon-sys", "menuname": "Team Management",
+           "menus": [{ "menuid": "41", "menuname": "Build a Team", "icon": "icon-nav", "url": "demo.html" },
+                   { "menuid": "42", "menuname": "Join a Team", "icon": "icon-nav", "url": "demo1.html" },
+                   { "menuid": "43", "menuname": "Sumbit a bid", "icon": "icon-nav", "url": "demo2.html" },
+                   { "menuid": "44", "menuname": "Approved Team", "icon": "icon-nav", "url": "demo2.html" }
            ]
        }
-        ]
-    };
+    ]
+};
 
     $(function () {
         tabCloseEven();
         tabClose();
         InitLeftMenu();
-        //alert("");
         $('#loginOut').click(function () {
             $.messager.confirm('Info', 'Do you want to log out?', function (r) {
                 if (r) {

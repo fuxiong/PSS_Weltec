@@ -185,6 +185,7 @@
     <Compile Include="Controllers\FrameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\UserService.cs" />
     <Compile Include="DAL\SqlHelper.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -1014,6 +1015,8 @@
     <Content Include="Views\Main\MainIndex.cshtml" />
     <Content Include="Views\Main\RegisterIndex.cshtml" />
     <Content Include="Views\Frame\FrameIndex.cshtml" />
+    <Content Include="Views\User\UserIndex.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
