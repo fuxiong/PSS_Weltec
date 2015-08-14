@@ -1015,8 +1015,8 @@
     <Content Include="Views\Main\MainIndex.cshtml" />
     <Content Include="Views\Main\RegisterIndex.cshtml" />
     <Content Include="Views\Frame\FrameIndex.cshtml" />
+    <Content Include="Views\Shared\FrameShare.cshtml" />
     <Content Include="Views\User\UserIndex.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

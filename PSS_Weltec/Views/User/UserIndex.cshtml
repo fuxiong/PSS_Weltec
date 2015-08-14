@@ -1,1 +1,44 @@
-﻿11111
+﻿@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/FrameShare.cshtml";
+}
+
+ <table id="dgUser" title="My Users" class="easyui-datagrid" style="overflow-y: hidden"
+            toolbar="#toolbar" pagination="true"
+            rownumbers="true" fitColumns="true" singleSelect="true">
+    <thead>
+        <tr>
+            <th field="firstname" width="50">First Name</th>
+            <th field="lastname" width="50">Last Name</th>
+            <th field="phone" width="50">Phone</th>
+            <th field="email" width="50">Email</th>
+        </tr>
+    </thead>
+</table>
+<div id="toolbar">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#dgUser").datagrid({
+            url: '../User/UserList'
+            //url:"<%= Request.ApplicationPath=="/"?"":Request.ApplicationPath %>/User/UserList"
+        //    loadMsg: '加载数据......',
+        //    onLoadSuccess:function(){
+        //        $(this).treegrid('unselectAll');
+        //},
+        //onDblClickRow: function (rowIndex, rowData) {
+                                     
+        //},
+        //onBeforeExpand:function(row){
+        //    lastTypeId = row.id;
+        //},
+        //onClickRow:function(row){
+        //}
+    }); 
+})
+</script>
+
