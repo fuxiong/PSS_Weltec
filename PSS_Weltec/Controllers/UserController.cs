@@ -11,10 +11,14 @@ namespace PSS_Weltec.Controllers
         //
         // GET: /User/
 
-        public ActionResult Index()
+        public ActionResult UserIndex()
         {
             return View();
         }
 
+        public ActionResult UserList()
+        {
+            return Json(null);
+        }
     }
 }
