@@ -47,7 +47,11 @@ namespace PSS_Weltec.DAL
                 }
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Log_Time"].ToString()))
                 {
-                    model.user_Register_Time = DateTime.Parse(ds.Tables[0].Rows[0]["user_Log_Time"].ToString());
+                    model.user_Log_Time = DateTime.Parse(ds.Tables[0].Rows[0]["user_Log_Time"].ToString());
+                }
+                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Update_Time"].ToString()))
+                {
+                    model.user_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["user_Update_Time"].ToString());
                 }
             }
             if (ds != null)
@@ -121,6 +125,51 @@ namespace PSS_Weltec.DAL
             if (ds != null)
                 ds.Dispose();
             
+        }
+
+        public static List<User> GetList()
+        {
+            List<User> list = new List<User>();
+            User model = null;
+            string sql = "select * from PSS_User";
+            DataSet ds = SqlHelper.GetDataSetBySql(sql, "PSS_User");
+            foreach(DataRow dr in ds.Tables["PSS_User"].Rows)
+            {
+                model = new User();
+
+                if (!string.IsNullOrEmpty(dr["user_Id"].ToString()))
+                {
+                    model.user_Id = int.Parse(dr["user_Id"].ToString());
+                }
+
+                model.user_Name = dr["user_Name"].ToString();
+                model.user_Password = dr["user_Password"].ToString();
+                model.user_Email = dr["user_Email"].ToString();
+                model.user_Telephone = dr["user_Telephone"].ToString();
+                //model.user_Is_Teacher = dr["user_Is_Teacher"];
+                model.user_StudentId = dr["user_StudentId"].ToString();
+                //model.user_Project = dr["user_Project"].ToString();
+                //model.user_skill = dr["user_skill"].ToString();
+                model.user_Introduction = dr["user_Introduction"].ToString();
+
+                if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
+                {
+                    model.user_Register_Time = DateTime.Parse(dr["user_Register_Time"].ToString());
+                    model.Register_Time = model.user_Register_Time.ToString("yyyy-MM-dd HH:mm");
+                }
+                if (!string.IsNullOrEmpty(dr["user_Log_Time"].ToString()))
+                {
+                    model.user_Log_Time = DateTime.Parse(dr["user_Log_Time"].ToString());
+                    model.Log_Time = model.user_Log_Time.ToString("yyyy-MM-dd HH:mm");
+                }
+                if (!string.IsNullOrEmpty(dr["user_Update_Time"].ToString()))
+                {
+                    model.user_Update_Time = DateTime.Parse(dr["user_Update_Time"].ToString());
+                    model.Update_Time = model.user_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                }
+                list.Add(model);
+            };
+            return list;
         }
     }
 }

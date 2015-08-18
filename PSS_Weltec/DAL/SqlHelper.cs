@@ -188,12 +188,11 @@ namespace PSS_Weltec.DAL
         }
 
         /// <summary>
-        /// 加密解密
         /// encryption and deciphering
         /// </summary>
         /// <param name="Send_String"></param>
         /// <returns></returns>
-        #region [函数] [加密]
+        #region Encryption
         public static string Fun_Secret(string Send_String)
         {
             byte[] Secret_Byte = UTF8Encoding.UTF8.GetBytes(Send_String);
@@ -202,7 +201,7 @@ namespace PSS_Weltec.DAL
         }
         #endregion
 
-        #region [函数] [解密]
+        #region Deciphering
         public static string Fun_UnSecret(string Get_String)
         {
             byte[] UnSecret_Byte = Convert.FromBase64String(Get_String);

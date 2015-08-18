@@ -44,5 +44,12 @@ namespace PSS_Weltec.Models
         [Display(Name = "RememberMe?")]
         public bool RememberMe_Model { get; set; }
         #endregion
+
+
+        #region Assistant Attribute
+        public string Register_Time { get; set; }
+        public string Log_Time { get; set; }
+        public string Update_Time { get; set; }
+        #endregion
     }
 }

@@ -3,41 +3,44 @@
     Layout = "~/Views/Shared/FrameShare.cshtml";
 }
 
+<div region="center" title="" border="true" style="padding:0px 0px 0px 0px;">
  <table id="dgUser" title="My Users" class="easyui-datagrid" style="overflow-y: hidden"
-            toolbar="#toolbar" pagination="true"
-            rownumbers="true" fitColumns="true" singleSelect="true">
-    <thead>
-        <tr>
-            <th field="firstname" width="50">First Name</th>
-            <th field="lastname" width="50">Last Name</th>
-            <th field="phone" width="50">Phone</th>
-            <th field="email" width="50">Email</th>
-        </tr>
-    </thead>
+            toolbar="#toolbar" fitColumns="true" singleSelect="true">
 </table>
 <div id="toolbar">
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
 </div>
+    </div>
 
 <script type="text/javascript">
     $(function () {
         $("#dgUser").datagrid({
-            url: '../User/UserList'
-            //url:"<%= Request.ApplicationPath=="/"?"":Request.ApplicationPath %>/User/UserList"
-        //    loadMsg: '加载数据......',
-        //    onLoadSuccess:function(){
-        //        $(this).treegrid('unselectAll');
-        //},
-        //onDblClickRow: function (rowIndex, rowData) {
-                                     
-        //},
-        //onBeforeExpand:function(row){
-        //    lastTypeId = row.id;
-        //},
-        //onClickRow:function(row){
-        //}
+            url: '../User/UserList',
+            loadmsg: 'Loading......',
+            pagination: true,
+            pageSize: 30,
+            rownumbers: true,
+            singleSelect: true,
+            columns: [[
+                    { field: 'user_Id', title: 'ID', width: 20, hidden: 'true' },
+                    { field: 'user_Name', title: 'Name', width: 50 },
+                    { field: 'user_Email', title: 'Email', width: 60 },
+                    { field: 'user_Telephone', title: 'Telephone', width: 80, align: 'center' },
+                    { field: 'user_Skill', title: 'Skill', width: 80, align: 'center' },
+                    { field: 'user_Introduction', title: 'Introduction', width: 80, align: 'center' },
+                    { field: 'Register_Time', title: 'Register_Time', width: 110, align: 'center' },
+                    { field: 'Log_Time', title: 'Last_Log_Time', width: 50, align: 'center' },
+                    { field: 'Update_Time', title: 'Last_Update_Time', width: 50, align: 'center' }
+            ]],
+            onSelect: function (rowIndex, rowData) {
+            },
+            onDblClickRow: function (rowIndex, rowData) {
+            },
+            onLoadSuccess: function (data) {
+                $(this).datagrid('clearSelections');
+            }
     }); 
 })
 </script>
