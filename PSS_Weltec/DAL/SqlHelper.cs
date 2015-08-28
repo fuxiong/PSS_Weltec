@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Web;
+using PSS_Weltec.Shared_Class;
 
 namespace PSS_Weltec.DAL
 {
@@ -209,5 +210,35 @@ namespace PSS_Weltec.DAL
             return UnSecret_String;
         }
         #endregion
+
+        /// <summary>
+        /// Paging
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public static DataSet GetListByPage(String tableName,Paging paging,string order, string sort)
+        {
+            DataSet ds = null;
+            try
+            {
+                ds = new DataSet();
+                string sql="select * from (select *, ROW_NUMBER() OVER(Order by"+" "+ order+" "+sort+ ") as RowNumber from"+" "+tableName+" as a) as b where RowNumber between" +" "+((paging.GetCurrentPage()-1)*paging.GetPageSize()+1)+" AND"+" "+ paging.GetCurrentPage()*paging.GetPageSize() +" "+"ORDER BY"+" "+order+" "+ sort+"";
+                int count = GetCount("select count(*) from "+tableName);
+                paging.SetRecordCount(count);
+                SqlDataAdapter da = new SqlDataAdapter(sql, myConn);
+                da.Fill(ds, tableName);
+                da.Dispose();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (ds != null)
+                    ds.Dispose();
+            }
+            return ds;
+        }
     }
 }

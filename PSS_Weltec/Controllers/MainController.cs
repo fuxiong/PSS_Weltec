@@ -75,7 +75,7 @@ namespace PSS_Weltec.Controllers
                             model.user_Register_Time = DateTime.Now;
                             model.user_Log_Time = DateTime.Now;
                             model.user_Update_Time = DateTime.Now;
-                            UserService.Add(model);
+                            UserService.Save(model);
                             return RedirectToAction("FrameIndex", "Frame");
                         }
                         else

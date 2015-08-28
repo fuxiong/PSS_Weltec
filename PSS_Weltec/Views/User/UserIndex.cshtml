@@ -3,45 +3,202 @@
     Layout = "~/Views/Shared/FrameShare.cshtml";
 }
 
-<div region="center" title="" border="true" style="padding:0px 0px 0px 0px;">
- <table id="dgUser" title="My Users" class="easyui-datagrid" style="overflow-y: hidden"
-            toolbar="#toolbar" fitColumns="true" singleSelect="true">
-</table>
-<div id="toolbar">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
-</div>
+<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;">
+    <table id="dgUser" title="Users List" class="easyui-datagrid"> </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="NewUser()">New User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="EditUser()">Edit User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="DeleteUser()">Remove User</a>
     </div>
+    <div id="editUser" class="easyui-window" title="User Information" style="padding: 10px;width:640px;height:400px;"
+		data-options="iconCls:'icon-edit',minimizable:false,minimizable:false,closed:close,resizable:false,collapsible:false,modal:true,shadow:true">
+			<div class="easyui-layout" fit="true">
+				<div region="center" border="false" style="padding:10px;background:#eff3ff;border:1px solid #ccc;">
+		            <form id="editUserForm" method="post" style="">
+			            <table style="width:580px;" border="0" cellpadding="0" cellspacing="0">
+				            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;" nowrap>
+						            <span>UserName：</span>
+					            </td>
+					            <td style="width:82%" colspan="3">
+						            <input id="user_Name" name="user_Name" class="easyui-validatebox textbox" data-options="prompt:'Enter User Name.',required:true" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Password：</span>
+					            </td>
+					            <td style="width:32%;">
+						            <input id="user_Password" name="user_Password" type="Password" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Confire passWord：</span>
+					            </td>
+					            <td style="width:32%">
+						            <input id="user_confire_Password_Model" name="user_confire_Password_Model" type="Password" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Email：</span>
+					            </td>
+					            <td style="width:32%;">
+						            <input id="user_Email" name="user_Email" class="easyui-validatebox" data-options="required:true,validType:'email'" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Telephone：</span>
+					            </td>
+					            <td style="width:32%;">
+						            <input id="user_Telephone" name="user_Telephone" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Skills：</span>
+					            </td>
+					            <td style="width:32%;">
+						            <textarea id="user_Skill" name="user_Skill" style="width:250px;"></textarea>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Self_Introduction：</span>
+					            </td>
+					            <td style="width:32%;">
+						            <textarea id="user_Introduction" name="user_Introduction" rows="8" cols="3" style="width:250px;"></textarea>
+					            </td>
+				            </tr>
+			            </table>
+		            </form>
+				</div>
+				<div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
+					<a id="btnSave" class="easyui-linkbutton" iconCls="icon-ok" href="javascript:void(0)" onclick="Save()">Save</a>
+					<a class="easyui-linkbutton" iconCls="icon-cancel" href="javascript:void(0)" onclick="$('#editUser').window('close');">Cancle</a>
+				</div>
+			</div>
+		</div>
+</div>
 
 <script type="text/javascript">
+    var currentId = null; // Select row to edit
     $(function () {
         $("#dgUser").datagrid({
             url: '../User/UserList',
-            loadmsg: 'Loading......',
             pagination: true,
             pageSize: 30,
             rownumbers: true,
             singleSelect: true,
+            toolbar: '#toolbar',
+            //fitColumns: true,
+            fit:true,
+            autoRowHeight: true,
+            sortName: "user_Id",
+            sortOrder: "desc",
+            checkOnSelect: false,
+            selectOnCheck:false,
             columns: [[
+                    { field: 'ck', checkbox:true},
                     { field: 'user_Id', title: 'ID', width: 20, hidden: 'true' },
-                    { field: 'user_Name', title: 'Name', width: 50 },
-                    { field: 'user_Email', title: 'Email', width: 60 },
-                    { field: 'user_Telephone', title: 'Telephone', width: 80, align: 'center' },
-                    { field: 'user_Skill', title: 'Skill', width: 80, align: 'center' },
-                    { field: 'user_Introduction', title: 'Introduction', width: 80, align: 'center' },
+                    { field: 'user_Name', title: 'Name', width: 60 },
+                    { field: 'user_Email', title: 'Email', width: 120 },
+                    { field: 'user_Telephone', title: 'Telephone', width: 100},
+                    { field: 'user_Skill', title: 'Skill', width: 260},
+                    { field: 'user_Introduction', title: 'Introduction', width: 260},
                     { field: 'Register_Time', title: 'Register_Time', width: 110, align: 'center' },
-                    { field: 'Log_Time', title: 'Last_Log_Time', width: 50, align: 'center' },
-                    { field: 'Update_Time', title: 'Last_Update_Time', width: 50, align: 'center' }
+                    { field: 'Log_Time', title: 'Last_Log_Time', width: 110, align: 'center' },
+                    { field: 'Update_Time', title: 'Last_Update_Time', width: 110, align: 'center' }
             ]],
             onSelect: function (rowIndex, rowData) {
+                currentId = rowData.user_Id;
             },
             onDblClickRow: function (rowIndex, rowData) {
+                EditUser();
             },
             onLoadSuccess: function (data) {
                 $(this).datagrid('clearSelections');
             }
     }); 
-})
+    })
+    function Reload() {
+        $('#dgUser').datagrid('reload');
+    }
+    function NewUser() {
+        $("#editUser").window("open");
+        $("#editUserForm")[0].reset();
+        $("#editUserForm input[name='user_Name']").focus();
+        currentId = null;
+    }
+    function EditUser() {
+        var selectRow = $('#dgUser').datagrid('getSelected');
+        if (selectRow) {
+            $("#editUser").window("open");
+            $.ajax({
+                url: '../User/UserEdit/?id=' + selectRow.user_Id,
+                type: 'post',
+                dataType: 'json',
+                success: function (r) {
+                    $("#editUserForm input[name='user_Name']").val(r.user_Name);
+                    $("#editUserForm input[name='user_Password']").val(r.user_Password);
+                    $("#editUserForm input[name='user_confire_Password_Model']").val(r.user_Password);
+                    $("#editUserForm input[name='user_Email']").val(r.user_Email);
+                    $("#editUserForm input[name='user_Telephone']").val(r.user_Telephone);
+                    $("#user_Skill").val(r.user_Skill);
+                    $("#user_Introduction").val(r.user_Introduction);
+
+                    $("#editUserForm input[name='user_Name']").focus();
+                }
+            });
+            currentId = selectRow.user_Id;
+        } else {
+            $.messager.alert("Info", "Please select User！", "info");
+        }
+    }
+    function DeleteUser() {
+        var selectRow = $('#dgUser').datagrid('getSelected');
+        if (selectRow) {
+            $.ajax({
+                url: '../User/UserDelete/?id=' + selectRow.user_Id,
+                type: "post",
+                dataType: "json",
+                success: function (retValue) {
+                    if (retValue.result) {
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                    }
+                }
+
+            });
+        }
+    }
+    function Save() {
+        var password = $('#user_Password').val();
+        var confire_password = $('#user_confire_Password_Model').val();
+        if (password == confire_password) {
+            $('#editUserForm').form('submit', {
+                url: sUrl = '../User/UserSave/?id=' + currentId,
+                onSubmit: function () {
+                    return $('#editUserForm').form('validate');
+                },
+                success: function (r) {
+                    var rVal = $.parseJSON(r);
+                    if (rVal.result) {
+                        $('#editUser').window('close');
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + rVal.message, 'error');
+                    }
+                }
+            })
+        }
+        else {
+            $.messager.alert('Warning', 'Fail: The Password and Confirem password is not the same!', 'error');
+        }
+    }
 </script>
 

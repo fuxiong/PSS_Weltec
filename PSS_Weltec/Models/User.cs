@@ -16,7 +16,6 @@ namespace PSS_Weltec.Models
         public string user_Telephone { get; set; }
         public bool user_Is_Teacher { get; set; }
         public string user_StudentId { get; set; }
-        public string user_Project { get; set; }
         public string user_Skill { get; set; }
         public string user_Introduction { get; set; }
         public DateTime user_Register_Time { get; set; }

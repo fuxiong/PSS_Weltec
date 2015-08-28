@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using PSS_Weltec.Models;
 using System.Data;
+using PSS_Weltec.Shared_Class;
 
 namespace PSS_Weltec.DAL
 {
@@ -37,8 +38,47 @@ namespace PSS_Weltec.DAL
                 model.user_Telephone = ds.Tables[0].Rows[0]["user_Telephone"].ToString();
                 //model.user_Is_Teacher = ds.Tables[0].Rows[0]["user_Is_Teacher"];
                 model.user_StudentId = ds.Tables[0].Rows[0]["user_StudentId"].ToString();
-                //model.user_Project = ds.Tables[0].Rows[0]["user_Project"].ToString();
-                //model.user_skill = ds.Tables[0].Rows[0]["user_skill"].ToString();
+                model.user_Skill = ds.Tables[0].Rows[0]["user_Skill"].ToString();
+                model.user_Introduction = ds.Tables[0].Rows[0]["user_Introduction"].ToString();
+
+                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Register_Time"].ToString()))
+                {
+                    model.user_Register_Time = DateTime.Parse(ds.Tables[0].Rows[0]["user_Register_Time"].ToString());
+                }
+                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Log_Time"].ToString()))
+                {
+                    model.user_Log_Time = DateTime.Parse(ds.Tables[0].Rows[0]["user_Log_Time"].ToString());
+                }
+                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Update_Time"].ToString()))
+                {
+                    model.user_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["user_Update_Time"].ToString());
+                }
+            }
+            if (ds != null)
+                ds.Dispose();
+            return model;
+        }
+        public static User GetModel(int id)
+        {
+            string sql = "select * from PSS_User where user_Id='" + id + "'";
+            DataSet ds = SqlHelper.GetDataSetBySql(sql, "PSS_User");
+            User model = null;
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                model = new User();
+                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Id"].ToString()))
+                {
+                    model.user_Id = int.Parse(ds.Tables[0].Rows[0]["user_Id"].ToString());
+                }
+
+                model.user_Name = ds.Tables[0].Rows[0]["user_Name"].ToString();
+                model.user_Password = ds.Tables[0].Rows[0]["user_Password"].ToString();
+                model.user_Email = ds.Tables[0].Rows[0]["user_Email"].ToString();
+                model.user_Telephone = ds.Tables[0].Rows[0]["user_Telephone"].ToString();
+                //model.user_Is_Teacher = ds.Tables[0].Rows[0]["user_Is_Teacher"];
+                model.user_StudentId = ds.Tables[0].Rows[0]["user_StudentId"].ToString();
+                model.user_Skill = ds.Tables[0].Rows[0]["user_Skill"].ToString();
                 model.user_Introduction = ds.Tables[0].Rows[0]["user_Introduction"].ToString();
 
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Register_Time"].ToString()))
@@ -65,9 +105,9 @@ namespace PSS_Weltec.DAL
             bExist = SqlHelper.ExecuteBySql(sql);
             return bExist;
         }
-        public static void Add(User model)
+        public static void Save(User model)
         {
-            string sql = "select * from PSS_User";
+            string sql = "select * from PSS_User where 1<>1";
             DataSet ds = SqlHelper.GetDataSetBySql(sql, "PSS_User");
             DataRow dr = ds.Tables["PSS_User"].NewRow();
 
@@ -79,8 +119,7 @@ namespace PSS_Weltec.DAL
             dr["user_Telephone"] = model.user_Telephone;
             dr["user_Is_Teacher"] = model.user_Is_Teacher;
             dr["user_StudentId"] = model.user_StudentId;
-            dr["user_Project"] = model.user_Project;
-            dr["user_skill"] = model.user_Skill;
+            dr["user_Skill"] = model.user_Skill;
             dr["user_Introduction"] = model.user_Introduction;
             dr["user_Register_Time"] = model.user_Register_Time;
             dr["user_Log_Time"] = model.user_Log_Time;
@@ -104,8 +143,7 @@ namespace PSS_Weltec.DAL
             dr["user_Telephone"] = model.user_Telephone;
             dr["user_Is_Teacher"] = model.user_Is_Teacher;
             dr["user_StudentId"] = model.user_StudentId;
-            dr["user_Project"] = model.user_Project;
-            dr["user_skill"] = model.user_Skill;
+            dr["user_Skill"] = model.user_Skill;
             dr["user_Introduction"] = model.user_Introduction;
             dr["user_Register_Time"] = model.user_Register_Time;
             dr["user_Log_Time"] = model.user_Log_Time;
@@ -114,6 +152,7 @@ namespace PSS_Weltec.DAL
             if (ds != null)
                 ds.Dispose();
         }
+        
         public static void Delete(User model)
         {
             string sql = "select * from PSS_User where user_Id='" + model.user_Id + "'";
@@ -150,6 +189,49 @@ namespace PSS_Weltec.DAL
                 model.user_StudentId = dr["user_StudentId"].ToString();
                 //model.user_Project = dr["user_Project"].ToString();
                 //model.user_skill = dr["user_skill"].ToString();
+                model.user_Introduction = dr["user_Introduction"].ToString();
+
+                if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
+                {
+                    model.user_Register_Time = DateTime.Parse(dr["user_Register_Time"].ToString());
+                    model.Register_Time = model.user_Register_Time.ToString("yyyy-MM-dd HH:mm");
+                }
+                if (!string.IsNullOrEmpty(dr["user_Log_Time"].ToString()))
+                {
+                    model.user_Log_Time = DateTime.Parse(dr["user_Log_Time"].ToString());
+                    model.Log_Time = model.user_Log_Time.ToString("yyyy-MM-dd HH:mm");
+                }
+                if (!string.IsNullOrEmpty(dr["user_Update_Time"].ToString()))
+                {
+                    model.user_Update_Time = DateTime.Parse(dr["user_Update_Time"].ToString());
+                    model.Update_Time = model.user_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                }
+                list.Add(model);
+            };
+            return list;
+        }
+
+        public static List<User> GetList(Paging paging,string order, string sort,string queryWord)
+        {
+            List<User> list = new List<User>();
+            User model = null;
+            DataSet ds = SqlHelper.GetListByPage("PSS_User",paging,order,sort);
+            foreach(DataRow dr in ds.Tables["PSS_User"].Rows)
+            {
+                model = new User();
+
+                if (!string.IsNullOrEmpty(dr["user_Id"].ToString()))
+                {
+                    model.user_Id = int.Parse(dr["user_Id"].ToString());
+                }
+
+                model.user_Name = dr["user_Name"].ToString();
+                model.user_Password = dr["user_Password"].ToString();
+                model.user_Email = dr["user_Email"].ToString();
+                model.user_Telephone = dr["user_Telephone"].ToString();
+                //model.user_Is_Teacher = dr["user_Is_Teacher"];
+                model.user_StudentId = dr["user_StudentId"].ToString();
+                model.user_Skill = dr["user_Skill"].ToString();
                 model.user_Introduction = dr["user_Introduction"].ToString();
 
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
