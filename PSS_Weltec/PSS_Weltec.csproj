@@ -182,10 +182,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\FrameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAL\TrimesterService.cs" />
     <Compile Include="DAL\UserService.cs" />
     <Compile Include="DAL\SqlHelper.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -193,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Trimester.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared_Class\JsonDataGridResult.cs" />
@@ -1003,6 +1006,7 @@
     <Content Include="Views\Frame\FrameIndex.cshtml" />
     <Content Include="Views\Shared\FrameShare.cshtml" />
     <Content Include="Views\User\UserIndex.cshtml" />
+    <Content Include="Views\Configuration\TrimesterIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

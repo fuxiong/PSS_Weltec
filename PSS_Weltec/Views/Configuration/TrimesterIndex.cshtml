@@ -1,0 +1,156 @@
+﻿@model PSS_Weltec.Models.User
+
+@{
+    ViewBag.Title = "TrimesterIndex";
+    Layout = "~/Views/Shared/FrameShare.cshtml";
+}
+
+<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;">
+    <table id="dgTrimester" title="Trimester List" class="easyui-datagrid"> </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="New()">New</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="Edit()">Edit</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="Delete()">Remove</a>
+    </div>
+    <div id="editTrimester" class="easyui-window" title="Trimester Information" style="padding: 10px;width:640px;height:400px;"
+		data-options="iconCls:'icon-edit',minimizable:false,minimizable:false,closed:close,resizable:false,collapsible:false,modal:true,shadow:true">
+			<div class="easyui-layout" fit="true">
+				<div region="center" border="false" style="padding:10px;background:#eff3ff;border:1px solid #ccc;">
+		            <form id="editTrimesterForm" method="post" style="">
+			            <table style="width:580px;" border="0" cellpadding="0" cellspacing="0">
+				            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;" nowrap>
+						            <span>Name：</span>
+					            </td>
+					            <td style="width:82%" colspan="3">
+						            <input id="tri_Name" name="tri_Name" class="easyui-validatebox textbox" data-options="required:true" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>StartDate：</span>
+					            </td>
+					            <td style="width:32%;">
+						            <input id="tri_StartDate" name="tri_StartDate" class="easyui-datebox" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>EndDate：</span>
+					            </td>
+					            <td style="width:32%">
+						            <input id="tri_EndDate" name="tri_EndDate" class="easyui-datebox" style="width:250px;"/>
+					            </td>
+				            </tr>
+			            </table>
+		            </form>
+				</div>
+				<div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
+					<a id="btnSave" class="easyui-linkbutton" iconCls="icon-ok" href="javascript:void(0)" onclick="Save()">Save</a>
+					<a class="easyui-linkbutton" iconCls="icon-cancel" href="javascript:void(0)" onclick="$('#editTrimester').window('close');">Cancle</a>
+				</div>
+			</div>
+		</div>
+</div>
+
+<script type="text/javascript">
+    var currentId = null;
+    $(function () {
+        $("#dgTrimester").datagrid({
+            url: '../Configuration/TrimesterList',
+            pagination: true,
+            pageSize: 30,
+            rownumbers: true,
+            singleSelect: true,
+            toolbar: '#toolbar',
+            fit: true,
+            autoRowHeight: true,
+            sortName: "tri_Id",
+            sortOrder: "desc",
+            columns: [[
+                    { field: 'tri_Id', title: 'ID', width: 20, hidden: 'true' },
+                    { field: 'tri_Name', title: 'Name', width: 150 },
+                    { field: 'StartDate_Time', title: 'StartDate', width: 150 },
+                    { field: 'EndDate_Time', title: 'EndDate', width: 150 },
+                    { field: 'tri_IsOpen', title: 'Open', width: 150 }
+            ]],
+            onSelect: function (rowIndex, rowData) {
+                currentId = rowData.tri_Id;
+            },
+            onDblClickRow: function (rowIndex, rowData) {
+                Edit();
+            },
+            onLoadSuccess: function (data) {
+                $(this).datagrid('clearSelections');
+            }
+        });
+    })
+
+    function Reload() {
+        $('#dgTrimester').datagrid('reload');
+    }
+    function New() {
+        $("#editTrimester").window("open");
+        $("#editTrimesterForm")[0].reset();
+        $("#editTrimesterForm input[name='tri_Name']").focus();
+        currentId = null;
+    }
+    function Edit() {
+        var selectRow = $('#dgTrimester').datagrid('getSelected');
+        if (selectRow) {
+            $("#editTrimester").window("open");
+            $.ajax({
+                url: '../Configuration/TrimesterEdit/?id=' + selectRow.tri_Id,
+                type: 'post',
+                dataType: 'json',
+                success: function (r) {
+                    $("#editTrimesterForm input[name='tri_Name']").val(r.tri_Name);
+                    $("#editTrimesterForm input[name='StartDate_Time']").val(r.StartDate_Time);
+                    $("#editTrimesterForm input[name='EndDate_Time']").val(r.EndDate_Time);
+                    $("#editTrimesterForm input[name='tri_IsOpen']").val(r.tri_IsOpen);
+
+                    $("#editTrimesterForm input[name='tri_Name']").focus();
+                }
+            });
+            currentId = selectRow.user_Id;
+        } else {
+            $.messager.alert("Info", "Please select Trimester！", "info");
+        }
+    }
+    function Delete() {
+        var selectRow = $('#dgTrimester').datagrid('getSelected');
+        if (selectRow) {
+            $.ajax({
+                url: '../Configuration/TrimesterDelete/?id=' + selectRow.tri_Id,
+                type: "post",
+                dataType: "json",
+                success: function (retValue) {
+                    if (retValue.result) {
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                    }
+                }
+
+            });
+        }
+    }
+    function Save() {
+        $('#editTrimesterForm').form('submit', {
+            url: sUrl = '../Configuration/TrimesterSave/?id=' + currentId,
+            onSubmit: function () {
+                return $('#editTrimesterForm').form('validate');
+            },
+            success: function (r) {
+                var rVal = $.parseJSON(r);
+                if (rVal.result) {
+                    $('#editTrimester').window('close');
+                    Reload();
+                } else {
+                    $.messager.alert('Warning', 'Fail:' + rVal.message, 'error');
+                }
+            }
+        })
+    }
+</script>
