@@ -1,4 +1,5 @@
 ﻿@model PSS_Weltec.Models.User
+@using PSS_Weltec.DAL
 
 @{
     ViewBag.Title = "Register";
@@ -20,6 +21,10 @@
                 @Html.ValidationMessageFor(m => m.user_Name_Model)
             </li>
             <li>
+                @Html.LabelFor(m=>m.user_Trimester_Model)
+                @Html.DropDownList("user_Trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:260px;height:30px;" })
+            </li>
+            <li>
                 @Html.LabelFor(m => m.user_Password_Model)
                 @Html.PasswordFor(m => m.user_Password_Model)
                 @Html.ValidationMessageFor(m => m.user_Password_Model)
@@ -33,4 +38,3 @@
     </fieldset>
 }
 </section>
-

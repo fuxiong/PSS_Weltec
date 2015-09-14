@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace PSS_Weltec.Models
 {
@@ -21,6 +22,7 @@ namespace PSS_Weltec.Models
         public DateTime user_Register_Time { get; set; }
         public DateTime user_Log_Time { get; set; }
         public DateTime user_Update_Time { get; set; }
+        public int user_Trimester_Id { get; set; }
         #endregion
 
 
@@ -34,6 +36,10 @@ namespace PSS_Weltec.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string user_Password_Model
+        { get; set; }
+
+        [Display(Name = "Trimester")]
+        public string user_Trimester_Model
         { get; set; }
 
         [DataType(DataType.Password)]

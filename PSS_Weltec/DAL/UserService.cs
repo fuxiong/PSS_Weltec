@@ -124,6 +124,7 @@ namespace PSS_Weltec.DAL
             dr["user_Register_Time"] = model.user_Register_Time;
             dr["user_Log_Time"] = model.user_Log_Time;
             dr["user_Update_Time"] = model.user_Update_Time;
+            dr["user_Trimester_Id"] = model.user_Trimester_Id;
 
             ds.Tables["PSS_User"].Rows.Add(dr);
 
@@ -211,11 +212,11 @@ namespace PSS_Weltec.DAL
             return list;
         }
 
-        public static List<User> GetList(Paging paging,string order, string sort,string queryWord)
+        public static List<User> GetList(Paging paging,string order, string sort,int trimesterId,string queryWord)
         {
             List<User> list = new List<User>();
             User model = null;
-            DataSet ds = SqlHelper.GetListByPage("PSS_User",paging,order,sort);
+            DataSet ds = SqlHelper.GetListByPage("PSS_User", trimesterId,paging, order, sort);
             foreach(DataRow dr in ds.Tables["PSS_User"].Rows)
             {
                 model = new User();

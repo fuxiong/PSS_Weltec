@@ -7,6 +7,7 @@
     <table id="dgUser" title="Users List" class="easyui-datagrid"> </table>
     <div id="toolbar">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
+        @Html.DropDownList("user_Trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="NewUser()">New User</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="EditUser()">Edit User</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="DeleteUser()">Remove User</a>
@@ -86,15 +87,16 @@
 
 <script type="text/javascript">
     var currentId = null; // Select row to edit
+    var trimesterId = $('#user_Trimester_Id').val();
+    var sUrl=
     $(function () {
         $("#dgUser").datagrid({
-            url: '../User/UserList',
+            url: '../User/UserList/?trimesterId=' + trimesterId,
             pagination: true,
             pageSize: 30,
             rownumbers: true,
             singleSelect: true,
             toolbar: '#toolbar',
-            //fitColumns: true,
             fit:true,
             autoRowHeight: true,
             sortName: "user_Id",
@@ -122,9 +124,12 @@
             onLoadSuccess: function (data) {
                 $(this).datagrid('clearSelections');
             }
-    }); 
+        });
+        $("#user_Trimester_Id").change(function () { trimesterId = $('#user_Trimester_Id').val(); Reload(); });
     })
     function Reload() {
+        var queryParams = $('#dgUser').datagrid('options').queryParams;
+        queryParams.trimesterId = $("#user_Trimester_Id").val();
         $('#dgUser').datagrid('reload');
     }
     function NewUser() {

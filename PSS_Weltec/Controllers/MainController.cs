@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PSS_Weltec.DAL;
 using PSS_Weltec.Models;
+using PSS_Weltec.Shared_Class;
 
 namespace PSS_Weltec.Controllers
 {
@@ -51,6 +52,15 @@ namespace PSS_Weltec.Controllers
 
         public ActionResult RegisterIndex()
         {
+            SqlHelper.Initialization();
+            List<SelectListItem> listTrimester = new List<SelectListItem>();
+            foreach (Trimester tri in  TrimesterService.GetList().Where(item=>item.tri_IsOpen==true))
+            {
+                listTrimester.Add(new SelectListItem { Text = tri.tri_Name, Value = tri.tri_Id.ToString()});
+            }
+
+
+            ViewData["listTrimester"] = listTrimester;
             return View();
         }
 
@@ -64,11 +74,20 @@ namespace PSS_Weltec.Controllers
                 try
                 {
                     SqlHelper.Initialization();
+                    List<SelectListItem> listTrimester = new List<SelectListItem>();
+                    foreach (Trimester tri in TrimesterService.GetList().Where(item => item.tri_IsOpen == true))
+                    {
+                        listTrimester.Add(new SelectListItem { Text = tri.tri_Name, Value = tri.tri_Id.ToString() });
+                    }
+
+
+                    ViewData["listTrimester"] = listTrimester;
                     if (!UserService.IsExistName(model.user_Name_Model))
                     {
                         if (model.user_Password_Model == model.user_confire_Password_Model)
                         {
                             model.user_Name = model.user_Name_Model;
+                            //model.user_Trimester_Id =model.user_Trimester_Id;
                             //model.user_Password = model.user_Password_Model;
                             model.user_Password = SqlHelper.Fun_Secret(model.user_Password_Model);
                             model.user_Is_Teacher = false;

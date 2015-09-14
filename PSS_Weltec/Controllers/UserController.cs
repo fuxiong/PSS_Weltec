@@ -17,10 +17,20 @@ namespace PSS_Weltec.Controllers
 
         public ActionResult UserIndex()
         {
+            SqlHelper.Initialization();
+            List<SelectListItem> listTrimester = new List<SelectListItem>();
+            foreach (Trimester tri in TrimesterService.GetList().Where(item => item.tri_IsOpen == true))
+            {
+                listTrimester.Add(new SelectListItem { Text = tri.tri_Name, Value = tri.tri_Id.ToString() });
+            }
+
+
+            ViewData["listTrimester"] = listTrimester;
+
             return View();
         }
 
-        public ActionResult UserList(int? page, int? rows, string sort, string order, string queryWord)
+        public ActionResult UserList(int? page, int? rows,int trimesterId, string sort, string order, string queryWord)
         {
             #region Get paging condition
             Paging paging = new Paging();
@@ -33,7 +43,7 @@ namespace PSS_Weltec.Controllers
             try
             {
                 SqlHelper.Initialization();
-                list = DAL.UserService.GetList(paging,sort,order,queryWord);
+                list = DAL.UserService.GetList(paging, sort, order, trimesterId, queryWord);
                 if (list != null && list.Count() > 0)
                 {
                     foreach (User user in list)

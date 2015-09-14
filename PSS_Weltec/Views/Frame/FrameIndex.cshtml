@@ -57,16 +57,16 @@
                   {
                       "menuid": "1", "icon": "icon-sys", "menuname": "User Management",
                       "menus": [
-                        { "menuid": "12", "menuname": "User List", "icon": "icon-page", "url": "../User/UserIndex" },
-                        { "menuid": "13", "menuname": "Personal Profile", "icon": "icon-class", "url": "menu1/class.html" },
-                        { "menuid": "14", "menuname": "Change Password", "icon": "icon-role", "url": "demo2.html" }
+                        { "menuid": "12", "menuname": "User List", "icon": "icon-sys", "url": "../User/UserIndex" },
+                        { "menuid": "13", "menuname": "Personal Profile", "url": "menu1/class.html" },
+                        { "menuid": "14", "menuname": "Change Password", "icon": "icon-reload", "url": "demo2.html" }
                         //{ "menuid": "15", "menuname": "菜单", "icon": "icon-set", "url": "demo.html" },
                         //{ "menuid": "16", "menuname": "菜单", "icon": "icon-log", "url": "demo1.html" }
                       ]
                   },
        {
-           "menuid": "2", "icon": "icon-sys", "menuname": "Project Management",
-           "menus": [{ "menuid": "21", "menuname": "Project List", "icon": "icon-nav", "url": "menu2/tree2.html" },
+           "menuid": "2", "icon": "icon-remove", "menuname": "Project Management",
+           "menus": [{ "menuid": "21", "menuname": "Project List", "icon": "icon-filter", "url": "menu2/tree2.html" },
                    { "menuid": "22", "menuname": "Project Dicussion", "icon": "icon-nav", "url": "demo1.html" }
            ]
        },
@@ -198,11 +198,12 @@
         return s;
     }
 
-    function addTab(subtitle, url) {
+    function addTab(subtitle, url,icon) {
         if (!$('#tabs').tabs('exists', subtitle)) {
             $('#tabs').tabs('add', {
                 title: subtitle,
                 content: createFrame(url),
+                icon:icon,
                 closable: true
             });
         } else {
@@ -219,13 +220,15 @@
             var menulist = '';
             menulist += '<ul>';
             $.each(n.menus, function (j, o) {
-                menulist += '<li><div><a ref="' + o.menuid + '" href="#" rel="' + o.url + '" >&nbsp;</span><span class="nav">' + o.menuname + '</span></a></div></li> ';
+                menulist += '<li><div><a ref="' + o.menuid + '" href="#" rel="' + o.url + '" ><span class="icon ' + o.icon
+                    + '" >&nbsp;</span><span class="nav">' + o.menuname + '</span></a></div></li> ';
             })
             menulist += '</ul>';
 
             $('#nav').accordion('add', {
                 title: n.menuname,
-                content: menulist
+                content: menulist,
+                iconCls: 'icon ' + n.icon
             });
 
         });
@@ -235,19 +238,20 @@
 
             var url = $(this).attr("rel");
             var menuid = $(this).attr("ref");//获取超链接属性中ref中的内容
+            var icon = getIcon(menuid, icon);
 
-            addTab(tabTitle, url);//增加tab
+            addTab(tabTitle, url,icon);//增加tab
             $('.easyui-accordion li div').removeClass("selected");
-            $(this).parent().addClass("selected");
-        }).hover(function () {
-            $(this).parent().addClass("hover");
-        }, function () {
-            $(this).parent().removeClass("hover");
-        });
+                $(this).parent().addClass("selected");
+            }).hover(function () {
+                $(this).parent().addClass("hover");
+            }, function () {
+                $(this).parent().removeClass("hover");
+            });
 
-        //选中第一个
-        var panels = $('#nav').accordion('panels');
-        var t = panels[0].panel('options').title;
-        $('#nav').accordion('select', t);
-    }
+            //选中第一个
+            var panels = $('#nav').accordion('panels');
+            var t = panels[0].panel('options').title;
+            $('#nav').accordion('select', t);
+        }
 </script>
