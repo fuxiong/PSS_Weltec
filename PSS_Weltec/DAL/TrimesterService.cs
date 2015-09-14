@@ -30,10 +30,12 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["tri_StartDate"].ToString()))
                 {
                     model.tri_StartDate = DateTime.Parse(ds.Tables[0].Rows[0]["tri_StartDate"].ToString());
+                    model.StartDate_Time = model.tri_StartDate.ToString("yyyy-MM-dd");
                 }
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["tri_EndDate"].ToString()))
                 {
                     model.tri_EndDate = DateTime.Parse(ds.Tables[0].Rows[0]["tri_EndDate"].ToString());
+                    model.EndDate_Time = model.tri_EndDate.ToString("yyyy-MM-dd");
                 }
             }
             if (ds != null)
@@ -111,12 +113,12 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["tri_StartDate"].ToString()))
                 {
                     model.tri_StartDate = DateTime.Parse(dr["tri_StartDate"].ToString());
-                    model.StartDate_Time = model.tri_StartDate.ToString("yyyy-MM-dd HH:mm");
+                    model.StartDate_Time = model.tri_StartDate.ToString("yyyy-MM-dd");
                 }
                 if (!string.IsNullOrEmpty(dr["tri_EndDate"].ToString()))
                 {
                     model.tri_EndDate = DateTime.Parse(dr["tri_EndDate"].ToString());
-                    model.EndDate_Time = model.tri_EndDate.ToString("yyyy-MM-dd HH:mm");
+                    model.EndDate_Time = model.tri_EndDate.ToString("yyyy-MM-dd");
                 }
                 list.Add(model);
             };
@@ -143,12 +145,12 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["tri_StartDate"].ToString()))
                 {
                     model.tri_StartDate = DateTime.Parse(dr["tri_StartDate"].ToString());
-                    model.StartDate_Time = model.tri_StartDate.ToString("yyyy-MM-dd HH:mm");
+                    model.StartDate_Time = model.tri_StartDate.ToString("yyyy-MM-dd");
                 }
                 if (!string.IsNullOrEmpty(dr["tri_EndDate"].ToString()))
                 {
                     model.tri_EndDate = DateTime.Parse(dr["tri_EndDate"].ToString());
-                    model.EndDate_Time = model.tri_EndDate.ToString("yyyy-MM-dd HH:mm");
+                    model.EndDate_Time = model.tri_EndDate.ToString("yyyy-MM-dd");
                 }
                 list.Add(model);
             };

@@ -18,6 +18,7 @@ namespace PSS_Weltec.Models
         #region Assistant Attribute
         public string StartDate_Time { get; set; }
         public string EndDate_Time { get; set; }
+        public string IsOpen { get; set; }
         #endregion
     }
 }

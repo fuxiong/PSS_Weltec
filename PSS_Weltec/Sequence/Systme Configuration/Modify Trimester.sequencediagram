@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="3d5a27e0-957a-4cdb-9399-43ee3b421b75" name="Modify Trimester" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="eff5f19f-a756-4c42-8559-3668941247f0" name="Modify Trimester" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="90e8463c-38d1-49bc-86f1-c456e6daebf3">
+            <body>Modify Trimester:
+1.View trimester list.
+2.Select a trimester.
+3.Double click this trimester.
+4.Modify relevant information</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification Id="4f4d4df6-b478-499d-8853-2e3f34ba9e93" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="cf364f54-6d9c-4559-bf01-5bb24edbb596" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="c23173fd-d0b3-433f-b61c-d531c8ca3d1a" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="60580b02-3775-4196-8613-8e9218be7a66" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="cb25de55-3688-40e4-9e8f-65d7cd651af5" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="059b34c7-0920-4645-85da-f43c7893c4c7" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="b72432c6-9128-45b5-b90b-d1f4ae21981a" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="c23173fd-d0b3-433f-b61c-d531c8ca3d1a" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="97e92515-9d65-4f5d-9dc4-7f5138cce071" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="60580b02-3775-4196-8613-8e9218be7a66" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="dc1a434a-edb1-4309-b099-384076be70fd" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="00dc6ece-abcd-4f39-a777-902040510f8e" LastKnownName="Administrator : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="fde81dee-7576-4eda-b992-c0ba3b5f74df" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="2ceb953a-fafb-43e9-aa09-0baa60d3e5a8" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="fc3beba6-76af-4455-9ac3-9ce8e8cdf4ee" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="775ebbb2-3d7b-4892-a16e-c1acfe0a552b" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="fbba3de6-16b2-4075-bc1b-6a453773d939" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="034d407e-61ee-4e59-b106-765657e41f02" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="89643810-13b3-4428-8260-cc9d190bd1c6" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="fc3beba6-76af-4455-9ac3-9ce8e8cdf4ee" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="2e88045d-59a1-48ea-84af-35254f2ef229" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="cb25de55-3688-40e4-9e8f-65d7cd651af5" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="775ebbb2-3d7b-4892-a16e-c1acfe0a552b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="9ade581a-d127-4813-aa45-1dba61fcc9b0" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="6b320877-02d6-44f9-a921-9802339ff33c" LastKnownName="TrimesterService.cs : Model" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="86bf8152-46bc-48d9-8e31-01cc4bfa6e06" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="c1a3fbb1-7b17-45e4-a171-fc86729991db" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="e0d59fac-6393-46bf-943f-7d8ce07e7fe6" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="2f622705-ecae-4b97-9e53-7859d0ea9eba" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="c1a3fbb1-7b17-45e4-a171-fc86729991db" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="f91693b7-7cc4-4f54-91fd-4d855408ea58" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="6b320877-02d6-44f9-a921-9802339ff33c" LastKnownName="TrimesterService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="e0d59fac-6393-46bf-943f-7d8ce07e7fe6" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="6b320877-02d6-44f9-a921-9802339ff33c" LastKnownName="TrimesterService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="fbba3de6-16b2-4075-bc1b-6a453773d939" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="2f622705-ecae-4b97-9e53-7859d0ea9eba" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="6b320877-02d6-44f9-a921-9802339ff33c" LastKnownName="TrimesterService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="034d407e-61ee-4e59-b106-765657e41f02" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="86bf8152-46bc-48d9-8e31-01cc4bfa6e06" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="1d1e6382-cbfb-44b5-b8b3-845d7a3d723e" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="6b320877-02d6-44f9-a921-9802339ff33c" LastKnownName="TrimesterService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="89643810-13b3-4428-8260-cc9d190bd1c6" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="059b34c7-0920-4645-85da-f43c7893c4c7" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="2ceb953a-fafb-43e9-aa09-0baa60d3e5a8" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="8667cd34-40b1-4343-91d4-6085a6eba67c" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="811ed6bc-cd04-42b7-9945-20896ee3491d" LastKnownName="TrimesterController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b72432c6-9128-45b5-b90b-d1f4ae21981a" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9fcaa2bb-8ad4-4d9f-9180-f005504ba42f" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="00dc6ece-abcd-4f39-a777-902040510f8e" LastKnownName="Administrator : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="cf364f54-6d9c-4559-bf01-5bb24edbb596" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="23556761-f067-4c8d-8faa-dd53e321237d" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="f66efe66-0f5b-4784-aa30-7e743262011c" LastKnownName="TrimesterModify.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="00dc6ece-abcd-4f39-a777-902040510f8e" name="Administrator : Class" isActor="true" lifelineDisplayName="Administrator : Class">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="dc1a434a-edb1-4309-b099-384076be70fd" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="9fcaa2bb-8ad4-4d9f-9180-f005504ba42f" LastKnownName="MessageOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="f66efe66-0f5b-4784-aa30-7e743262011c" name="TrimesterModify.cshtml : View" isActor="false" lifelineDisplayName="TrimesterModify.cshtml : View">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="c23173fd-d0b3-433f-b61c-d531c8ca3d1a" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="cf364f54-6d9c-4559-bf01-5bb24edbb596" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="811ed6bc-cd04-42b7-9945-20896ee3491d" name="TrimesterController.cs : Controller" isActor="false" lifelineDisplayName="TrimesterController.cs : Controller">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="fc3beba6-76af-4455-9ac3-9ce8e8cdf4ee" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="2ceb953a-fafb-43e9-aa09-0baa60d3e5a8" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="6b320877-02d6-44f9-a921-9802339ff33c" name="TrimesterService.cs : Model" isActor="false" lifelineDisplayName="TrimesterService.cs : Model">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="c1a3fbb1-7b17-45e4-a171-fc86729991db" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="86bf8152-46bc-48d9-8e31-01cc4bfa6e06" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="f6267e61-74a3-484b-b55d-eda17181c7c3" name="Modify()" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="dc1a434a-edb1-4309-b099-384076be70fd" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="60580b02-3775-4196-8613-8e9218be7a66" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="af5b34fd-d805-4fef-bc3e-3fd58dcfa832" name="TrimesterModify(model)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="cb25de55-3688-40e4-9e8f-65d7cd651af5" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="775ebbb2-3d7b-4892-a16e-c1acfe0a552b" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="d325c2fb-44df-448e-b91f-285b190f7082" name="TrimesterService.Update(model)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="fbba3de6-16b2-4075-bc1b-6a453773d939" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="e0d59fac-6393-46bf-943f-7d8ce07e7fe6" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="98d80c08-287a-46c4-96f8-00049eaac9c4" name="return model" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="2f622705-ecae-4b97-9e53-7859d0ea9eba" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="034d407e-61ee-4e59-b106-765657e41f02" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="7a0dec54-d19d-4be2-91c8-db3267209825" name="return message" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="89643810-13b3-4428-8260-cc9d190bd1c6" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="059b34c7-0920-4645-85da-f43c7893c4c7" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="bcbc5cd7-0c79-4c10-8e0a-dab22bc07965" name="DisplayResult()" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="b72432c6-9128-45b5-b90b-d1f4ae21981a" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="9fcaa2bb-8ad4-4d9f-9180-f005504ba42f" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="2e88045d-59a1-48ea-84af-35254f2ef229" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="8667cd34-40b1-4343-91d4-6085a6eba67c" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="f91693b7-7cc4-4f54-91fd-4d855408ea58" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="1d1e6382-cbfb-44b5-b8b3-845d7a3d723e" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="97e92515-9d65-4f5d-9dc4-7f5138cce071" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="23556761-f067-4c8d-8faa-dd53e321237d" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

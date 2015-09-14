@@ -127,11 +127,13 @@ namespace PSS_Weltec.Controllers
                 }
                 else
                 {
+                    jsonResult.result = false;
                     jsonResult.message = "Id is null！";
                 }
             }
             catch (Exception ex)
             {
+                jsonResult.result = false;
                 jsonResult.message = ex.Message;
             }
             return Json(jsonResult, JsonRequestBehavior.AllowGet);

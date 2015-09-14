@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="e0b0e2a6-fc23-441d-80cb-3aa44337ef4f" name="Join Team" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="cf38ca68-1e6e-4b84-ac75-d3751a4156c8" name="Join Team" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="c3df735c-b2fc-4218-9ed2-018ab226c300">
+            <body>Join Team:
+1.View team list.
+2.Select a team.
+3.Join this team.</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification Id="fe148400-7f15-4a73-a4b2-1dfd83e54197" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="dc6a3c79-c9c3-4447-8a0b-e562523e5a7e" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="ca93a440-9198-4cf2-ad4d-fbfc6274a39d" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="9f4ee6cc-9fd2-4c9e-a204-423a0d0391e7" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="7459fc3d-6543-45b8-8af4-be43723264ee" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="87a0baa0-74c5-42bc-b8e7-cba12a0f7b19" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="b02887d0-2f65-4883-8ed0-4429a604f16b" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="ca93a440-9198-4cf2-ad4d-fbfc6274a39d" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="0f4142ab-e7e9-44db-a319-c8fb2d39d320" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9f4ee6cc-9fd2-4c9e-a204-423a0d0391e7" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="50755b0e-0aad-4209-9e2f-81d793ab5d11" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="095da769-8775-4377-9199-016a58cd8cf5" LastKnownName="Students : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="a37731e5-32cb-44ad-bf94-7db0bf0bbf43" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="fce6c6a4-2a55-4155-917e-681cdc11b5f4" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="65c09fcf-823e-462e-9333-0ce5bb4c8b78" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="f270a400-319f-4497-b819-911d69a2adc4" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="6c54da0a-b7ae-4724-8779-462d53ea97d5" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="41e3abd5-a65d-4834-9bb4-b4be5a4f4fab" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="23fe3a45-700d-4eee-943a-23c41969f546" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="65c09fcf-823e-462e-9333-0ce5bb4c8b78" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="07d522ff-d6a3-4adc-a6ea-4dc45f698ae4" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7459fc3d-6543-45b8-8af4-be43723264ee" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="f270a400-319f-4497-b819-911d69a2adc4" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="c950ddd4-2e9b-4a05-9a07-0f9d66080312" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="45e43fdb-0302-44a0-91e3-de94b095de3e" LastKnownName="TeamUserLinkService.cs : Model" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="15dd5969-5502-49af-8ca5-08d4fe7ed0b1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="b3ec6249-19b2-49f8-9b9f-36a16deca061" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="c00f3991-0fda-45aa-89b4-8930a314830f" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="a0d6150d-11d9-47c3-b455-7e79f78f9861" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="b3ec6249-19b2-49f8-9b9f-36a16deca061" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="39558354-849c-4d5f-babf-fdb454dd01e3" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="45e43fdb-0302-44a0-91e3-de94b095de3e" LastKnownName="TeamUserLinkService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c00f3991-0fda-45aa-89b4-8930a314830f" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="45e43fdb-0302-44a0-91e3-de94b095de3e" LastKnownName="TeamUserLinkService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="6c54da0a-b7ae-4724-8779-462d53ea97d5" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="a0d6150d-11d9-47c3-b455-7e79f78f9861" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="45e43fdb-0302-44a0-91e3-de94b095de3e" LastKnownName="TeamUserLinkService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="41e3abd5-a65d-4834-9bb4-b4be5a4f4fab" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="15dd5969-5502-49af-8ca5-08d4fe7ed0b1" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="da2e5c2f-ffe6-4bc9-b3e5-3a3f7164efce" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="45e43fdb-0302-44a0-91e3-de94b095de3e" LastKnownName="TeamUserLinkService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="23fe3a45-700d-4eee-943a-23c41969f546" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="87a0baa0-74c5-42bc-b8e7-cba12a0f7b19" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="fce6c6a4-2a55-4155-917e-681cdc11b5f4" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="a5ac0340-188b-4356-a5a6-24fc1f95450e" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="df898938-f87f-4e7d-88e0-34512b507a33" LastKnownName="TeamController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b02887d0-2f65-4883-8ed0-4429a604f16b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="f8859458-5660-4106-a6e2-354235592438" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="095da769-8775-4377-9199-016a58cd8cf5" LastKnownName="Students : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="dc6a3c79-c9c3-4447-8a0b-e562523e5a7e" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="9a7a8d50-9c1a-4207-abef-4f3e6e33289d" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" LastKnownName="TeamJoindIndex.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="095da769-8775-4377-9199-016a58cd8cf5" name="Students : Class" isActor="true" lifelineDisplayName="Students : Class">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="50755b0e-0aad-4209-9e2f-81d793ab5d11" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="f8859458-5660-4106-a6e2-354235592438" LastKnownName="MessageOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="deb78c77-40f4-4fdc-a6dd-786b4020b44f" name="TeamJoindIndex.cshtml : View" isActor="false" lifelineDisplayName="TeamJoindIndex.cshtml : View">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="ca93a440-9198-4cf2-ad4d-fbfc6274a39d" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="dc6a3c79-c9c3-4447-8a0b-e562523e5a7e" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="df898938-f87f-4e7d-88e0-34512b507a33" name="TeamController.cs : Controller" isActor="false" lifelineDisplayName="TeamController.cs : Controller">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="65c09fcf-823e-462e-9333-0ce5bb4c8b78" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="fce6c6a4-2a55-4155-917e-681cdc11b5f4" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="45e43fdb-0302-44a0-91e3-de94b095de3e" name="TeamUserLinkService.cs : Model" isActor="false" lifelineDisplayName="TeamUserLinkService.cs : Model">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="b3ec6249-19b2-49f8-9b9f-36a16deca061" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="15dd5969-5502-49af-8ca5-08d4fe7ed0b1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="148bbca3-6d58-48ec-aa4a-be7567aabb2a" name="TeamJoindIndex()" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="50755b0e-0aad-4209-9e2f-81d793ab5d11" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="9f4ee6cc-9fd2-4c9e-a204-423a0d0391e7" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="b002b98c-7f73-459b-93f9-29ec2bda02bf" name="TeamJoindIndex(team,user)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="7459fc3d-6543-45b8-8af4-be43723264ee" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="f270a400-319f-4497-b819-911d69a2adc4" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="0eaf81fa-7baa-4afa-9451-b597d413cc7a" name="TeamUserLinkService.Save(team,user)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="6c54da0a-b7ae-4724-8779-462d53ea97d5" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="c00f3991-0fda-45aa-89b4-8930a314830f" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="0f6e4505-a904-4df4-9e14-bbc5f6283329" name="return model" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="a0d6150d-11d9-47c3-b455-7e79f78f9861" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="41e3abd5-a65d-4834-9bb4-b4be5a4f4fab" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="1833f7f7-3b37-4f4b-8be9-4aaf091e9cfb" name="return message" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="23fe3a45-700d-4eee-943a-23c41969f546" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="87a0baa0-74c5-42bc-b8e7-cba12a0f7b19" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="73ba34ed-b8fb-4e4c-b143-c819cc923be3" name="DisplayResult()" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="b02887d0-2f65-4883-8ed0-4429a604f16b" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="f8859458-5660-4106-a6e2-354235592438" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="07d522ff-d6a3-4adc-a6ea-4dc45f698ae4" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="a5ac0340-188b-4356-a5a6-24fc1f95450e" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="39558354-849c-4d5f-babf-fdb454dd01e3" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="da2e5c2f-ffe6-4bc9-b3e5-3a3f7164efce" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="0f4142ab-e7e9-44db-a319-c8fb2d39d320" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="9a7a8d50-9c1a-4207-abef-4f3e6e33289d" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

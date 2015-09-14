@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="42d6e1d3-71b9-4a87-a9b2-0566089de8ba" name="Approve Idea" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="99cbcbfa-528f-4952-a288-0e7fd2f0ac29" name="Approve Idea" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="9df6f557-9ca8-43e6-bfa9-385a502e0792">
+            <body>Approve Idea:
+1.Select idea list.
+2.Approve revelant idea  list.
+3.Change the status to "Approved"</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification Id="ecf72203-0fe5-49ca-a345-43f450d2ed0a" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="03eb81ed-2561-4bc7-810a-45bef0f48f0e" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="b367329f-392f-47cb-97f4-c6a576f196e8" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="9aea96b8-0c05-403e-9f9e-dc0f0e8839f1" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="496dab00-a6e7-4acb-90de-9600d4be77ff" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="90a56bc2-a07c-4bf7-87ff-b776ac2afccf" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="0eeaf703-cbb4-4c0d-8d6f-db5c5ca018a9" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="b367329f-392f-47cb-97f4-c6a576f196e8" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="5ae83444-9412-4a95-ba9c-2056c5b3b207" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9aea96b8-0c05-403e-9f9e-dc0f0e8839f1" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="96de6947-b8c9-4693-80df-a5fb88dded21" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="b84309a2-bd2c-45d1-ae27-a7274ce63ca7" LastKnownName="Administrator : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="53b3fcea-52a0-4afb-9b30-af0bac117cc5" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="a3a1891a-a267-407f-88c1-fbbba80d828f" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="feefbceb-0209-4564-92e7-c0bc6e9e4216" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="fce6c3bf-cbe0-47c7-8170-415024d939a9" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="9f8fc056-5db5-40fa-995c-a90ba3a8b61c" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="ed21fc93-cc2c-4637-ad7d-d32bc71317ee" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="3f4aedfd-6aec-46a1-a166-bf388d609be1" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="feefbceb-0209-4564-92e7-c0bc6e9e4216" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="ddaac44e-194f-4b8b-9ed2-906368c5f89f" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="496dab00-a6e7-4acb-90de-9600d4be77ff" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="fce6c3bf-cbe0-47c7-8170-415024d939a9" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="4bbdd6ce-35f6-4ff8-9c77-c562a834d0ed" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="a991ed77-0931-495f-9216-573ed1fed356" LastKnownName="NewIdeaService.cs : Model" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="e07bf2b8-0123-459c-9751-3147e6d87e51" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="7403e6af-9863-44f4-9a06-d2082e94a738" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="bf80fdab-6af5-40da-ba27-7b0e0a2be9fb" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="80df2a08-94b3-436b-9930-e79ea7a44f2a" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="7403e6af-9863-44f4-9a06-d2082e94a738" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="cf9a2f09-8e8c-4952-9583-50f345a817a0" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="a991ed77-0931-495f-9216-573ed1fed356" LastKnownName="NewIdeaService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9f8fc056-5db5-40fa-995c-a90ba3a8b61c" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="bf80fdab-6af5-40da-ba27-7b0e0a2be9fb" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="a991ed77-0931-495f-9216-573ed1fed356" LastKnownName="NewIdeaService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="80df2a08-94b3-436b-9930-e79ea7a44f2a" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="a991ed77-0931-495f-9216-573ed1fed356" LastKnownName="NewIdeaService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="ed21fc93-cc2c-4637-ad7d-d32bc71317ee" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="e07bf2b8-0123-459c-9751-3147e6d87e51" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="b34dc36f-3a9f-4698-a879-69d92764b201" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="a991ed77-0931-495f-9216-573ed1fed356" LastKnownName="NewIdeaService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="3f4aedfd-6aec-46a1-a166-bf388d609be1" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="90a56bc2-a07c-4bf7-87ff-b776ac2afccf" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="a3a1891a-a267-407f-88c1-fbbba80d828f" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="74652dcb-32fe-44f0-8ea0-14bef932d6e2" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="773638d1-8df7-497b-a1be-b6743db10fb0" LastKnownName="NewIdeaController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="0eeaf703-cbb4-4c0d-8d6f-db5c5ca018a9" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="dc5c547b-a671-430e-89c6-df5c3f14ec30" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="b84309a2-bd2c-45d1-ae27-a7274ce63ca7" LastKnownName="Administrator : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="03eb81ed-2561-4bc7-810a-45bef0f48f0e" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="e320ac2b-cb89-4ce6-848a-ff1ee459afd4" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" LastKnownName="ApproveIdeaIndex.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="b84309a2-bd2c-45d1-ae27-a7274ce63ca7" name="Administrator : Class" isActor="true" lifelineDisplayName="Administrator : Class">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="96de6947-b8c9-4693-80df-a5fb88dded21" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="dc5c547b-a671-430e-89c6-df5c3f14ec30" LastKnownName="MessageOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="42748084-ab8e-4bf6-bce4-f8a0540f6365" name="ApproveIdeaIndex.cshtml : View" isActor="false" lifelineDisplayName="ApproveIdeaIndex.cshtml : View">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="b367329f-392f-47cb-97f4-c6a576f196e8" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="03eb81ed-2561-4bc7-810a-45bef0f48f0e" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="773638d1-8df7-497b-a1be-b6743db10fb0" name="NewIdeaController.cs : Controller" isActor="false" lifelineDisplayName="NewIdeaController.cs : Controller">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="feefbceb-0209-4564-92e7-c0bc6e9e4216" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="a3a1891a-a267-407f-88c1-fbbba80d828f" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="a991ed77-0931-495f-9216-573ed1fed356" name="NewIdeaService.cs : Model" isActor="false" lifelineDisplayName="NewIdeaService.cs : Model">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="7403e6af-9863-44f4-9a06-d2082e94a738" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="e07bf2b8-0123-459c-9751-3147e6d87e51" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="21433735-3c97-4a1a-b78d-b0a3c422478c" name="ApproveIdeaIndex()" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="96de6947-b8c9-4693-80df-a5fb88dded21" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="9aea96b8-0c05-403e-9f9e-dc0f0e8839f1" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="eb64881b-c824-4788-865b-d1048dbbf329" name="ApproveIdeaIndex(list)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="496dab00-a6e7-4acb-90de-9600d4be77ff" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="fce6c3bf-cbe0-47c7-8170-415024d939a9" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="a3bd2a37-d477-4bd3-9455-8c8184b221f8" name="NewIdeaService.Update(list)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="9f8fc056-5db5-40fa-995c-a90ba3a8b61c" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="bf80fdab-6af5-40da-ba27-7b0e0a2be9fb" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="e9d135e4-5fad-4092-945e-c3987c1a5e11" name="return list" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="80df2a08-94b3-436b-9930-e79ea7a44f2a" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="ed21fc93-cc2c-4637-ad7d-d32bc71317ee" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="9c910db5-026a-4ddb-947b-9f16d7679fbb" name="return Json" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="3f4aedfd-6aec-46a1-a166-bf388d609be1" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="90a56bc2-a07c-4bf7-87ff-b776ac2afccf" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="7302e943-6fc7-4bbb-8238-c1f1371b930a" name="DisplayResult()" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="0eeaf703-cbb4-4c0d-8d6f-db5c5ca018a9" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="dc5c547b-a671-430e-89c6-df5c3f14ec30" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="ddaac44e-194f-4b8b-9ed2-906368c5f89f" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="74652dcb-32fe-44f0-8ea0-14bef932d6e2" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="cf9a2f09-8e8c-4952-9583-50f345a817a0" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="b34dc36f-3a9f-4698-a879-69d92764b201" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="5ae83444-9412-4a95-ba9c-2056c5b3b207" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="e320ac2b-cb89-4ce6-848a-ff1ee459afd4" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="0ae8b693-730a-4121-8b71-fc861257ee51" name="Submit Bid" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="105a172f-9208-4456-9c9b-cef7eb595640" name="Submit Bid" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="6c22b73b-5411-420f-b88e-1f27764b9354">
+            <body>Sumbit Bid:
+1.Input bid information.
+2.Sumbit this bid.</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification Id="6944e29e-0027-48de-aef5-03abd0d5a5dd" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="5ddd4f8b-20c8-47dd-b123-f02d70fce95b" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="25c9273a-ccda-450f-a25d-4096682588ae" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="71edc87a-1ed2-4947-9eaf-a786a2829f0d" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="1ccc7fa5-c4e8-4d5e-9df5-d941f249ea07" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="58c36685-352b-4517-9c5c-9d5f751ac5f6" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="77dc027f-e873-48d2-8f35-98141eb2cd17" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="25c9273a-ccda-450f-a25d-4096682588ae" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="4a88e27c-a12f-4a8c-b9e4-4b46fb443235" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="71edc87a-1ed2-4947-9eaf-a786a2829f0d" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="d9908b9f-5f68-49ae-b16a-1456a2677317" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="3c4db0bc-415a-4f83-9731-4c21540fdaf2" LastKnownName="Team Leader : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="c80e2f1e-9a29-4d69-b3a9-7b6c4b8591eb" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="797fc6e2-5644-4466-a7ec-14164b7739a1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="b7fff1e2-1a8c-4688-b5e4-bf6313d007c1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="a1e1a434-0687-4621-9c53-49530f8d2bbb" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="61de1d2c-c65e-49b5-bb83-3a0622345647" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="b671fc26-b48c-456e-85a8-1f9649420913" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="e0ac7e9e-1a36-4d9e-860a-51e81a558011" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="b7fff1e2-1a8c-4688-b5e4-bf6313d007c1" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="22751c0d-d17a-4308-bf10-e244111a4fa6" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="1ccc7fa5-c4e8-4d5e-9df5-d941f249ea07" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="a1e1a434-0687-4621-9c53-49530f8d2bbb" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="94200db5-6578-48df-8bcc-d77d17cc59a0" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="c0680b8c-68f2-4732-aa3c-c184ed0fc984" LastKnownName="BidService.cs : Model" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="8441fe9e-5cfa-4fa0-a120-bfe0f290ac9f" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="75b57b39-9f71-4393-a40b-ee444fc6ef0f" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="fdac5c78-ae10-4f85-b34a-e9c5e5d5b376" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="9ddb94ed-3cb6-485d-bffe-7c4e89b4ca42" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="75b57b39-9f71-4393-a40b-ee444fc6ef0f" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="a5bc3f9a-6316-4eda-a981-2027a6f6c6b8" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="c0680b8c-68f2-4732-aa3c-c184ed0fc984" LastKnownName="BidService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="61de1d2c-c65e-49b5-bb83-3a0622345647" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="fdac5c78-ae10-4f85-b34a-e9c5e5d5b376" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="c0680b8c-68f2-4732-aa3c-c184ed0fc984" LastKnownName="BidService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9ddb94ed-3cb6-485d-bffe-7c4e89b4ca42" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="c0680b8c-68f2-4732-aa3c-c184ed0fc984" LastKnownName="BidService.cs : Model" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b671fc26-b48c-456e-85a8-1f9649420913" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="8441fe9e-5cfa-4fa0-a120-bfe0f290ac9f" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="d66a0981-9905-4a26-94d9-86a9bafbdecb" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="c0680b8c-68f2-4732-aa3c-c184ed0fc984" LastKnownName="BidService.cs : Model" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="e0ac7e9e-1a36-4d9e-860a-51e81a558011" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="58c36685-352b-4517-9c5c-9d5f751ac5f6" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="797fc6e2-5644-4466-a7ec-14164b7739a1" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="b1e756bf-c35b-468d-9366-6f214f2c90ab" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="403fd039-8634-443a-85a6-d34a3bb98713" LastKnownName="BidController.cs : Controller" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="77dc027f-e873-48d2-8f35-98141eb2cd17" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="0ee1345d-cf0e-4e05-a039-a79c522ee033" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="3c4db0bc-415a-4f83-9731-4c21540fdaf2" LastKnownName="Team Leader : Class" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="5ddd4f8b-20c8-47dd-b123-f02d70fce95b" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="78c3ece1-55aa-4e8b-8746-dd5f0ac9e1c4" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="907e38ba-6352-4b88-a8e9-821c0120fde3" LastKnownName="SubmitBidIndex.cshtml : View" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="3c4db0bc-415a-4f83-9731-4c21540fdaf2" name="Team Leader : Class" isActor="true" lifelineDisplayName="Team Leader : Class">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="d9908b9f-5f68-49ae-b16a-1456a2677317" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="0ee1345d-cf0e-4e05-a039-a79c522ee033" LastKnownName="MessageOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="907e38ba-6352-4b88-a8e9-821c0120fde3" name="SubmitBidIndex.cshtml : View" isActor="false" lifelineDisplayName="SubmitBidIndex.cshtml : View">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="25c9273a-ccda-450f-a25d-4096682588ae" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="5ddd4f8b-20c8-47dd-b123-f02d70fce95b" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="403fd039-8634-443a-85a6-d34a3bb98713" name="BidController.cs : Controller" isActor="false" lifelineDisplayName="BidController.cs : Controller">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="b7fff1e2-1a8c-4688-b5e4-bf6313d007c1" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="797fc6e2-5644-4466-a7ec-14164b7739a1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="c0680b8c-68f2-4732-aa3c-c184ed0fc984" name="BidService.cs : Model" isActor="false" lifelineDisplayName="BidService.cs : Model">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="75b57b39-9f71-4393-a40b-ee444fc6ef0f" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="8441fe9e-5cfa-4fa0-a120-bfe0f290ac9f" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="dcb09200-bf45-451f-8608-07be7696ab01" name="SubmitBidIndex()" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="d9908b9f-5f68-49ae-b16a-1456a2677317" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="71edc87a-1ed2-4947-9eaf-a786a2829f0d" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="802944da-8240-49ff-b3fe-5e42b50e6e3f" name="SubmitBidIndex(model)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="1ccc7fa5-c4e8-4d5e-9df5-d941f249ea07" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="a1e1a434-0687-4621-9c53-49530f8d2bbb" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="1fef804a-ff73-4918-8de8-1c9ae175a524" name="BidService.Save(model)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="61de1d2c-c65e-49b5-bb83-3a0622345647" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="fdac5c78-ae10-4f85-b34a-e9c5e5d5b376" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="de69f9b0-cd47-482b-8112-2664dbed0380" name="return model" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="9ddb94ed-3cb6-485d-bffe-7c4e89b4ca42" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="b671fc26-b48c-456e-85a8-1f9649420913" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="267cd3e4-a600-469b-b2f3-d1351f556253" name="return message" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="e0ac7e9e-1a36-4d9e-860a-51e81a558011" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="58c36685-352b-4517-9c5c-9d5f751ac5f6" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="859ebe84-bf35-4dd0-94f2-61c1fe85e7c9" name="DisplayResult()" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="77dc027f-e873-48d2-8f35-98141eb2cd17" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="0ee1345d-cf0e-4e05-a039-a79c522ee033" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="22751c0d-d17a-4308-bf10-e244111a4fa6" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="b1e756bf-c35b-468d-9366-6f214f2c90ab" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="a5bc3f9a-6316-4eda-a981-2027a6f6c6b8" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="d66a0981-9905-4a26-94d9-86a9bafbdecb" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="4a88e27c-a12f-4a8c-b9e4-4b46fb443235" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="78c3ece1-55aa-4e8b-8746-dd5f0ac9e1c4" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

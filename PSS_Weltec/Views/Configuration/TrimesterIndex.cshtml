@@ -13,18 +13,18 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="Edit()">Edit</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="Delete()">Remove</a>
     </div>
-    <div id="editTrimester" class="easyui-window" title="Trimester Information" style="padding: 10px;width:640px;height:400px;"
+    <div id="editTrimester" class="easyui-window" title="Trimester Information" style="padding: 10px;width:480px;height:300px;"
 		data-options="iconCls:'icon-edit',minimizable:false,minimizable:false,closed:close,resizable:false,collapsible:false,modal:true,shadow:true">
 			<div class="easyui-layout" fit="true">
 				<div region="center" border="false" style="padding:10px;background:#eff3ff;border:1px solid #ccc;">
 		            <form id="editTrimesterForm" method="post" style="">
-			            <table style="width:580px;" border="0" cellpadding="0" cellspacing="0">
+			            <table style="width:400px;" border="0" cellpadding="0" cellspacing="0">
 				            <tr style="height:24px">
 					            <td style="width:18%; text-align:right;" nowrap>
 						            <span>Name：</span>
 					            </td>
 					            <td style="width:82%" colspan="3">
-						            <input id="tri_Name" name="tri_Name" class="easyui-validatebox textbox" data-options="required:true" style="width:250px;"/>
+						            <input id="tri_Name" name="tri_Name" data-options="required:true" style="width:250px;"/>
 					            </td>
 				            </tr>
                             <tr style="height:24px">
@@ -32,7 +32,7 @@
 						            <span>StartDate：</span>
 					            </td>
 					            <td style="width:32%;">
-						            <input id="tri_StartDate" name="tri_StartDate" class="easyui-datebox" style="width:250px;"/>
+						            <input class="easyui-datebox" id="tri_StartDate" name="tri_StartDate" data-options="formatter:myformatter,parser:myparser"/>
 					            </td>
 				            </tr>
                             <tr style="height:24px">
@@ -40,9 +40,17 @@
 						            <span>EndDate：</span>
 					            </td>
 					            <td style="width:32%">
-						            <input id="tri_EndDate" name="tri_EndDate" class="easyui-datebox" style="width:250px;"/>
+						            <input class="easyui-datebox" id="tri_EndDate" name="tri_EndDate" data-options="formatter:myformatter,parser:myparser"/>
 					            </td>
 				            </tr>
+                            <tr style="height:24px">
+                                <td style="width:18%; text-align:right;">
+                                    <span>ON/OFF：</span>
+                                </td>
+                                <td><input id="IsOpen" name="IsOpen" class="easyui-switchbutton">
+                                    <input id="tri_IsOpen" name="tri_IsOpen" type=hidden>
+                                </td>
+                            </tr>
 			            </table>
 		            </form>
 				</div>
@@ -56,6 +64,24 @@
 
 <script type="text/javascript">
     var currentId = null;
+    function myformatter(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+    }
+    function myparser(s) {
+        if (!s) return new Date();
+        var ss = (s.split('-'));
+        var y = parseInt(ss[0], 10);
+        var m = parseInt(ss[1], 10);
+        var d = parseInt(ss[2], 10);
+        if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+            return new Date(y, m - 1, d);
+        } else {
+            return new Date();
+        }
+    }
     $(function () {
         $("#dgTrimester").datagrid({
             url: '../Configuration/TrimesterList',
@@ -79,16 +105,20 @@
                 currentId = rowData.tri_Id;
             },
             onDblClickRow: function (rowIndex, rowData) {
+                currentId = rowData.tri_Id;
                 Edit();
             },
             onLoadSuccess: function (data) {
                 $(this).datagrid('clearSelections');
             }
         });
+
+        //$('#IsOpen')
     })
 
     function Reload() {
         $('#dgTrimester').datagrid('reload');
+        currentId = null;
     }
     function New() {
         $("#editTrimester").window("open");
@@ -106,14 +136,18 @@
                 dataType: 'json',
                 success: function (r) {
                     $("#editTrimesterForm input[name='tri_Name']").val(r.tri_Name);
-                    $("#editTrimesterForm input[name='StartDate_Time']").val(r.StartDate_Time);
-                    $("#editTrimesterForm input[name='EndDate_Time']").val(r.EndDate_Time);
-                    $("#editTrimesterForm input[name='tri_IsOpen']").val(r.tri_IsOpen);
-
+                    $("#tri_StartDate").datebox('setValue', r.StartDate_Time);
+                    $("#tri_EndDate").datebox('setValue', r.EndDate_Time);
+                    if (r.tri_IsOpen) {
+                        $('#IsOpen').switchbutton('check');
+                    }
+                    else {
+                        $('#IsOpen').switchbutton('uncheck');
+                    }
                     $("#editTrimesterForm input[name='tri_Name']").focus();
                 }
             });
-            currentId = selectRow.user_Id;
+            currentId = selectRow.tri_Id;
         } else {
             $.messager.alert("Info", "Please select Trimester！", "info");
         }
@@ -137,8 +171,10 @@
         }
     }
     function Save() {
+        var object = $('#IsOpen').switchbutton('options');
+        $('#tri_IsOpen').val(object.checked);
         $('#editTrimesterForm').form('submit', {
-            url: sUrl = '../Configuration/TrimesterSave/?id=' + currentId,
+            url:'../Configuration/TrimesterSave/?id=' + currentId,
             onSubmit: function () {
                 return $('#editTrimesterForm').form('validate');
             },
