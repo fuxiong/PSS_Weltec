@@ -7,12 +7,14 @@
     <table id="dgUser" title="Users List" class="easyui-datagrid"> </table>
     <div id="toolbar">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
-        @Html.DropDownList("user_Trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
+        @Html.DropDownList("trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
+        @Html.DropDownList("status", (IEnumerable<SelectListItem>)ViewData["listApproved"], new { style = "width:90px;" })
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="NewUser()">New User</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="EditUser()">Edit User</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="DeleteUser()">Remove User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="ApproveUser()">Approve</a>
     </div>
-    <div id="editUser" class="easyui-window" title="User Information" style="padding: 10px;width:640px;height:400px;"
+    <div id="editUser" class="easyui-window" title="User Information" style="padding: 10px;width:640px;height:440px;"
 		data-options="iconCls:'icon-edit',minimizable:false,minimizable:false,closed:close,resizable:false,collapsible:false,modal:true,shadow:true">
 			<div class="easyui-layout" fit="true">
 				<div region="center" border="false" style="padding:10px;background:#eff3ff;border:1px solid #ccc;">
@@ -40,6 +42,14 @@
 					            </td>
 					            <td style="width:32%">
 						            <input id="user_confire_Password_Model" name="user_confire_Password_Model" type="Password" style="width:250px;"/>
+					            </td>
+				            </tr>
+                            <tr style="height:24px">
+					            <td style="width:18%; text-align:right;">
+						            <span>Trimester：</span>
+					            </td>
+					            <td style="width:32%;">
+						            @Html.DropDownList("user_Trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
 					            </td>
 				            </tr>
                             <tr style="height:24px">
@@ -87,11 +97,11 @@
 
 <script type="text/javascript">
     var currentId = null; // Select row to edit
-    var trimesterId = $('#user_Trimester_Id').val();
-    var sUrl=
+    var trimesterId = $('#trimester_Id').val();
+    var status = $('#status').val();
     $(function () {
         $("#dgUser").datagrid({
-            url: '../User/UserList/?trimesterId=' + trimesterId,
+            url: '../User/UserList/?trimesterId=' + trimesterId+'&status='+status,
             pagination: true,
             pageSize: 30,
             rownumbers: true,
@@ -106,9 +116,10 @@
             columns: [[
                     { field: 'ck', checkbox:true},
                     { field: 'user_Id', title: 'ID', width: 20, hidden: 'true' },
-                    { field: 'user_Name', title: 'Name', width: 60 },
+                    { field: 'user_Name', title: 'Name', width: 100 },
                     { field: 'user_Email', title: 'Email', width: 120 },
-                    { field: 'user_Telephone', title: 'Telephone', width: 100},
+                    { field: 'user_Telephone', title: 'Telephone', width: 100 },
+                    { field: 'Status', title: 'Status', width: 80 },
                     { field: 'user_Skill', title: 'Skill', width: 260},
                     { field: 'user_Introduction', title: 'Introduction', width: 260},
                     { field: 'Register_Time', title: 'Register_Time', width: 110, align: 'center' },
@@ -125,11 +136,13 @@
                 $(this).datagrid('clearSelections');
             }
         });
-        $("#user_Trimester_Id").change(function () { trimesterId = $('#user_Trimester_Id').val(); Reload(); });
+        $("#trimester_Id").change(function () { trimesterId = $('#trimester_Id').val(); Reload(); });
+        $("#status").change(function () { status = $('#status').val(); Reload(); });
     })
     function Reload() {
         var queryParams = $('#dgUser').datagrid('options').queryParams;
-        queryParams.trimesterId = $("#user_Trimester_Id").val();
+        queryParams.trimesterId = $("#trimester_Id").val();
+        queryParams.status = $("#status").val();
         $('#dgUser').datagrid('reload');
     }
     function NewUser() {
@@ -177,8 +190,10 @@
                         $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
                     }
                 }
-
             });
+            currentId = null;
+        } else {
+            $.messager.alert("Info", "Please select User！", "info");
         }
     }
     function Save() {
@@ -205,5 +220,33 @@
             $.messager.alert('Warning', 'Fail: The Password and Confirem password is not the same!', 'error');
         }
     }
+    function ApproveUser() {
+        var checkRows = $('#dgUser').datagrid('getChecked');
+        var idList = null;
+        if (checkRows!=null) {
+            $.each(checkRows, function (user_Id, item) {
+                if (idList != null)
+                    idList += ",";
+                idList += item.user_Id;
+            })
+        }
+        else {
+            $.messager.alert("Info", "Please Check User！", "info");
+            return;
+        }
+        $.ajax({
+            url: '../User/UserApprove/?idList=' + idList,
+            type: "post",
+            dataType: "json",
+            success: function (retValue) {
+                if (retValue.result) {
+                    Reload();
+                } else {
+                    $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                }
+            }
+        });
+    }
+
 </script>
 

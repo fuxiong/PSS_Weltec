@@ -23,6 +23,7 @@ namespace PSS_Weltec.Models
         public DateTime user_Log_Time { get; set; }
         public DateTime user_Update_Time { get; set; }
         public int user_Trimester_Id { get; set; }
+        public bool user_Statue { get; set; }
         #endregion
 
 
@@ -55,6 +56,7 @@ namespace PSS_Weltec.Models
         public string Register_Time { get; set; }
         public string Log_Time { get; set; }
         public string Update_Time { get; set; }
+        public string Status { get { if (user_Statue) return "Approved"; else return "UnApproved"; } }
         #endregion
     }
 }

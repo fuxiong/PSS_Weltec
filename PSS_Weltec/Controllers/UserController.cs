@@ -24,13 +24,17 @@ namespace PSS_Weltec.Controllers
                 listTrimester.Add(new SelectListItem { Text = tri.tri_Name, Value = tri.tri_Id.ToString() });
             }
 
+            List<SelectListItem> listApproved = new List<SelectListItem>();
+            listApproved.Add(new SelectListItem { Text = "Approved", Value = "1" });
+            listApproved.Add(new SelectListItem { Text = "UnApproved", Value = "0" });
 
             ViewData["listTrimester"] = listTrimester;
+            ViewData["listApproved"] = listApproved;
 
             return View();
         }
 
-        public ActionResult UserList(int? page, int? rows,int trimesterId, string sort, string order, string queryWord)
+        public ActionResult UserList(int? page, int? rows, int trimesterId, string status, string sort, string order, string queryWord)
         {
             #region Get paging condition
             Paging paging = new Paging();
@@ -43,7 +47,7 @@ namespace PSS_Weltec.Controllers
             try
             {
                 SqlHelper.Initialization();
-                list = DAL.UserService.GetList(paging, sort, order, trimesterId, queryWord);
+                list = DAL.UserService.GetList(paging, sort, order, trimesterId,status, queryWord);
                 if (list != null && list.Count() > 0)
                 {
                     foreach (User user in list)
@@ -55,7 +59,8 @@ namespace PSS_Weltec.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                jsonDataGridResult.result = false;
+                jsonDataGridResult.message = ex.Message;
             }
             return Json(jsonDataGridResult,JsonRequestBehavior.AllowGet);
         }
@@ -88,7 +93,7 @@ namespace PSS_Weltec.Controllers
                 {
                     user = UserService.GetModel(id.Value);
                 }
-                else if(UserService.IsExistName(userModel.user_Name))
+                else if(UserService.IsExistName(userModel.user_Name,userModel.user_Trimester_Id))
                 {
                     jsonResult.result = false;
                     jsonResult.message = "There is already exist the name, please change a userName!";
@@ -109,6 +114,9 @@ namespace PSS_Weltec.Controllers
                 user.user_Skill = userModel.user_Skill;
                 user.user_Introduction = userModel.user_Introduction;
                 user.user_Update_Time = DateTime.Now;
+                user.user_Trimester_Id = userModel.user_Trimester_Id;
+                user.user_Statue = true;
+
 
                 if (id.HasValue)
                 {
@@ -153,5 +161,37 @@ namespace PSS_Weltec.Controllers
             }
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UserApprove(string idList)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                if (!string.IsNullOrEmpty(idList))
+                {
+                    List<User> list = UserService.GetList(idList);
+                    if (list != null && list.Count() > 0)
+                    {
+                        foreach (User user in list)
+                        {
+                            user.user_Statue = true;
+                        }
+                        UserService.UpdateList(list);
+                        jsonResult.result = true;
+                        jsonResult.message = "";
+                    }
+                }
+                else
+                {
+                    jsonResult.message = "IdList is null！";
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonResult.message = ex.Message;
+            }
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

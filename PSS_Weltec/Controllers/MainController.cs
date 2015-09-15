@@ -82,7 +82,7 @@ namespace PSS_Weltec.Controllers
 
 
                     ViewData["listTrimester"] = listTrimester;
-                    if (!UserService.IsExistName(model.user_Name_Model))
+                    if (!UserService.IsExistName(model.user_Name_Model,model.user_Trimester_Id))
                     {
                         if (model.user_Password_Model == model.user_confire_Password_Model)
                         {
