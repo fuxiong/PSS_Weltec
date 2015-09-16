@@ -44,7 +44,7 @@ namespace PSS_Weltec.Models
         { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confire Password")]
+        [Display(Name = "Confirm Password")]
         public string user_confire_Password_Model { get; set; }
 
         [Display(Name = "RememberMe?")]
@@ -53,6 +53,8 @@ namespace PSS_Weltec.Models
 
 
         #region Assistant Attribute
+        public string Name { get{ return user_Name;}}
+        public int Id { get { return user_Id; } }
         public string Register_Time { get; set; }
         public string Log_Time { get; set; }
         public string Update_Time { get; set; }

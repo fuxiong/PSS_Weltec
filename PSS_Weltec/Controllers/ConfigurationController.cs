@@ -139,10 +139,45 @@ namespace PSS_Weltec.Controllers
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
 
-
-
-        public ActionResult NewIndex()
+        public ActionResult NewsIndex()
         {
+            return View();
+        }
+
+        public ActionResult NewsList(int? page, int? rows, string sort, string order, string queryWord)
+        {
+            #region Get paging condition
+            Paging paging = new Paging();
+            paging.SetPageSize(rows.HasValue ? rows.Value : Paging.DEFAULT_PAGE_SIZE); //pageRows;
+            paging.SetCurrentPage(page.HasValue ? page.Value : 1); //pageNumber;
+            #endregion
+
+            JsonDataGridResult jsonDataGridResult = new JsonDataGridResult();
+            List<News> list = null;
+            try
+            {
+                SqlHelper.Initialization();
+                list = DAL.NewsService.GetList(paging, sort, order, queryWord);
+                if (list != null && list.Count() > 0)
+                {
+                    foreach (News model in list)
+                    {
+                        jsonDataGridResult.rows.Add(model);
+                    }
+                    jsonDataGridResult.total = paging.GetRecordCount();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Json(jsonDataGridResult, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult NewsEdit(int? news_Id)
+        {
+            if (news_Id.HasValue)
+                ViewData["news_Id"] = news_Id;
             return View();
         }
     }

@@ -103,6 +103,7 @@
             ]],
             onSelect: function (rowIndex, rowData) {
                 currentId = rowData.tri_Id;
+                
             },
             onDblClickRow: function (rowIndex, rowData) {
                 currentId = rowData.tri_Id;
@@ -112,8 +113,6 @@
                 $(this).datagrid('clearSelections');
             }
         });
-
-        //$('#IsOpen')
     })
 
     function Reload() {

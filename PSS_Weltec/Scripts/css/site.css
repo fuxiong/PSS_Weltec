@@ -1,0 +1,60 @@
+﻿/*.header{
+	background: url(../../../../Content/Images/frame_header_bk.jpg) 0px 0px repeat-x;
+	width: 100%;
+	height: 53px;
+}
+
+.header .headerLogo 
+{
+	border: 0px solid blue;
+	background: url(../../../../Content/Images/frame_logo.jpg) 0px 0px no-repeat;
+}
+
+.header .headerContent {
+	background: url(../../../../Content/Images/frame_header_right.jpg) top right no-repeat;	                                           
+}
+
+.header .headerContent .headerBanner {
+	background: url(../../../../Content/Images/frame_banner.gif) 50px 1px no-repeat;
+}
+*/
+.toolbar{
+	width: 100%;
+	height: 25px;
+	float: left;
+	border: 0px solid blue;
+}
+.toolbar table{
+	background: url(../images/navbar.jpg) 0px 0px repeat-x;
+}
+.footer {
+	height:23px;
+	width:100%;
+	background:#3d8ece  url(../images/footerbg.jpg);
+}
+.footer .footerContent{
+	margin:0px auto;
+	line-height:23px;
+	color:#000000; text-align:right; border-left:0px; border-right:0px;
+}
+#menu_Exit
+{
+	width: 30px;
+	padding-left: 12px;
+	background: url(../images/close.gif) no-repeat center left;
+}
+#menu_ChangePwd
+{
+	width: 55px;
+	padding-left: 12px;
+	background: url(../images/Key.GIF) no-repeat center left;
+}
+.west_menu
+{
+	padding-left: 12px;
+	background: url(../images/278.GIF) no-repeat center left;
+}
+.div_toolbar
+{
+	background: url(../images/panel_title.png) repeat-x;	
+}

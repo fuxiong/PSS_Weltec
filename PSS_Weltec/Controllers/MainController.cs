@@ -99,7 +99,7 @@ namespace PSS_Weltec.Controllers
                         }
                         else
                         {
-                            sError = "The PassWord and Comfire Password is not same!";
+                            sError = "The PassWord and Comfirm Password is not same!";
                         }
                     }
                     else
