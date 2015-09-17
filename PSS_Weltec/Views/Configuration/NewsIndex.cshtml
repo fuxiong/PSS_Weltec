@@ -30,8 +30,8 @@
             sortOrder: "desc",
             columns: [[
                     { field: 'news_Id', title: 'ID', width: 20, hidden: 'true' },
-                    { field: 'news_Title', title: 'Title', width: 150 },
-                    { field: 'news_Update_Time', title: 'Data', width: 150 }
+                    { field: 'news_Title', title: 'Title', width: 450 },
+                    { field: 'Update_Time', title: 'Data', width: 150 }
             ]],
             onSelect: function (rowIndex, rowData) {
                 //currentId = rowData.tri_Id;
@@ -49,7 +49,7 @@
         $('#dgNews').datagrid('reload');
     }
     function New() {
-        var url = '../Configuration/NewsEdit';
+        var url = "../Configuration/NewsEdit/";
         parent.addTab('Add News', url);
     }
     function Edit(){

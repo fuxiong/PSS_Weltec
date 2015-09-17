@@ -15,23 +15,23 @@
             </div>
             <div region="center" border="true" style="overflow:hidden;">
                 <form id="editNewsForm" method="post">
-			<table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
-				<tr style="height:24px">
-					<td style="width:5%; text-align:right;" nowrap>
-						<span>Title：</span>
-					</td>
-					<td style="width:80%">
-						<input class="easyui-validatebox" required="true" id="news_Title" name="news_Title" type="text" style="width:76%;" /><span style="color:Red;">*</span>
-					</td>
-				</tr>
-                <tr style="height:24px">
-					<td style="width:100%;" colspan="2">
-						<textarea class="jquery_ckeditor"></textarea>
-                        <input type="hidden" id="news_Content" name="news_Content"/>
-					</td>
-				</tr>
-			</table>
-		</form>
+			        <table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
+				        <tr style="height:24px">
+					        <td style="width:5%; text-align:right;" nowrap>
+						        <span>Title：</span>
+					        </td>
+					        <td style="width:80%">
+						        <input class="easyui-validatebox" required="true" id="news_Title" name="news_Title" type="text" style="width:76%;" /><span style="color:Red;">*</span>
+					        </td>
+				        </tr>
+                        <tr style="height:24px">
+					        <td style="width:100%;" colspan="2">
+						        <textarea class="jquery_ckeditor"></textarea>
+                                <input type="hidden" id="news_Content" name="news_Content"/>
+					        </td>
+				        </tr>
+			        </table>
+		        </form>
             </div>
         </div>
     </div>
@@ -40,8 +40,42 @@
 <script type="text/javascript" src="../../Scripts/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="../../Scripts/ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript">
+    var newId = @ViewData["news_Id"]
     $(function () {
+        Load();
         var config = {height:750};
         $('.jquery_ckeditor').ckeditor(config);
     })
+    function Load() {
+        //var sUrl = '../Configuration/NewsLoad/?newsId=' + newId;
+        //alert(sUrl);
+        $.ajax({
+            url: "../Configuration/NewsLoad/?newsId=" + newId,
+            type: 'post',
+            dataType: 'json',
+            success: function (r) {
+                //$("#editNewsForm input[name='news_Title']").val(r.news_Title);
+                //$('.jquery_ckeditor').val(r.news_Content);
+
+                //$("#editNewsForm input[name='news_Title']").focus();
+            }
+        })
+    }
+    function Save() {
+        $('#editNewsForm').form('submit', {
+            url: '../Configuration/NewsSave/?newsId=' + newId,
+            onSubmit: function () {
+                $('#news_Content').val(escape($('.jquery_ckeditor').val()));
+                return $('#editNewsForm').form('validate');
+            },
+            success: function (r) {
+                var rVal = $.parseJSON(r);
+                if (rVal.result) {
+                    $.messager.alert('Success', 'Success to save!', 'success');
+                } else {
+                    $.messager.alert('Error', 'Fail:' + rVal.message, 'error');
+                }
+            }
+        })
+    }
 </script>

@@ -176,9 +176,69 @@ namespace PSS_Weltec.Controllers
 
         public ActionResult NewsEdit(int? news_Id)
         {
+            ViewData["news_Id"] = null;
             if (news_Id.HasValue)
-                ViewData["news_Id"] = news_Id;
+                ViewData["news_Id"] = news_Id.Value;
             return View();
+        }
+
+        public ActionResult NewsLoad(int? newsId)
+        {
+            News model = null;
+            try
+            {
+                if (newsId.HasValue)
+                {
+                    model = NewsService.GetModel(newsId.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ContentResult NewsSave(News model, int? newsId)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                News news = null;
+                if (newsId.HasValue)
+                {
+                    news = NewsService.GetModel(newsId.Value);
+                }
+                else
+                {
+                    news = new News();
+                }
+
+                news.news_Title = model.news_Title;
+                news.news_Content = model.news_Content;
+                news.news_Update_Time = DateTime.Now;
+                string sName = User.Identity.Name;
+                //news.news_User_Id = User.Identity.Name;
+
+                if (newsId.HasValue)
+                {
+                    NewsService.Update(news);
+                }
+                else
+                {
+                    NewsService.Save(news);
+                }
+                jsonResult.result = true;
+                jsonResult.message = "";
+            }
+            catch (Exception ex)
+            {
+                jsonResult.result = false;
+                jsonResult.message = ex.Message;
+            }
+            string result = JsonConvert.SerializeObject(jsonResult);
+            return Content(result);
         }
     }
 }
