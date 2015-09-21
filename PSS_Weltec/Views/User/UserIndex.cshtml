@@ -201,7 +201,7 @@
         var confire_password = $('#user_confire_Password_Model').val();
         if (password == confire_password) {
             $('#editUserForm').form('submit', {
-                url: sUrl = '../User/UserSave/?id=' + currentId,
+                url: '../User/UserSave/?id=' + currentId,
                 onSubmit: function () {
                     return $('#editUserForm').form('validate');
                 },

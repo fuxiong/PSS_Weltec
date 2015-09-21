@@ -174,6 +174,29 @@ namespace PSS_Weltec.Controllers
             return Json(jsonDataGridResult, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetNewsList()
+        {
+            JsonDataGridResult jsonDataGridResult = new JsonDataGridResult();
+            List<News> list = null;
+            try
+            {
+                SqlHelper.Initialization();
+                list = DAL.NewsService.GetList("select top(5) * from PSS_News order by news_Id desc");//desc
+                if (list != null && list.Count() > 0)
+                {
+                    foreach (News model in list)
+                    {
+                        jsonDataGridResult.rows.Add(model);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Json(jsonDataGridResult, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult NewsEdit(int? news_Id)
         {
             ViewData["news_Id"] = null;
@@ -182,14 +205,14 @@ namespace PSS_Weltec.Controllers
             return View();
         }
 
-        public ActionResult NewsLoad(int? newsId)
+        public ActionResult NewsLoad(int? id)
         {
             News model = null;
             try
             {
-                if (newsId.HasValue)
+                if (id.HasValue)
                 {
-                    model = NewsService.GetModel(newsId.Value);
+                    model = NewsService.GetModel(id.Value);
                 }
             }
             catch (Exception ex)
@@ -200,28 +223,25 @@ namespace PSS_Weltec.Controllers
         }
 
         [HttpPost]
-        public ContentResult NewsSave(News model, int? newsId)
+        public ContentResult NewsSave(News model, int? id)
         {
             JsonDataGridResult jsonResult = new JsonDataGridResult();
             try
             {
                 News news = null;
-                if (newsId.HasValue)
+                if (id.HasValue)
                 {
-                    news = NewsService.GetModel(newsId.Value);
+                    news = NewsService.GetModel(id.Value);
                 }
                 else
                 {
                     news = new News();
                 }
-
                 news.news_Title = model.news_Title;
-                news.news_Content = model.news_Content;
+                news.news_Content = base.Server.UrlDecode(model.news_Content);
                 news.news_Update_Time = DateTime.Now;
-                string sName = User.Identity.Name;
-                //news.news_User_Id = User.Identity.Name;
 
-                if (newsId.HasValue)
+                if (id.HasValue)
                 {
                     NewsService.Update(news);
                 }
@@ -239,6 +259,32 @@ namespace PSS_Weltec.Controllers
             }
             string result = JsonConvert.SerializeObject(jsonResult);
             return Content(result);
+        }
+
+        public ActionResult NewsDelete(int? news_Id)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                if (news_Id.HasValue)
+                {
+                    News model = NewsService.GetModel(news_Id.Value);
+                    NewsService.Delete(model);
+                    jsonResult.result = true;
+                    jsonResult.message = "";
+                }
+                else
+                {
+                    jsonResult.result = false;
+                    jsonResult.message = "Id is null！";
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonResult.result = false;
+                jsonResult.message = ex.Message;
+            }
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
     }
 }

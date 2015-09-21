@@ -31,8 +31,9 @@
         </div>
         <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
             <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
-                <div title="Main" style="padding:20px;overflow:hidden; color:red; " >
-                    <h1 style="font-size:24px;">Welcome to Project Selection System!</h1>
+               <div title="Main" style="padding:20px;overflow:hidden; color:red; " >
+                   <div id="showNews" class="easyui-accordion" style="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,14 +100,51 @@
         tabCloseEven();
         tabClose();
         InitLeftMenu();
+        getNews();
         $('#loginOut').click(function () {
             $.messager.confirm('Info', 'Do you want to log out?', function (r) {
                 if (r) {
                     location.href = '/Main/MainIndex';
                 }
             });
-        })
-    });
+        });
+    })
+
+    function getNews() {
+        var news='';
+        $.ajax({
+            url: '../Configuration/GetNewsList',
+            type: "post",
+            dataType: "json",
+            success: function (retValue) {
+                if (retValue.result) {
+                    $.each(retValue.rows, function (index, element) {
+                        //if(index==0)
+                        //    news+='<div title="About" data-options="iconCls:"icon-ok"" style="overflow:auto;padding:10px;">';//"<div title="+element.news_Title+" data-options='iconCls:''icon-ok' style='overflow:auto;padding:10px;'>";
+                        //else
+                        //    news += '<div title="About" data-options="iconCls:"icon-ok"" style="padding:10px;">';
+                        //news += element.news_Content;
+                        //news += "</div>";
+                        var sel = false;
+                        if (index == 0)
+                            sel = true;
+                        $('#showNews').accordion('add', {
+                            iconCls:'icon-ok',
+                            title: element.news_Title,
+                            content: element.news_Content,
+                            selected: sel,
+                            fit:true
+                        });
+                        //alert(news);
+                        //$('#showNews').append(news);
+                    })
+                    //$('#showNews').accordion().append(news);
+                } else {
+                    //$.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                }
+            }
+        });
+    }
 
     function tabClose() {
         /*双击关闭TAB选项卡*/

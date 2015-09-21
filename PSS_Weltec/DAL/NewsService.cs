@@ -34,7 +34,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["news_Update_Time"].ToString()))
                 {
                     model.news_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["news_Update_Time"].ToString());
-                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd");
+                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd HH:mm:ss");
                 }
             }
             if (ds != null)
@@ -118,6 +118,39 @@ namespace PSS_Weltec.DAL
                     model.news_Update_Time = DateTime.Parse(dr["news_Update_Time"].ToString());
                     model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd");
                 }
+                list.Add(model);
+            };
+            return list;
+        }
+
+        public static List<News> GetList(string sql)
+        {
+            List<News> list = new List<News>();
+            News model = null;
+            //string sql = "select * from PSS_News";
+            DataSet ds = SqlHelper.GetDataSetBySql(sql, "PSS_News");
+            foreach (DataRow dr in ds.Tables["PSS_News"].Rows)
+            {
+                model = new News();
+
+                if (!string.IsNullOrEmpty(dr["news_Id"].ToString()))
+                {
+                    model.news_Id = int.Parse(dr["news_Id"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dr["news_User_Id"].ToString()))
+                {
+                    model.news_User_Id = int.Parse(dr["news_User_Id"].ToString());
+                }
+
+                model.news_Content = dr["news_Content"].ToString();
+                model.news_Title = dr["news_Title"].ToString();
+
+                if (!string.IsNullOrEmpty(dr["news_Update_Time"].ToString()))
+                {
+                    model.news_Update_Time = DateTime.Parse(dr["news_Update_Time"].ToString());
+                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd");
+                }
+                list.Add(model);
             };
             return list;
         }

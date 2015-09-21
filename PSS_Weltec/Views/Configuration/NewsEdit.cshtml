@@ -10,7 +10,7 @@
         <div class="easyui-layout" fit="true">
             <div region="north" title="" border="false" style="height:26px;overflow:hidden;">
                 <div class="div_toolbar" style="float:left; height:26px; width:100%; border-bottom:1px solid #99BBE8; padding:1px;">
-                    <a href="javascript:void(0);" class="easyui-linkbutton" plain="true" icon="icon-save" onclick="Save();">Save</a>
+                    <a href="javascript:void(0);" class="easyui-linkbutton" id="Save" plain="true" icon="icon-save" onclick="Save();">Save</a>
 	            </div>
             </div>
             <div region="center" border="true" style="overflow:hidden;">
@@ -42,28 +42,28 @@
 <script type="text/javascript">
     var newId = @ViewData["news_Id"]
     $(function () {
-        Load();
+        Load(newId.toString());
         var config = {height:750};
         $('.jquery_ckeditor').ckeditor(config);
     })
-    function Load() {
-        //var sUrl = '../Configuration/NewsLoad/?newsId=' + newId;
-        //alert(sUrl);
+    function Load(id) {
         $.ajax({
-            url: "../Configuration/NewsLoad/?newsId=" + newId,
+            url: '/Configuration/NewsLoad/' + id,
             type: 'post',
             dataType: 'json',
             success: function (r) {
-                //$("#editNewsForm input[name='news_Title']").val(r.news_Title);
-                //$('.jquery_ckeditor').val(r.news_Content);
+                $("#editNewsForm input[name='news_Title']").val(r.news_Title);
+                $('.jquery_ckeditor').val(r.news_Content);
 
-                //$("#editNewsForm input[name='news_Title']").focus();
+                $("#editNewsForm input[name='news_Title']").focus();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
         })
     }
     function Save() {
         $('#editNewsForm').form('submit', {
-            url: '../Configuration/NewsSave/?newsId=' + newId,
+            url: '/Configuration/NewsSave/' + newId,
             onSubmit: function () {
                 $('#news_Content').val(escape($('.jquery_ckeditor').val()));
                 return $('#editNewsForm').form('validate');
@@ -72,6 +72,7 @@
                 var rVal = $.parseJSON(r);
                 if (rVal.result) {
                     $.messager.alert('Success', 'Success to save!', 'success');
+                    $('#Save').hide();
                 } else {
                     $.messager.alert('Error', 'Fail:' + rVal.message, 'error');
                 }

@@ -490,7 +490,9 @@
     <Content Include="Scripts\images\menu.GIF" />
     <Content Include="Scripts\images\navbar.jpg" />
     <Content Include="Scripts\images\panel_title.png" />
+    <Content Include="Scripts\jquery.portal.js" />
     <Content Include="Sequence\User Management\LogIn.sequencediagram" />
+    <None Include="Properties\PublishProfiles\11.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
