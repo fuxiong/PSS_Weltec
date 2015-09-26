@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using PSS_Weltec.DAL;
 using PSS_Weltec.Models;
 using PSS_Weltec.Shared_Class;
@@ -29,6 +30,21 @@ namespace PSS_Weltec.Controllers
                     if (UserService.IsValidation(model.user_Name_Model, model.user_Password_Model))
                     {
                         model = UserService.GetModel(model.user_Name_Model);
+
+                        #region Save user session
+                        FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                        1,
+                        model.user_Id.ToString()+","+model.user_Name,
+                        DateTime.Now,
+                        DateTime.Now.AddMinutes(30),
+                        false,
+                        model.user_Id.ToString()
+                        );
+                        string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                        System.Web.HttpCookie authCookie = new System.Web.HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                        System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
+                        #endregion
+
                         model.user_Log_Time = DateTime.Now;
                         UserService.Update(model);
                         SqlHelper.Dispose();
@@ -87,15 +103,16 @@ namespace PSS_Weltec.Controllers
                         if (model.user_Password_Model == model.user_confire_Password_Model)
                         {
                             model.user_Name = model.user_Name_Model;
-                            //model.user_Trimester_Id =model.user_Trimester_Id;
-                            //model.user_Password = model.user_Password_Model;
                             model.user_Password = SqlHelper.Fun_Secret(model.user_Password_Model);
                             model.user_Is_Teacher = false;
                             model.user_Register_Time = DateTime.Now;
                             model.user_Log_Time = DateTime.Now;
                             model.user_Update_Time = DateTime.Now;
                             UserService.Save(model);
-                            return RedirectToAction("FrameIndex", "Frame");
+                            //Object _n = new Object { Title = "注册成功", Details = "您已经成功注册，用户为：" + _user.UserName + " ，请牢记您的密码！", DwellTime = 5, Navigation = Url.Action("FrameIndex", "Frame") };
+                            return Content("<script>alert('添加成功！');window.location=''</script>");
+                            //return RedirectToAction(("FrameIndex", "Frame");
+                            //return RedirectToAction("FrameIndex", "Frame");
                         }
                         else
                         {

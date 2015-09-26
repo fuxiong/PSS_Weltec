@@ -34,7 +34,40 @@
                @Html.PasswordFor(m => m.user_confire_Password_Model)
             </li>
         </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" onclick="Save()"/>
     </fieldset>
 }
 </section>
+
+<script type="text/javascript">
+    function Save() {
+        //alert(1);
+        //$('#loginForm').form('submit', {
+        //    url: '../Main/RegisterSave/',
+        //    onSubmit: function () {
+        //        //return $('#loginForm').form('validate');
+        //    },
+        //    success: function (r) {
+        //        //var rVal = $.parseJSON(r);
+        //        //if (rVal.result) {
+        //        //    $('#editUser').window('close');
+        //        //    Reload();
+        //        //} else {
+        //        //    $.messager.alert('Warning', 'Fail:' + rVal.message, 'error');
+        //        //}
+        //    }
+        //})
+        ////$.ajax({
+        //    url: '../Main/RegisterIndexL/',
+        //    type: "post",
+        //    dataType: "json",
+        //    success: function (retValue) {
+        //        //if (retValue.result) {
+        //        //    Reload();
+        //        //} else {
+        //        //    $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+        //        //}
+        //    }
+        //});
+    }
+</script>

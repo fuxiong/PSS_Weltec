@@ -22,7 +22,7 @@
             <span style="padding-left:10px; font-size: 16px; "><img src="Images/blocks.gif" width="20" height="20"/>Welcome to Project Selection System</span>
         </div>
         <div region="south" split="true" style="height: 25px; background: #D2E0F2; ">
-            <div class="footer">   @DateTime.Now.Year PSS_Weltec</div>
+            <div class="footer"> @User.Identity.Name.Split(',')[1], Welcome to Project Selection System!</div>
         </div>
         <div region="west" hide="true" split="true" title="Navigation" style="width:180px;" id="west">
             <div id="nav" class="easyui-accordion" fit="true" border="false"> 
@@ -56,13 +56,11 @@
     var _menus = {
         "menus": [
                   {
-                      "menuid": "1", "icon": "icon-sys", "menuname": "User Management",
+                      "menuid": "1","menuname": "User Management",
                       "menus": [
-                        { "menuid": "12", "menuname": "User List", "icon": "icon-sys", "url": "../User/UserIndex" },
-                        { "menuid": "13", "menuname": "Personal Profile", "url": "menu1/class.html" },
-                        { "menuid": "14", "menuname": "Change Password", "icon": "icon-reload", "url": "demo2.html" }
-                        //{ "menuid": "15", "menuname": "菜单", "icon": "icon-set", "url": "demo.html" },
-                        //{ "menuid": "16", "menuname": "菜单", "icon": "icon-log", "url": "demo1.html" }
+                        { "menuid": "12", "menuname": "User List", "url": "../User/UserIndex" },
+                        { "menuid": "13", "menuname": "Personal Profile", "url": "../User/UserPersonalProfile" },
+                        { "menuid": "14", "menuname": "Change Password", "url": "../User/UserChangePassWord" }
                       ]
                   },
        {
@@ -119,12 +117,6 @@
             success: function (retValue) {
                 if (retValue.result) {
                     $.each(retValue.rows, function (index, element) {
-                        //if(index==0)
-                        //    news+='<div title="About" data-options="iconCls:"icon-ok"" style="overflow:auto;padding:10px;">';//"<div title="+element.news_Title+" data-options='iconCls:''icon-ok' style='overflow:auto;padding:10px;'>";
-                        //else
-                        //    news += '<div title="About" data-options="iconCls:"icon-ok"" style="padding:10px;">';
-                        //news += element.news_Content;
-                        //news += "</div>";
                         var sel = false;
                         if (index == 0)
                             sel = true;
@@ -135,10 +127,7 @@
                             selected: sel,
                             fit:true
                         });
-                        //alert(news);
-                        //$('#showNews').append(news);
                     })
-                    //$('#showNews').accordion().append(news);
                 } else {
                     //$.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
                 }
@@ -256,7 +245,7 @@
         $("#nav").accordion({ animate: false });//为id为nav的div增加手风琴效果，并去除动态滑动效果
         $.each(_menus.menus, function (i, n) {//$.each 遍历_menu中的元素
             var menulist = '';
-            menulist += '<ul>';
+            menulist += '<ul class="easyui-tree">';
             $.each(n.menus, function (j, o) {
                 menulist += '<li><div><a ref="' + o.menuid + '" href="#" rel="' + o.url + '" ><span class="nav">' + o.menuname + '</span></a></div></li> ';
             })
@@ -265,7 +254,7 @@
             $('#nav').accordion('add', {
                 title: n.menuname,
                 content: menulist
-                //iconCls: 'icon ' + n.icon
+                //iconCls: 'icon-ok'
             });
 
         });

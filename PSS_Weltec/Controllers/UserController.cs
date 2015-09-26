@@ -193,5 +193,98 @@ namespace PSS_Weltec.Controllers
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult UserChangePassWord()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ContentResult UserChangePassWordSave(User userModel)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                string userName = User.Identity.Name.Split(',')[1];
+                int userId = Convert.ToInt32(User.Identity.Name.Split(',')[0]);
+
+                User user = UserService.GetModel(userId);
+                user.user_Password = SqlHelper.Fun_Secret(userModel.user_Password);
+                user.user_Update_Time = DateTime.Now;
+
+                UserService.Update(user);
+                jsonResult.result = true;
+                jsonResult.message = "";
+            }
+            catch (Exception ex)
+            {
+                jsonResult.result = false;
+                jsonResult.message = ex.Message;
+            }
+            string result = JsonConvert.SerializeObject(jsonResult);
+            return Content(result);
+        }
+
+        public ActionResult UserPersonalProfile()
+        {
+            SqlHelper.Initialization();
+            List<SelectListItem> listTrimester = new List<SelectListItem>();
+            foreach (Trimester tri in TrimesterService.GetList().Where(item => item.tri_IsOpen == true))
+            {
+                listTrimester.Add(new SelectListItem { Text = tri.tri_Name, Value = tri.tri_Id.ToString() });
+            }
+
+            List<SelectListItem> listEmail_Visiable = new List<SelectListItem>();
+            listEmail_Visiable.Add(new SelectListItem { Text = "Visiable", Value = "True" });
+            listEmail_Visiable.Add(new SelectListItem { Text = "Invisible", Value = "False" });
+            List<SelectListItem> listTelephone_Visiable = listEmail_Visiable;
+
+
+            ViewData["listTrimester"] = listTrimester;
+            ViewData["listEmail_Visiable"] = listEmail_Visiable;
+            ViewData["listTelephone_Visiable"] = listTelephone_Visiable;
+
+            string userName = User.Identity.Name.Split(',')[1];
+            int userId = Convert.ToInt32(User.Identity.Name.Split(',')[0]);
+
+            User user = UserService.GetModel(userId);
+            user.Introduction_Code = base.Server.UrlEncode(user.user_Introduction);
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public ContentResult UserPersonalProfileSave(User userModel)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                string userName = User.Identity.Name.Split(',')[1];
+                int userId = Convert.ToInt32(User.Identity.Name.Split(',')[0]);
+
+                User user = UserService.GetModel(userId);
+                
+                user.user_Email = userModel.user_Email;
+                user.user_Telephone = userModel.user_Telephone;
+                user.user_Skill = userModel.user_Skill;
+                user.user_Introduction = base.Server.UrlDecode(userModel.user_Introduction); 
+                user.user_Update_Time = DateTime.Now;
+                user.user_Trimester_Id = userModel.user_Trimester_Id;
+                user.User_Email_Visiable = userModel.User_Email_Visiable;
+                user.User_Telephone_Visiable = userModel.User_Telephone_Visiable;
+
+                user.user_Update_Time = DateTime.Now;
+
+                UserService.Update(user);
+                jsonResult.result = true;
+                jsonResult.message = "";
+            }
+            catch (Exception ex)
+            {
+                jsonResult.result = false;
+                jsonResult.message = ex.Message;
+            }
+            string result = JsonConvert.SerializeObject(jsonResult);
+            return Content(result);
+        }
     }
 }

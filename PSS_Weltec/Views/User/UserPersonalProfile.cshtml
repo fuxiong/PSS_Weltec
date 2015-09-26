@@ -1,0 +1,137 @@
+﻿@model PSS_Weltec.Models.User
+
+@{
+    ViewBag.Title = "UserPersonalProfile";
+    Layout = "~/Views/Shared/FrameShare.cshtml";
+}
+
+<div region="center" title="" border="true" style="padding:0px 0px 0px 0px;overflow:hidden;">
+    <div title="" class="easyui-layout" fit="true" style="background:#fafafa;">
+        <div region="north" title="" border="false" style="height:30px;overflow:hidden;">
+            <div class="div_toolbar" style="float:left; height:26px; width:100%;border-bottom:1px solid #99BBE8; padding:1px;">
+			    <a href="#" id="Save" class="easyui-linkbutton" plain="true" icon="icon-save" onclick="Save();">Save</a>
+	        </div>
+        </div>
+        <div region="center" title="" border="false" style="padding:5px 5px 5px 5px;overflow:hidden;">
+            <form id="personalProfile" method="post" style="height:100%;">
+				<table style="width:1100px;margin:0 auto;text-align: center" border="0">
+					<tr style="height:24px;">
+						<td>
+                            <fieldset style="padding:5px; text-align:center;">
+                                <legend style="font-weight:bold; color:red;">Notice: This information could be seen by all Weltec IT students.</legend>
+				                <table border="0">
+                                    <tr style="height:35px">
+						                <td style="text-align:right;width:120px;" nowrap>
+							                <span>UserName：</span>
+						                </td>
+						                <td style="text-align:left;">
+                                            <input id="user_Name" name="user_Name" type="text" style="width:280px; color:gray;" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+						                <td style="text-align:right;width:120px;" nowrap>
+							                <span>Trimester：</span>
+						                </td>
+						                <td style="text-align:left;width:400px;">
+                                            @Html.DropDownList("user_Trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:285px;height:23px;" })
+						                </td>
+					                </tr>
+                                    <tr style="height:35px">
+						                <td style="text-align:right;width:120px;" nowrap>
+							                <span>Email：</span>
+						                </td>
+						                <td style="text-align:left;">
+                                            <input id="user_Email" name="user_Email" class="easyui-validatebox" data-options="required:true,validType:'email'" style="width:280px;"/>
+						                    @Html.DropDownList("User_Email_Visiable", (IEnumerable<SelectListItem>)ViewData["listEmail_Visiable"], new { style = "" })
+                                        </td>
+					                </tr>
+                                    <tr style="height:35px">
+						                <td style="text-align:right;width:120px;" nowrap>
+							                <span>Telephone：</span>
+						                </td>
+						                <td style="text-align:left;width:400px;">
+                                            <input id="user_Telephone" name="user_Telephone" style="width:280px;"/>
+                                            @Html.DropDownList("User_Telephone_Visiable", (IEnumerable<SelectListItem>)ViewData["listTelephone_Visiable"], new { style = "" })
+						                </td>
+					                </tr>
+                                    <tr style="height:35px">
+						                <td style="text-align:right;width:120px;" nowrap>
+							                <span>Skills：</span>
+						                </td>
+						                <td style="text-align:left;width:600px;">
+                                            <textarea id="user_Skill" name="user_Skill" style="width:600px;"></textarea>
+						                </td>
+					                </tr>
+                                    <tr style="height:35px">
+						                <td style="text-align:right;width:120px;" nowrap>
+							                <span>Self_Introduction：</span>
+						                </td>
+						                <td style="width:100%;" colspan="2">
+                                            <textarea class="jquery_ckeditor"></textarea>
+                                            <input type="hidden" id="user_Introduction" name="user_Introduction"/>
+						                </td>
+					                </tr>
+				                </table>
+                            </fieldset>
+						</td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../Scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../../Scripts/ckeditor/adapters/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var config = { height: 210, weight: 600, toolbar: "profile" };
+        config.toolbar_profile = [
+              { name: 'document', items: ['Source', 'NewPage', 'Preview'] },
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat'] },
+            { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'] },
+                '/',
+                { name: 'styles', items: ['Styles', 'Format'] },
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] },
+            {
+                name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'
+                   , 'Iframe']
+            },
+                { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                { name: 'tools', items: ['Maximize', '-', 'About'] }
+        ];
+        $('.jquery_ckeditor').ckeditor(config);
+        Initialization();
+    })
+    function Initialization() {
+        $('#user_Name').val("@Model.user_Name");
+        $('#user_Trimester_Id').val("@Model.user_Trimester_Id.ToString()");
+        $('#user_Email').val("@Model.user_Email");
+        $('#user_Telephone').val("@Model.user_Telephone");
+        $('#user_Skill').val("@Model.user_Skill");
+        $('#user_Introduction').val(unescape("@Model.Introduction_Code"));
+        $('.jquery_ckeditor').val(unescape("@Model.Introduction_Code"));
+        $('#User_Email_Visiable').val("@Model.User_Email_Visiable.ToString()");
+        $('#User_Telephone_Visiable').val("@Model.User_Telephone_Visiable.ToString()");
+    }
+    function Save() {
+        var sUrl = '../User/UserPersonalProfileSave';
+        $('#personalProfile').form('submit', {
+            url: sUrl,
+            onSubmit: function () {
+                $('#user_Introduction').val(escape($('.jquery_ckeditor').val()));
+                return $('#personalProfile').form('validate');
+            },
+            success: function (r) {
+                var rVal = $.parseJSON(r);
+                if (rVal.result) {
+                    $.messager.alert('Info', 'Success!', 'info');
+                    $('#Save').hide();
+                } else {
+                    $.messager.alert('Error', 'Fail:' + rVal.message, 'error');
+                }
+            }
+        })
+    }
+    </script>

@@ -10,8 +10,8 @@ namespace PSS_Weltec.Models
     public class User
     {
         #region Attribute
-        public int user_Id { get; set; }
-        public string user_Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string user_Password { get; set; }
         public string user_Email { get; set; }
         public string user_Telephone { get; set; }
@@ -24,6 +24,10 @@ namespace PSS_Weltec.Models
         public DateTime user_Update_Time { get; set; }
         public int user_Trimester_Id { get; set; }
         public bool user_Statue { get; set; }
+        public bool User_Email_Visiable
+        { get; set; }
+        public bool User_Telephone_Visiable
+        { get; set; }
         #endregion
 
 
@@ -53,12 +57,15 @@ namespace PSS_Weltec.Models
 
 
         #region Assistant Attribute
-        public string Name { get{ return user_Name;}}
-        public int Id { get { return user_Id; } }
+        public string user_Name { get; set; }
+        public int user_Id { get; set; }
         public string Register_Time { get; set; }
         public string Log_Time { get; set; }
         public string Update_Time { get; set; }
         public string Status { get { if (user_Statue) return "Approved"; else return "UnApproved"; } }
+        public string Email_Visiable { get { if (User_Email_Visiable) return "Visiable"; else return "Invisible"; } }
+        public string Telephone_Visiable { get { if (User_Telephone_Visiable) return "Visiable"; else return "Invisible"; } }
+        public string Introduction_Code { get; set; }
         #endregion
     }
 }

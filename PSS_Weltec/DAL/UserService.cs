@@ -35,14 +35,6 @@ namespace PSS_Weltec.DAL
                 {
                     model.user_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["user_Trimester_Id"].ToString());
                 }
-                //if (ds.Tables[0].Rows[0]["user_Statue"].ToString() == "1")
-                //{
-                //    model.user_Statue = true;
-                //}
-                //else
-                //{
-                //    model.user_Statue = false;
-                //}
 
                 model.user_Name = ds.Tables[0].Rows[0]["user_Name"].ToString();
                 model.user_Password = ds.Tables[0].Rows[0]["user_Password"].ToString();
@@ -52,6 +44,8 @@ namespace PSS_Weltec.DAL
                 model.user_Skill = ds.Tables[0].Rows[0]["user_Skill"].ToString();
                 model.user_Introduction = ds.Tables[0].Rows[0]["user_Introduction"].ToString();
                 model.user_Statue = (bool)ds.Tables[0].Rows[0]["user_Statue"];
+                model.User_Email_Visiable = (bool)ds.Tables[0].Rows[0]["User_Email_Visiable"];
+                model.User_Telephone_Visiable = (bool)ds.Tables[0].Rows[0]["User_Telephone_Visiable"];
 
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Register_Time"].ToString()))
                 {
@@ -87,14 +81,6 @@ namespace PSS_Weltec.DAL
                 {
                     model.user_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["user_Trimester_Id"].ToString());
                 }
-                //if (ds.Tables[0].Rows[0]["user_Statue"].ToString() == "1")
-                //{
-                //    model.user_Statue = true;
-                //}
-                //else
-                //{
-                //    model.user_Statue = false;
-                //}
 
 
                 model.user_Name = ds.Tables[0].Rows[0]["user_Name"].ToString();
@@ -105,6 +91,8 @@ namespace PSS_Weltec.DAL
                 model.user_Skill = ds.Tables[0].Rows[0]["user_Skill"].ToString();
                 model.user_Introduction = ds.Tables[0].Rows[0]["user_Introduction"].ToString();
                 model.user_Statue = (bool)ds.Tables[0].Rows[0]["user_Statue"];
+                model.User_Email_Visiable = (bool)ds.Tables[0].Rows[0]["User_Email_Visiable"];
+                model.User_Telephone_Visiable = (bool)ds.Tables[0].Rows[0]["User_Telephone_Visiable"];
 
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["user_Register_Time"].ToString()))
                 {
@@ -151,6 +139,8 @@ namespace PSS_Weltec.DAL
             dr["user_Update_Time"] = model.user_Update_Time;
             dr["user_Trimester_Id"] = model.user_Trimester_Id;
             dr["user_Statue"] = model.user_Statue;
+            dr["User_Email_Visiable"] = model.User_Email_Visiable;
+            dr["User_Telephone_Visiable"] = model.User_Telephone_Visiable;
 
             ds.Tables["PSS_User"].Rows.Add(dr);
 
@@ -176,6 +166,8 @@ namespace PSS_Weltec.DAL
             dr["user_Log_Time"] = model.user_Log_Time;
             dr["user_Trimester_Id"] = model.user_Trimester_Id;
             dr["user_Statue"] = model.user_Statue;
+            dr["User_Email_Visiable"] = model.User_Email_Visiable;
+            dr["User_Telephone_Visiable"] = model.User_Telephone_Visiable;
 
             SqlHelper.UpdateDataSet(ds, sql, "PSS_User");
             if (ds != null)
@@ -214,6 +206,8 @@ namespace PSS_Weltec.DAL
                         dr["user_Log_Time"] = user.user_Log_Time;
                         dr["user_Trimester_Id"] = user.user_Trimester_Id;
                         dr["user_Statue"] = user.user_Statue;
+                        dr["User_Email_Visiable"] = user.User_Email_Visiable;
+                        dr["User_Telephone_Visiable"] = user.User_Telephone_Visiable;
                     }
                 }
             }
@@ -254,14 +248,6 @@ namespace PSS_Weltec.DAL
                 {
                     model.user_Trimester_Id = int.Parse(dr["user_Trimester_Id"].ToString());
                 }
-                //if (dr["user_Statue"].ToString() == "1")
-                //{
-                //    model.user_Statue = true;
-                //}
-                //else
-                //{
-                //    model.user_Statue = false;
-                //}
 
                 model.user_Name = dr["user_Name"].ToString();
                 model.user_Password = dr["user_Password"].ToString();
@@ -270,6 +256,8 @@ namespace PSS_Weltec.DAL
                 model.user_StudentId = dr["user_StudentId"].ToString();
                 model.user_Introduction = dr["user_Introduction"].ToString();
                 model.user_Statue = (bool)dr["user_Statue"];
+                model.User_Email_Visiable = (bool)dr["User_Email_Visiable"];
+                model.User_Telephone_Visiable = (bool)dr["User_Telephone_Visiable"];
 
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
@@ -308,14 +296,6 @@ namespace PSS_Weltec.DAL
                 {
                     model.user_Trimester_Id = int.Parse(dr["user_Trimester_Id"].ToString());
                 }
-                //if (dr["user_Statue"].ToString() == "1")
-                //{
-                //    model.user_Statue = true;
-                //}
-                //else
-                //{
-                //    model.user_Statue = false;
-                //}
 
                 model.user_Name = dr["user_Name"].ToString();
                 model.user_Password = dr["user_Password"].ToString();
@@ -323,6 +303,8 @@ namespace PSS_Weltec.DAL
                 model.user_Telephone = dr["user_Telephone"].ToString();
                 model.user_Introduction = dr["user_Introduction"].ToString();
                 model.user_Statue = (bool)dr["user_Statue"];
+                model.User_Email_Visiable = (bool)dr["User_Email_Visiable"];
+                model.User_Telephone_Visiable = (bool)dr["User_Telephone_Visiable"];
 
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
@@ -357,14 +339,6 @@ namespace PSS_Weltec.DAL
                 {
                     model.user_Id = int.Parse(dr["user_Id"].ToString());
                 }
-                //if ((bool)dr["user_Statue"])
-                //{
-                //    model.user_Statue = true;
-                //}
-                //else
-                //{
-                //    model.user_Statue = false;
-                //}
 
                 model.user_Name = dr["user_Name"].ToString();
                 model.user_Password = dr["user_Password"].ToString();
@@ -374,6 +348,8 @@ namespace PSS_Weltec.DAL
                 model.user_Skill = dr["user_Skill"].ToString();
                 model.user_Introduction = dr["user_Introduction"].ToString();
                 model.user_Statue = (bool)dr["user_Statue"];
+                model.User_Email_Visiable = (bool)dr["User_Email_Visiable"];
+                model.User_Telephone_Visiable = (bool)dr["User_Telephone_Visiable"];
 
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
@@ -416,6 +392,8 @@ namespace PSS_Weltec.DAL
                 model.user_Skill = dr["user_Skill"].ToString();
                 model.user_Introduction = dr["user_Introduction"].ToString();
                 model.user_Statue = (bool)dr["user_Statue"];
+                model.User_Email_Visiable = (bool)dr["User_Email_Visiable"];
+                model.User_Telephone_Visiable = (bool)dr["User_Telephone_Visiable"];
 
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
