@@ -1,0 +1,140 @@
+﻿@model PSS_Weltec.Models.User
+
+@{
+    ViewBag.Title = "ProjectIndex";
+    Layout = "~/Views/Shared/FrameShare.cshtml";
+}
+
+<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;">
+    <table id="dgProject" title="Users List" class="easyui-datagrid"> </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
+        @Html.DropDownList("trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="New()">New</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="Edit()">Edit</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="Delete()">Remove</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var currentId = null; // Select row to edit
+    var trimesterId = $('#trimester_Id').val();
+    $(function () {
+        $("#dgProject").datagrid({
+            url: '../Project/ProjectList/?trimesterId=' + trimesterId,
+            pagination: true,
+            pageSize: 30,
+            rownumbers: true,
+            singleSelect: true,
+            toolbar: '#toolbar',
+            fit:true,
+            autoRowHeight: true,
+            sortName: "Proj_Id",
+            sortOrder: "desc",
+            checkOnSelect: false,
+            selectOnCheck:false,
+            columns: [[
+                    { field: 'ck', checkbox:true},
+                    { field: 'Proj_Id', title: 'ID', width: 20, hidden: 'true' },
+                    { field: 'Proj_Title', title: 'Title', width: 150 },
+                    { field: 'Proj_Students_Num', title: 'Students Numbers', width: 120 },
+                    { field: 'Proj_Description', title: 'Description', width: 300 },
+                    { field: 'Proj_Skills_Required', title: 'Skills', width: 200 },
+                    { field: 'Proj_Client_Contact', title: 'Client', width: 100 },
+                    { field: 'Proj_Client_Company', title: 'Company', width: 100 },
+                    { field: 'Update_Time', title: 'Last_Update_Time', width: 110, align: 'center' }
+            ]],
+            onSelect: function (rowIndex, rowData) {
+                currentId = rowData.Proj_Id;
+            },
+            onDblClickRow: function (rowIndex, rowData) {
+                Edit();
+            },
+            onLoadSuccess: function (data) {
+                $(this).datagrid('clearSelections');
+            }
+        });
+        $("#trimester_Id").change(function () { trimesterId = $('#trimester_Id').val(); Reload(); });
+    })
+    function Reload() {
+        var queryParams = $('#dgProject').datagrid('options').queryParams;
+        queryParams.trimesterId = $("#trimester_Id").val();
+        $('#dgProject').datagrid('reload');
+    }
+    function New() {
+        //$("#editProject").window("open");
+        //$("#editProjectForm")[0].reset();
+        //$("#editProjectForm input[name='user_Name']").focus();
+        currentId = null;
+    }
+    function Edit() {
+        var selectRow = $('#dgProject').datagrid('getSelected');
+        if (selectRow) {
+            $("#editProject").window("open");
+            $.ajax({
+                url: '../Project/ProjectEdit/?id=' + selectRow.Proj_Id,
+                type: 'post',
+                dataType: 'json',
+                success: function (r) {
+                    //$("#editProjectForm input[name='user_Name']").val(r.user_Name);
+                    //$("#editProjectForm input[name='user_Password']").val(r.user_Password);
+                    //$("#editProjectForm input[name='user_confire_Password_Model']").val(r.user_Password);
+                    //$("#editProjectForm input[name='user_Email']").val(r.user_Email);
+                    //$("#editProjectForm input[name='user_Telephone']").val(r.user_Telephone);
+                    //$("#user_Skill").val(r.user_Skill);
+                    //$("#user_Introduction").val(r.user_Introduction);
+
+                    //$("#editProjectForm input[name='user_Name']").focus();
+                }
+            });
+            currentId = selectRow.user_Id;
+        } else {
+            $.messager.alert("Info", "Please select User！", "info");
+        }
+    }
+    function Delete() {
+        var selectRow = $('#dgProject').datagrid('getSelected');
+        if (selectRow) {
+            $.ajax({
+                url: '../User/UserDelete/?id=' + selectRow.user_Id,
+                type: "post",
+                dataType: "json",
+                success: function (retValue) {
+                    if (retValue.result) {
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                    }
+                }
+            });
+            currentId = null;
+        } else {
+            $.messager.alert("Info", "Please select User！", "info");
+        }
+    }
+    function Save() {
+        var password = $('#user_Password').val();
+        var confire_password = $('#user_confire_Password_Model').val();
+        if (password == confire_password) {
+            $('#editProjectForm').form('submit', {
+                url: '../User/UserSave/?id=' + currentId,
+                onSubmit: function () {
+                    return $('#editProjectForm').form('validate');
+                },
+                success: function (r) {
+                    var rVal = $.parseJSON(r);
+                    if (rVal.result) {
+                        $('#editProject').window('close');
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + rVal.message, 'error');
+                    }
+                }
+            })
+        }
+        else {
+            $.messager.alert('Warning', 'Fail: The Password and Confirem password is not the same!', 'error');
+        }
+    }
+
+</script>

@@ -10,8 +10,8 @@ namespace PSS_Weltec.Models
     public class User
     {
         #region Attribute
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int user_Id { get; set; }
+        public string user_Name { get; set; }
         public string user_Password { get; set; }
         public string user_Email { get; set; }
         public string user_Telephone { get; set; }
@@ -57,8 +57,8 @@ namespace PSS_Weltec.Models
 
 
         #region Assistant Attribute
-        public string user_Name { get; set; }
-        public int user_Id { get; set; }
+        //public string Name { get; set; }
+        //public int Id { get; set; }
         public string Register_Time { get; set; }
         public string Log_Time { get; set; }
         public string Update_Time { get; set; }
