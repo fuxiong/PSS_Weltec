@@ -330,7 +330,7 @@ namespace PSS_Weltec.DAL
         {
             List<User> list = new List<User>();
             User model = null;
-            DataSet ds = SqlHelper.GetListByPage("PSS_User", trimesterId,paging, order, sort);
+            DataSet ds = SqlHelper.GetListByPage("PSS_User","user_Trimester_Id", trimesterId,paging, order, sort);
             foreach(DataRow dr in ds.Tables["PSS_User"].Rows)
             {
                 model = new User();
@@ -374,7 +374,7 @@ namespace PSS_Weltec.DAL
         {
             List<User> list = new List<User>();
             User model = null;
-            DataSet ds = SqlHelper.GetListByPage("PSS_User", trimesterId,status,paging, order, sort);
+            DataSet ds = SqlHelper.GetListByPage("PSS_User","user_Trimester_Id", trimesterId,status,paging, order, sort);
             foreach (DataRow dr in ds.Tables["PSS_User"].Rows)
             {
                 model = new User();

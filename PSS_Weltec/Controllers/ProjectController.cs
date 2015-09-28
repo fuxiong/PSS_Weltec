@@ -41,7 +41,7 @@ namespace PSS_Weltec.Controllers
             try
             {
                 SqlHelper.Initialization();
-                list = DAL.ProjectService.GetList(paging, sort, order, trimesterId,queryWord);
+                list = DAL.ProjectService.GetList(paging, sort, order, trimesterId, queryWord);
                 if (list != null && list.Count() > 0)
                 {
                     foreach (Project project in list)
@@ -76,6 +76,30 @@ namespace PSS_Weltec.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ProjectEditLoad(int? Proj_Id, int trimesterId)
+        {
+            Project model = new Project();
+            model.Proj_Trimester_Id = trimesterId;
+            if (Proj_Id.HasValue)
+            {
+                model = ProjectService.GetModel(Proj_Id.Value);
+                model.Context = base.Server.UrlEncode(model.Proj_Context).Replace("+", "%20");
+                model.Description = base.Server.UrlEncode(model.Proj_Description).Replace("+", "%20");
+                model.Skills_Required = base.Server.UrlEncode(model.Proj_Skills_Required).Replace("+", "%20");
+                model.Goals = base.Server.UrlEncode(model.Proj_Goals).Replace("+", "%20");
+                model.Features = base.Server.UrlEncode(model.Proj_Features).Replace("+", "%20");
+                model.Challenges = base.Server.UrlEncode(model.Proj_Challenges).Replace("+", "%20");
+                model.Opportunities = base.Server.UrlEncode(model.Proj_Opportunities).Replace("+", "%20");
+            }
+
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem { Text = "Yes", Value = "True" });
+            list.Add(new SelectListItem { Text = "No", Value = "False" });
+            ViewData["list"] = list;
+
+            return View(model);
+        }
+
         [HttpPost]
         public ContentResult ProjectSave(Project model, int? id)
         {
@@ -83,34 +107,33 @@ namespace PSS_Weltec.Controllers
             try
             {
                 Project project = null;
-                //if (id.HasValue)
-                //{
-                //    project = ProjectService.GetModel(id.Value);
-                //}
-                //else if (ProjectService.IsExistName(model.user_Name, model.user_Trimester_Id))
-                //{
-                //    jsonResult.result = false;
-                //    jsonResult.message = "There is already exist the title, please change a title!";
-                //    return Content(JsonConvert.SerializeObject(jsonResult));
-                //}
-                //else
-                //{
-                //    project = new Project();
-                //    project.user_Register_Time = DateTime.Now;
-                //    project.user_Log_Time = DateTime.Now;
-                //}
+                if (id.HasValue)
+                {
+                    project = ProjectService.GetModel(id.Value);
+                }
+                else
+                {
+                    project = new Project();
+                    project.Proj_Presenter = User.Identity.Name.Split(',')[1];
+                }
 
-                //project.user_Name = model.user_Name;
-                //project.user_Password = SqlHelper.Fun_Secret(model.user_Password);
-                //project.user_Email = model.user_Email;
-                //project.user_Telephone = model.user_Telephone;
-                ////project.user_Is_Teacher = model.user_Is_Teacher;
-                //project.user_Skill = model.user_Skill;
-                //project.user_Introduction = model.user_Introduction;
-                //project.user_Update_Time = DateTime.Now;
-                //project.user_Trimester_Id = model.user_Trimester_Id;
-                //project.user_Statue = true;
+                project.Proj_Title = model.Proj_Title;
+                project.Proj_Staff_Contact = model.Proj_Staff_Contact;
+                project.Proj_Client_Contact = model.Proj_Client_Contact;
+                project.Proj_Client_Company = model.Proj_Client_Company;
+                project.Proj_Valid_Dates = model.Proj_Valid_Dates;
+                project.Proj_Students_Num = model.Proj_Students_Num;
+                project.Proj_Continuation = model.Proj_Continuation;
+                project.Proj_Description = model.Proj_Description;
+                project.Proj_Skills_Required = model.Proj_Skills_Required;
+                project.Proj_Context = model.Proj_Context;
+                project.Proj_Goals = model.Proj_Goals;
 
+                project.Proj_Features = model.Proj_Features;
+                project.Proj_Challenges = model.Proj_Challenges;
+                project.Proj_Opportunities = model.Proj_Opportunities;
+                project.Proj_Trimester_Id = model.Proj_Trimester_Id;
+                project.Proj_Update_Time = DateTime.Now;
 
                 if (id.HasValue)
                 {
@@ -139,8 +162,8 @@ namespace PSS_Weltec.Controllers
             {
                 if (id.HasValue)
                 {
-                    Project project = ProjectService.GetModel(id.Value);
-                    ProjectService.Delete(project);
+                    Project model = ProjectService.GetModel(id.Value);
+                    ProjectService.Delete(model);
                     jsonResult.result = true;
                     jsonResult.message = "";
                 }

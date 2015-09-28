@@ -246,14 +246,14 @@ namespace PSS_Weltec.DAL
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static DataSet GetListByPage(String tableName,int trimesterId, Paging paging, string order, string sort)
+        public static DataSet GetListByPage(String tableName,string trimesterName,int trimesterId, Paging paging, string order, string sort)
         {
             DataSet ds = null;
             try
             {
                 ds = new DataSet();
-                string sql = "select * from (select *, ROW_NUMBER() OVER(Order by" + " " + order + " " + sort + ") as RowNumber from" + " " + tableName + " as a where user_Trimester_Id=" + trimesterId + ") as b where RowNumber between" + " " + ((paging.GetCurrentPage() - 1) * paging.GetPageSize() + 1) + " AND" + " " + paging.GetCurrentPage() * paging.GetPageSize() + " " + "ORDER BY" + " " + order + " " + sort + "";
-                int count = GetCount("select count(*) from " + tableName+" where user_Trimester_Id=" + trimesterId);
+                string sql = "select * from (select *, ROW_NUMBER() OVER(Order by" + " " + order + " " + sort + ") as RowNumber from" + " " + tableName + " as a where " + trimesterName + "=" + trimesterId + ") as b where RowNumber between" + " " + ((paging.GetCurrentPage() - 1) * paging.GetPageSize() + 1) + " AND" + " " + paging.GetCurrentPage() * paging.GetPageSize() + " " + "ORDER BY" + " " + order + " " + sort + "";
+                int count = GetCount("select count(*) from " + tableName + " where " + trimesterName + "=" + trimesterId);
                 paging.SetRecordCount(count);
                 SqlDataAdapter da = new SqlDataAdapter(sql, myConn);
                 da.Fill(ds, tableName);
@@ -276,14 +276,14 @@ namespace PSS_Weltec.DAL
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static DataSet GetListByPage(String tableName, int trimesterId,string status, Paging paging, string order, string sort)
+        public static DataSet GetListByPage(String tableName, string trimesterName, int trimesterId, string status, Paging paging, string order, string sort)
         {
             DataSet ds = null;
             try
             {
                 ds = new DataSet();
-                string sql = "select * from (select *, ROW_NUMBER() OVER(Order by" + " " + order + " " + sort + ") as RowNumber from" + " " + tableName + " as a where user_Trimester_Id=" + trimesterId + " and user_Statue="+status+") as b where RowNumber between" + " " + ((paging.GetCurrentPage() - 1) * paging.GetPageSize() + 1) + " AND" + " " + paging.GetCurrentPage() * paging.GetPageSize() + " " + "ORDER BY" + " " + order + " " + sort + "";
-                int count = GetCount("select count(*) from " + tableName + " where user_Trimester_Id=" + trimesterId + " and user_Statue="+status);
+                string sql = "select * from (select *, ROW_NUMBER() OVER(Order by" + " " + order + " " + sort + ") as RowNumber from" + " " + tableName + " as a where " + trimesterName + "=" + trimesterId + " and user_Statue=" + status + ") as b where RowNumber between" + " " + ((paging.GetCurrentPage() - 1) * paging.GetPageSize() + 1) + " AND" + " " + paging.GetCurrentPage() * paging.GetPageSize() + " " + "ORDER BY" + " " + order + " " + sort + "";
+                int count = GetCount("select count(*) from " + tableName + " where " + trimesterName + "=" + trimesterId + " and user_Statue=" + status);
                 paging.SetRecordCount(count);
                 SqlDataAdapter da = new SqlDataAdapter(sql, myConn);
                 da.Fill(ds, tableName);

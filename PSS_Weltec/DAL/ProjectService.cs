@@ -27,11 +27,8 @@ namespace PSS_Weltec.DAL
                 {
                     model.Proj_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString()))
-                {
-                    model.Proj_Students_Num = int.Parse(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString());
-                }
 
+                model.Proj_Students_Num = ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString();
                 model.Proj_Title = ds.Tables[0].Rows[0]["Proj_Title"].ToString();
                 model.Proj_Staff_Contact = ds.Tables[0].Rows[0]["Proj_Staff_Contact"].ToString();
                 model.Proj_Client_Contact = ds.Tables[0].Rows[0]["Proj_Client_Contact"].ToString();
@@ -46,10 +43,8 @@ namespace PSS_Weltec.DAL
                 model.Proj_Opportunities = ds.Tables[0].Rows[0]["Proj_Opportunities"].ToString();
                 model.Proj_Presenter = ds.Tables[0].Rows[0]["Proj_Presenter"].ToString();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString()))
-                {
-                    model.Proj_Valid_Dates = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString());
-                }
+                model.Proj_Valid_Dates = ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString();
+
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString()))
                 {
                     model.Proj_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString());
@@ -76,11 +71,8 @@ namespace PSS_Weltec.DAL
                 {
                     model.Proj_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString()))
-                {
-                    model.Proj_Students_Num = int.Parse(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString());
-                }
 
+                model.Proj_Students_Num = ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString();
                 model.Proj_Title = ds.Tables[0].Rows[0]["Proj_Title"].ToString();
                 model.Proj_Staff_Contact = ds.Tables[0].Rows[0]["Proj_Staff_Contact"].ToString();
                 model.Proj_Client_Contact = ds.Tables[0].Rows[0]["Proj_Client_Contact"].ToString();
@@ -95,10 +87,8 @@ namespace PSS_Weltec.DAL
                 model.Proj_Opportunities = ds.Tables[0].Rows[0]["Proj_Opportunities"].ToString();
                 model.Proj_Presenter = ds.Tables[0].Rows[0]["Proj_Presenter"].ToString();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString()))
-                {
-                    model.Proj_Valid_Dates = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString());
-                }
+                model.Proj_Valid_Dates = ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString();
+
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString()))
                 {
                     model.Proj_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString());
@@ -220,7 +210,6 @@ namespace PSS_Weltec.DAL
             if (ds != null)
                 ds.Dispose();
         }
-
         public static void Delete(Project model)
         {
             string sql = "select * from PSS_Project where Proj_Id='" + model.Proj_Id + "'";
@@ -244,41 +233,35 @@ namespace PSS_Weltec.DAL
             {
                 model = new Project();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Id"].ToString()))
+                if (!string.IsNullOrEmpty(dr["Proj_Id"].ToString()))
                 {
-                    model.Proj_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Id"].ToString());
+                    model.Proj_Id = int.Parse(dr["Proj_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString()))
+                if (!string.IsNullOrEmpty(dr["Proj_Trimester_Id"].ToString()))
                 {
-                    model.Proj_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString());
+                    model.Proj_Trimester_Id = int.Parse(dr["Proj_Trimester_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString()))
-                {
-                    model.Proj_Students_Num = int.Parse(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString());
-                }
+                model.Proj_Students_Num = dr["Proj_Students_Num"].ToString();
 
-                model.Proj_Title = ds.Tables[0].Rows[0]["Proj_Title"].ToString();
-                model.Proj_Staff_Contact = ds.Tables[0].Rows[0]["Proj_Staff_Contact"].ToString();
-                model.Proj_Client_Contact = ds.Tables[0].Rows[0]["Proj_Client_Contact"].ToString();
-                model.Proj_Client_Company = ds.Tables[0].Rows[0]["Proj_Client_Company"].ToString();
-                model.Proj_Continuation = (bool)ds.Tables[0].Rows[0]["Proj_Continuation"];
-                model.Proj_Description = ds.Tables[0].Rows[0]["Proj_Description"].ToString();
-                model.Proj_Skills_Required = ds.Tables[0].Rows[0]["Proj_Skills_Required"].ToString();
-                model.Proj_Context = ds.Tables[0].Rows[0]["Proj_Context"].ToString();
-                model.Proj_Goals = ds.Tables[0].Rows[0]["Proj_Goals"].ToString();
-                model.Proj_Features = ds.Tables[0].Rows[0]["Proj_Features"].ToString();
-                model.Proj_Challenges = ds.Tables[0].Rows[0]["Proj_Challenges"].ToString();
-                model.Proj_Opportunities = ds.Tables[0].Rows[0]["Proj_Opportunities"].ToString();
-                model.Proj_Presenter = ds.Tables[0].Rows[0]["Proj_Presenter"].ToString();
+                model.Proj_Title = dr["Proj_Title"].ToString();
+                model.Proj_Staff_Contact = dr["Proj_Staff_Contact"].ToString();
+                model.Proj_Client_Contact = dr["Proj_Client_Contact"].ToString();
+                model.Proj_Client_Company = dr["Proj_Client_Company"].ToString();
+                model.Proj_Continuation = (bool)dr["Proj_Continuation"];
+                model.Proj_Description = dr["Proj_Description"].ToString();
+                model.Proj_Skills_Required = dr["Proj_Skills_Required"].ToString();
+                model.Proj_Context = dr["Proj_Context"].ToString();
+                model.Proj_Goals = dr["Proj_Goals"].ToString();
+                model.Proj_Features = dr["Proj_Features"].ToString();
+                model.Proj_Challenges = dr["Proj_Challenges"].ToString();
+                model.Proj_Opportunities = dr["Proj_Opportunities"].ToString();
+                model.Proj_Presenter = dr["Proj_Presenter"].ToString();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString()))
+                model.Proj_Valid_Dates = dr["Proj_Valid_Dates"].ToString();
+
+                if (!string.IsNullOrEmpty(dr["Proj_Update_Time"].ToString()))
                 {
-                    model.Proj_Valid_Dates = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString());
-                    model.Valid_Dates = model.Proj_Valid_Dates.ToString("yyyy-MM-dd HH:mm");
-                }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString()))
-                {
-                    model.Proj_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString());
+                    model.Proj_Update_Time = DateTime.Parse(dr["Proj_Update_Time"].ToString());
                     model.Update_Time = model.Proj_Update_Time.ToString("yyyy-MM-dd HH:mm");
                 }
                 list.Add(model);
@@ -295,41 +278,35 @@ namespace PSS_Weltec.DAL
             {
                 model = new Project();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Id"].ToString()))
+                if (!string.IsNullOrEmpty(dr["Proj_Id"].ToString()))
                 {
-                    model.Proj_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Id"].ToString());
+                    model.Proj_Id = int.Parse(dr["Proj_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString()))
+                if (!string.IsNullOrEmpty(dr["Proj_Trimester_Id"].ToString()))
                 {
-                    model.Proj_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString());
+                    model.Proj_Trimester_Id = int.Parse(dr["Proj_Trimester_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString()))
-                {
-                    model.Proj_Students_Num = int.Parse(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString());
-                }
+                model.Proj_Students_Num = dr["Proj_Students_Num"].ToString();
 
-                model.Proj_Title = ds.Tables[0].Rows[0]["Proj_Title"].ToString();
-                model.Proj_Staff_Contact = ds.Tables[0].Rows[0]["Proj_Staff_Contact"].ToString();
-                model.Proj_Client_Contact = ds.Tables[0].Rows[0]["Proj_Client_Contact"].ToString();
-                model.Proj_Client_Company = ds.Tables[0].Rows[0]["Proj_Client_Company"].ToString();
-                model.Proj_Continuation = (bool)ds.Tables[0].Rows[0]["Proj_Continuation"];
-                model.Proj_Description = ds.Tables[0].Rows[0]["Proj_Description"].ToString();
-                model.Proj_Skills_Required = ds.Tables[0].Rows[0]["Proj_Skills_Required"].ToString();
-                model.Proj_Context = ds.Tables[0].Rows[0]["Proj_Context"].ToString();
-                model.Proj_Goals = ds.Tables[0].Rows[0]["Proj_Goals"].ToString();
-                model.Proj_Features = ds.Tables[0].Rows[0]["Proj_Features"].ToString();
-                model.Proj_Challenges = ds.Tables[0].Rows[0]["Proj_Challenges"].ToString();
-                model.Proj_Opportunities = ds.Tables[0].Rows[0]["Proj_Opportunities"].ToString();
-                model.Proj_Presenter = ds.Tables[0].Rows[0]["Proj_Presenter"].ToString();
+                model.Proj_Title = dr["Proj_Title"].ToString();
+                model.Proj_Staff_Contact = dr["Proj_Staff_Contact"].ToString();
+                model.Proj_Client_Contact = dr["Proj_Client_Contact"].ToString();
+                model.Proj_Client_Company = dr["Proj_Client_Company"].ToString();
+                model.Proj_Continuation = (bool)dr["Proj_Continuation"];
+                model.Proj_Description = dr["Proj_Description"].ToString();
+                model.Proj_Skills_Required = dr["Proj_Skills_Required"].ToString();
+                model.Proj_Context = dr["Proj_Context"].ToString();
+                model.Proj_Goals = dr["Proj_Goals"].ToString();
+                model.Proj_Features = dr["Proj_Features"].ToString();
+                model.Proj_Challenges = dr["Proj_Challenges"].ToString();
+                model.Proj_Opportunities = dr["Proj_Opportunities"].ToString();
+                model.Proj_Presenter = dr["Proj_Presenter"].ToString();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString()))
+                model.Proj_Valid_Dates = dr["Proj_Valid_Dates"].ToString();
+
+                if (!string.IsNullOrEmpty(dr["Proj_Update_Time"].ToString()))
                 {
-                    model.Proj_Valid_Dates = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString());
-                    model.Valid_Dates = model.Proj_Valid_Dates.ToString("yyyy-MM-dd HH:mm");
-                }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString()))
-                {
-                    model.Proj_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString());
+                    model.Proj_Update_Time = DateTime.Parse(dr["Proj_Update_Time"].ToString());
                     model.Update_Time = model.Proj_Update_Time.ToString("yyyy-MM-dd HH:mm");
                 }
                 list.Add(model);
@@ -341,46 +318,40 @@ namespace PSS_Weltec.DAL
         {
             List<Project> list = new List<Project>();
             Project model = null;
-            DataSet ds = SqlHelper.GetListByPage("PSS_Project", trimesterId, paging, order, sort);
+            DataSet ds = SqlHelper.GetListByPage("PSS_Project","Proj_Trimester_Id",trimesterId, paging, order, sort);
             foreach (DataRow dr in ds.Tables["PSS_Project"].Rows)
             {
                 model = new Project();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Id"].ToString()))
+                if (!string.IsNullOrEmpty(dr["Proj_Id"].ToString()))
                 {
-                    model.Proj_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Id"].ToString());
+                    model.Proj_Id = int.Parse(dr["Proj_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString()))
+                if (!string.IsNullOrEmpty(dr["Proj_Trimester_Id"].ToString()))
                 {
-                    model.Proj_Trimester_Id = int.Parse(ds.Tables[0].Rows[0]["Proj_Trimester_Id"].ToString());
+                    model.Proj_Trimester_Id = int.Parse(dr["Proj_Trimester_Id"].ToString());
                 }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString()))
-                {
-                    model.Proj_Students_Num = int.Parse(ds.Tables[0].Rows[0]["Proj_Students_Num"].ToString());
-                }
+                model.Proj_Students_Num = dr["Proj_Students_Num"].ToString();
 
-                model.Proj_Title = ds.Tables[0].Rows[0]["Proj_Title"].ToString();
-                model.Proj_Staff_Contact = ds.Tables[0].Rows[0]["Proj_Staff_Contact"].ToString();
-                model.Proj_Client_Contact = ds.Tables[0].Rows[0]["Proj_Client_Contact"].ToString();
-                model.Proj_Client_Company = ds.Tables[0].Rows[0]["Proj_Client_Company"].ToString();
-                model.Proj_Continuation = (bool)ds.Tables[0].Rows[0]["Proj_Continuation"];
-                model.Proj_Description = ds.Tables[0].Rows[0]["Proj_Description"].ToString();
-                model.Proj_Skills_Required = ds.Tables[0].Rows[0]["Proj_Skills_Required"].ToString();
-                model.Proj_Context = ds.Tables[0].Rows[0]["Proj_Context"].ToString();
-                model.Proj_Goals = ds.Tables[0].Rows[0]["Proj_Goals"].ToString();
-                model.Proj_Features = ds.Tables[0].Rows[0]["Proj_Features"].ToString();
-                model.Proj_Challenges = ds.Tables[0].Rows[0]["Proj_Challenges"].ToString();
-                model.Proj_Opportunities = ds.Tables[0].Rows[0]["Proj_Opportunities"].ToString();
-                model.Proj_Presenter = ds.Tables[0].Rows[0]["Proj_Presenter"].ToString();
+                model.Proj_Title = dr["Proj_Title"].ToString();
+                model.Proj_Staff_Contact = dr["Proj_Staff_Contact"].ToString();
+                model.Proj_Client_Contact = dr["Proj_Client_Contact"].ToString();
+                model.Proj_Client_Company = dr["Proj_Client_Company"].ToString();
+                model.Proj_Continuation = (bool)dr["Proj_Continuation"];
+                model.Proj_Description = dr["Proj_Description"].ToString();
+                model.Proj_Skills_Required = dr["Proj_Skills_Required"].ToString();
+                model.Proj_Context = dr["Proj_Context"].ToString();
+                model.Proj_Goals = dr["Proj_Goals"].ToString();
+                model.Proj_Features = dr["Proj_Features"].ToString();
+                model.Proj_Challenges = dr["Proj_Challenges"].ToString();
+                model.Proj_Opportunities = dr["Proj_Opportunities"].ToString();
+                model.Proj_Presenter = dr["Proj_Presenter"].ToString();
 
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString()))
+                model.Proj_Valid_Dates = dr["Proj_Valid_Dates"].ToString();
+
+                if (!string.IsNullOrEmpty(dr["Proj_Update_Time"].ToString()))
                 {
-                    model.Proj_Valid_Dates = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Valid_Dates"].ToString());
-                    model.Valid_Dates = model.Proj_Valid_Dates.ToString("yyyy-MM-dd HH:mm");
-                }
-                if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString()))
-                {
-                    model.Proj_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["Proj_Update_Time"].ToString());
+                    model.Proj_Update_Time = DateTime.Parse(dr["Proj_Update_Time"].ToString());
                     model.Update_Time = model.Proj_Update_Time.ToString("yyyy-MM-dd HH:mm");
                 }
                 list.Add(model);

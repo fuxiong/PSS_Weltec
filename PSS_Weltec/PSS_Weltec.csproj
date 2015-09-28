@@ -1282,6 +1282,10 @@
     <Content Include="Views\User\UserChangePassWord.cshtml" />
     <Content Include="Views\User\UserPersonalProfile.cshtml" />
     <Content Include="Views\Project\ProjectIndex.cshtml" />
+    <Content Include="Views\Project\NewsEditLoad.cshtml" />
+    <Content Include="Views\Project\ProjectEditLoad.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

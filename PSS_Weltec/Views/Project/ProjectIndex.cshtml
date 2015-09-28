@@ -6,7 +6,7 @@
 }
 
 <div region="center" title="" border="false" style="padding:0px 0px 0px 0px;">
-    <table id="dgProject" title="Users List" class="easyui-datagrid"> </table>
+    <table id="dgProject" title="Project List" class="easyui-datagrid"> </table>
     <div id="toolbar">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
         @Html.DropDownList("trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
@@ -17,7 +17,6 @@
 </div>
 
 <script type="text/javascript">
-    var currentId = null; // Select row to edit
     var trimesterId = $('#trimester_Id').val();
     $(function () {
         $("#dgProject").datagrid({
@@ -31,11 +30,11 @@
             autoRowHeight: true,
             sortName: "Proj_Id",
             sortOrder: "desc",
-            checkOnSelect: false,
-            selectOnCheck:false,
+            //checkOnSelect: false,
+            //selectOnCheck:false,
             columns: [[
-                    { field: 'ck', checkbox:true},
-                    { field: 'Proj_Id', title: 'ID', width: 20, hidden: 'true' },
+                    //{ field: 'ck', checkbox:true},
+                    { field: 'Proj_Id', title: 'ID', width: 20, hidden:"true"},
                     { field: 'Proj_Title', title: 'Title', width: 150 },
                     { field: 'Proj_Students_Num', title: 'Students Numbers', width: 120 },
                     { field: 'Proj_Description', title: 'Description', width: 300 },
@@ -45,7 +44,6 @@
                     { field: 'Update_Time', title: 'Last_Update_Time', width: 110, align: 'center' }
             ]],
             onSelect: function (rowIndex, rowData) {
-                currentId = rowData.Proj_Id;
             },
             onDblClickRow: function (rowIndex, rowData) {
                 Edit();
@@ -62,41 +60,23 @@
         $('#dgProject').datagrid('reload');
     }
     function New() {
-        //$("#editProject").window("open");
-        //$("#editProjectForm")[0].reset();
-        //$("#editProjectForm input[name='user_Name']").focus();
-        currentId = null;
+        var url = "../Project/ProjectEditLoad/?trimesterId=" + trimesterId;
+        parent.addTab('Add Project', url);
     }
     function Edit() {
         var selectRow = $('#dgProject').datagrid('getSelected');
         if (selectRow) {
-            $("#editProject").window("open");
-            $.ajax({
-                url: '../Project/ProjectEdit/?id=' + selectRow.Proj_Id,
-                type: 'post',
-                dataType: 'json',
-                success: function (r) {
-                    //$("#editProjectForm input[name='user_Name']").val(r.user_Name);
-                    //$("#editProjectForm input[name='user_Password']").val(r.user_Password);
-                    //$("#editProjectForm input[name='user_confire_Password_Model']").val(r.user_Password);
-                    //$("#editProjectForm input[name='user_Email']").val(r.user_Email);
-                    //$("#editProjectForm input[name='user_Telephone']").val(r.user_Telephone);
-                    //$("#user_Skill").val(r.user_Skill);
-                    //$("#user_Introduction").val(r.user_Introduction);
-
-                    //$("#editProjectForm input[name='user_Name']").focus();
-                }
-            });
-            currentId = selectRow.user_Id;
+            var url = '../Project/ProjectEditLoad/?Proj_Id=' + selectRow.Proj_Id + '&trimesterId=' + trimesterId;
+            parent.addTab('Edit Project' + selectRow.Proj_Title, url);
         } else {
-            $.messager.alert("Info", "Please select User！", "info");
+            $.messager.alert('Info', 'Please select Project！', 'info');
         }
     }
     function Delete() {
         var selectRow = $('#dgProject').datagrid('getSelected');
         if (selectRow) {
             $.ajax({
-                url: '../User/UserDelete/?id=' + selectRow.user_Id,
+                url: '../Project/ProjectDelete/?id=' + selectRow.Proj_Id,
                 type: "post",
                 dataType: "json",
                 success: function (retValue) {
@@ -107,34 +87,8 @@
                     }
                 }
             });
-            currentId = null;
         } else {
-            $.messager.alert("Info", "Please select User！", "info");
+            $.messager.alert("Info", "Please Check Project！", "info");
         }
     }
-    function Save() {
-        var password = $('#user_Password').val();
-        var confire_password = $('#user_confire_Password_Model').val();
-        if (password == confire_password) {
-            $('#editProjectForm').form('submit', {
-                url: '../User/UserSave/?id=' + currentId,
-                onSubmit: function () {
-                    return $('#editProjectForm').form('validate');
-                },
-                success: function (r) {
-                    var rVal = $.parseJSON(r);
-                    if (rVal.result) {
-                        $('#editProject').window('close');
-                        Reload();
-                    } else {
-                        $.messager.alert('Warning', 'Fail:' + rVal.message, 'error');
-                    }
-                }
-            })
-        }
-        else {
-            $.messager.alert('Warning', 'Fail: The Password and Confirem password is not the same!', 'error');
-        }
-    }
-
 </script>
