@@ -1,0 +1,72 @@
+﻿<div id="projectSelect" class="easyui-window" title="Select Projects" style="padding: 5px;width:740px;height:540px;"
+iconCls="icon-edit" closed="true" maximizable="false" minimizable="false" resizable="false" collapsible="false" modal="true" shadow="true">
+    <div class="easyui-layout" fit="true">
+        <div region="center" border="false" style="background:#fff;border:1px solid #ccc;">
+            <table id="dgProjectSelect" title="产品" style="" border="false" fit="true" singleSelect="true"
+			    idField="Proj_Id" sortName="Proj_Id" sortOrder="desc" striped="true" toolbar="#tbProjectlSelect">
+		    </table>
+            <div id="tbProjectlSelect">
+                <a href="javascript:void(0);" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="projReload();">Reload</a>
+                @Html.DropDownList("trimester_Select", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
+                <a href="javascript:void(0)"  class="easyui-linkbutton" plain="true" iconCls="icon-ok"  onclick="projSelectOk()">Confirm</a>
+				<a href="javascript:void(0)"  class="easyui-linkbutton" plain="true" iconCls="icon-cancel"  onclick="$('#projectSelect').window('close');">Cancel</a> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var trimesterSelId = $('#trimester_Select').val();
+    $(function () {
+        $('#dgProjectSelect').datagrid({
+            pagination: true,
+            pageSize: 20,
+            noheader: true,
+            loadMsg: 'loading...',
+            singleSelect: false,
+            checkOnSelect: true,
+            selectOnCheck: true,
+            columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'Proj_Id', title: 'ID', width: 20, hidden: "true" },
+                    { field: 'Proj_Title', title: 'Title', width: 150 },
+                    { field: 'Proj_Students_Num', title: 'Students Numbers', width: 120 },
+                    { field: 'Proj_Description', title: 'Description', width: 300 },
+                    //{ field: 'Proj_Skills_Required', title: 'Skills', width: 200 },
+                    //{ field: 'Proj_Client_Contact', title: 'Client', width: 100 },
+                    //{ field: 'Proj_Client_Company', title: 'Company', width: 100 },
+                    { field: 'Update_Time', title: 'Last_Update_Time', width: 110, align: 'center' }
+            ]],
+            onSelect: function (rowIndex, rowData) {
+
+            },
+            onDblClickRow: function (rowIndex, rowData) {
+            },
+            onLoadSuccess: function () {
+                $('#dgProjectSelect').datagrid('clearSelections');
+            }
+        });
+        $("#trimester_Select").change(function () { trimesterSelId = $('#trimester_Select').val(); projReload(); });
+    })
+    function projReload() {
+        $('#dgProjectSelect').datagrid({
+            url: '../Project/ProjectList/?trimesterId=' + $("#trimester_Select").val(),
+        });
+    }
+    function projSelectOk() {
+        var checkRows = $('#dgProjectSelect').datagrid('getChecked');
+        var idList = null;
+        if (checkRows) {
+            $.each(checkRows, function (index, item) {
+                if (idList != null)
+                    idList += ",";
+                idList += item.Proj_Id;
+            });
+            ImportSave(idList);
+        } else {
+            $.messager.alert("Info", "Please Check Projects！", "info");
+            return;
+        }
+        $('#projectSelect').window('close');
+    }
+</script>

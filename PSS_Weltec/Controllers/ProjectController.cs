@@ -178,5 +178,47 @@ namespace PSS_Weltec.Controllers
             }
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
+        
+        [HttpPost]
+        public ContentResult ProjectImport(int trimesterId,string idList)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                List<Project> listOld = ProjectService.GetList(idList);
+                List<Project> listNew = new List<Project>();
+                foreach (Project model in listOld)
+                {
+                    model.Proj_Trimester_Id = trimesterId;
+                    listNew.Add(model);
+                }
+                if (listNew != null && listNew.Count() > 0)
+                {
+                    ProjectService.SaveList(listNew);
+                    jsonResult.result = true;
+                    jsonResult.message = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonResult.result = false;
+                jsonResult.message = ex.Message;
+            }
+            string result = JsonConvert.SerializeObject(jsonResult);
+            return Content(result);
+        }
+
+        public ActionResult ProjectDetail(int id)
+        {
+            Project model = ProjectService.GetModel(id);
+            model.Context = base.Server.UrlEncode(model.Proj_Context).Replace("+", "%20");
+            model.Description = base.Server.UrlEncode(model.Proj_Description).Replace("+", "%20");
+            model.Skills_Required = base.Server.UrlEncode(model.Proj_Skills_Required).Replace("+", "%20");
+            model.Goals = base.Server.UrlEncode(model.Proj_Goals).Replace("+", "%20");
+            model.Features = base.Server.UrlEncode(model.Proj_Features).Replace("+", "%20");
+            model.Challenges = base.Server.UrlEncode(model.Proj_Challenges).Replace("+", "%20");
+            model.Opportunities = base.Server.UrlEncode(model.Proj_Opportunities).Replace("+", "%20");
+            return View(model);
+        }
     }
 }

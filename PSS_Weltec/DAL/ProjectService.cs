@@ -166,6 +166,40 @@ namespace PSS_Weltec.DAL
                 ds.Dispose();
         }
 
+        public static void SaveList(List<Project> list)
+        {
+            string sql = "select * from PSS_Project where 1<>1";
+            DataSet ds = SqlHelper.GetDataSetBySql(sql, "PSS_Project");
+            DataRow dr =null;
+            int maxId = SqlHelper.GetMaxId("select max(Proj_Id) from PSS_Project");
+            foreach (Project model in list)
+            {
+                dr = ds.Tables["PSS_Project"].NewRow();
+                dr["Proj_Id"] = ++maxId;
+                dr["Proj_Title"] = model.Proj_Title;
+                dr["Proj_Staff_Contact"] = model.Proj_Staff_Contact;
+                dr["Proj_Client_Contact"] = model.Proj_Client_Contact;
+                dr["Proj_Client_Company"] = model.Proj_Client_Company;
+                dr["Proj_Valid_Dates"] = model.Proj_Valid_Dates;
+                dr["Proj_Students_Num"] = model.Proj_Students_Num;
+                dr["Proj_Continuation"] = model.Proj_Continuation;
+                dr["Proj_Description"] = model.Proj_Description;
+                dr["Proj_Skills_Required"] = model.Proj_Skills_Required;
+                dr["Proj_Context"] = model.Proj_Context;
+                dr["Proj_Goals"] = model.Proj_Goals;
+                dr["Proj_Features"] = model.Proj_Features;
+                dr["Proj_Challenges"] = model.Proj_Challenges;
+                dr["Proj_Opportunities"] = model.Proj_Opportunities;
+                dr["Proj_Trimester_Id"] = model.Proj_Trimester_Id;
+                dr["Proj_Update_Time"] = model.Proj_Update_Time;
+                dr["Proj_Presenter"] = model.Proj_Presenter;
+
+                ds.Tables["PSS_Project"].Rows.Add(dr);
+            }
+            SqlHelper.UpdateDataSet(ds, sql, "PSS_Project");
+            if (ds != null)
+                ds.Dispose();
+        }
         public static void UpdateList(List<Project> list)
         {
             string idList = null;

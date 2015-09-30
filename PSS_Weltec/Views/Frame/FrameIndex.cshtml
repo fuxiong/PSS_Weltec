@@ -30,9 +30,9 @@
             </div>
         </div>
         <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
-            <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
-               <div title="Main" style="padding:20px;overflow:hidden; color:red; " >
-                   <div id="showNews" class="easyui-accordion" style="">
+            <div id="tabs" class="easyui-tabs"  fit="true" border="false"  style="overflow:hidden;">
+               <div title="Main" style="padding:20px;overflow:hidden;" >
+                   <div id="showNews" class="easyui-accordion" style="overflow:hidden;">
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@
     }
 
     function createFrame(url) {
-        var s = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:100%;"></iframe>';
+        var s = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:99%;"></iframe>';
         return s;
     }
 
@@ -230,7 +230,6 @@
             $('#tabs').tabs('add', {
                 title: subtitle,
                 content: createFrame(url),
-                //icon:icon,
                 closable: true
             });
         } else {

@@ -5,12 +5,14 @@
     Layout = "~/Views/Shared/FrameShare.cshtml";
 }
 
-<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;">
+<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;overflow: hidden;">
     <table id="dgProject" title="Project List" class="easyui-datagrid"> </table>
+    @{Html.RenderPartial("~/Views/Project/ProjectSelect.cshtml");}
     <div id="toolbar">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
         @Html.DropDownList("trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="New()">New</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-large-smartart" plain="true" onclick="Import()">Import</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="Edit()">Edit</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="Delete()">Remove</a>
     </div>
@@ -46,7 +48,7 @@
             onSelect: function (rowIndex, rowData) {
             },
             onDblClickRow: function (rowIndex, rowData) {
-                Edit();
+                Discussion(rowData);
             },
             onLoadSuccess: function (data) {
                 $(this).datagrid('clearSelections');
@@ -67,7 +69,7 @@
         var selectRow = $('#dgProject').datagrid('getSelected');
         if (selectRow) {
             var url = '../Project/ProjectEditLoad/?Proj_Id=' + selectRow.Proj_Id + '&trimesterId=' + trimesterId;
-            parent.addTab('Edit Project' + selectRow.Proj_Title, url);
+            parent.addTab('Edit Project', url);
         } else {
             $.messager.alert('Info', 'Please select Project！', 'info');
         }
@@ -90,5 +92,27 @@
         } else {
             $.messager.alert("Info", "Please Check Project！", "info");
         }
+    }
+    function Import() {
+        $('#projectSelect').window('open');
+        projReload();
+    }
+    function ImportSave(idList) {
+        $.ajax({
+            url: '../Project/ProjectImport/?trimesterId=' + trimesterId+"&idList="+idList,
+            type: "post",
+            dataType: "json",
+            success: function (retValue) {
+                if (retValue.result) {
+                    Reload();
+                } else {
+                    $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                }
+            }
+        });
+    }
+    function Discussion(item) {
+        var url = "../Project/ProjectDetail/?id=" + item.Proj_Id;
+        parent.addTab(item.Proj_Title, url);
     }
 </script>
