@@ -11,13 +11,13 @@
             <div region="center" border="true" style="overflow: auto;">
                 <div class="easyui-panel" title="Project Brief" border="false">
                     <form id="modelForm" method="post">
-                        <table style="width: 99%; margin: 10px auto;" border="1">
+                        <table style="width: 90%; margin: 10px auto;" border="1">
                             <tr style="height: 24px">
-                                <td style="width: 10%; text-align: right;">
+                                <td style="width: 20%; text-align: right;">
                                     <b>Project Title:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;" colspan="3">
-                                    <input id="Proj_Title" name="Proj_Title" type="text" style="width: 95%;" />
+                                    <input id="Proj_Title" name="Proj_Title" type="text" style="width: 95%;" readonly="readonly"/>
                                     <input id="Proj_Trimester_Id" name="Proj_Trimester_Id" name="Proj_Title" hidden="hidden" value="@Model.Proj_Trimester_Id"/>
                                 </td>
                             </tr>
@@ -26,13 +26,13 @@
                                     <b>Staff Contact:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Staff_Contact" name="Proj_Staff_Contact" type="text" style="width: 95%;" />
+                                    <input id="Proj_Staff_Contact" name="Proj_Staff_Contact" type="text" style="width: 95%;" readonly="readonly"/>
                                 </td>
                                 <td style="width: 10%; text-align: right;" nowrap>
                                     <b>Client Contact:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Client_Contact" name="Proj_Client_Contact" type="text" style="width: 89%;" />
+                                    <input id="Proj_Client_Contact" name="Proj_Client_Contact" type="text" style="width: 86%;" readonly="readonly"/>
                                 </td>
                             </tr>
                             <tr style="height: 24px">
@@ -40,7 +40,7 @@
                                     <b>Client Company:&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;" colspan="3">
-                                    <input id="Proj_Client_Company" name="Proj_Client_Company" type="text" style="width: 95%;" />
+                                    <input id="Proj_Client_Company" name="Proj_Client_Company" type="text" style="width: 95%;" readonly="readonly"/>
                                 </td>
                             </tr>
                             <tr>
@@ -48,15 +48,15 @@
                                     <b>Valid Dates:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Valid_Dates" name="Proj_Valid_Dates" type="text" style="width: 95%;" />
+                                    <input id="Proj_Valid_Dates" name="Proj_Valid_Dates" type="text" style="width: 95%;" readonly="readonly"/>
                                 </td>
                                 <td style="width: 10%; text-align: right;" nowrap>
                                     <b># Students:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Students_Num" name="Proj_Students_Num" type="text" style="width: 20%;" />
-                                    <b>&nbsp;&nbsp;&nbsp;&nbsp;Continuation?&nbsp;&nbsp;&nbsp;&nbsp;</b>
-                                    @*@Html.DropDownList("Proj_Continuation", (IEnumerable<SelectListItem>)ViewData["list"], new { style = "width:50px;" })*@
+                                    <input id="Proj_Students_Num" name="Proj_Students_Num" type="text" style="width: 15%;" readonly="readonly"/>
+                                    <b>&nbsp;&nbsp;&nbsp;&nbsp;Continuation?</b>
+                                    <input id="Proj_Continuation" name="Proj_Continuation" type="text" style="width: 15%;" readonly="readonly"/>
                                 </td>
                             </tr>
                             <tr>
@@ -66,7 +66,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea id="Proj_Description" name="Proj_Description" style="width: 98%;" rows="8"></textarea>
+                                    <textarea id="Proj_Description" name="Proj_Description" style="width: 98%;" rows="8" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -76,7 +76,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Skills_Required" name="Proj_Skills_Required" rows="4"></textarea>
+                                    <textarea style="width: 98%;" id="Proj_Skills_Required" name="Proj_Skills_Required" rows="4" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -86,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Context" name="Proj_Context" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Proj_Context" name="Proj_Context" rows="8" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -96,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Goals" name="Proj_Goals" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Proj_Goals" name="Proj_Goals" rows="8" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -106,7 +106,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Features" name="Proj_Features" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Proj_Features" name="Proj_Features" rows="8" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -116,7 +116,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Challenges" name="Proj_Challenges" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Proj_Challenges" name="Proj_Challenges" rows="8" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -126,7 +126,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Opportunities" name="Proj_Opportunities" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Proj_Opportunities" name="Proj_Opportunities" rows="8" readonly="readonly"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -135,14 +135,14 @@
             </div>
             <div region="east" hide="true" split="true" title="" style="width:380px;" id="east">
                 <div class="easyui-layout" fit="true">
-                    <div region="north" id="p" class="easyui-panel" title="Discussion" style="height:400px;">
+                    <div region="north" id="projDisc" class="easyui-panel" title="Discussion" style="height:400px;">
                     </div>
-                    <div region="center" title="Message" @*style="height:280px;"*@>
-                        <form id="ff" method="post">
+                    <div region="center" title="Message">
+                        <form id="porjDiscForm" method="post">
                             <table style="width:98%;">
                                 <tr>
                                     <td style="width: 100%; text-align: left;">
-                                        <textarea name="message" style="width:100%;height:105px;">
+                                        <textarea id="Proj_Disc_Content" name="Proj_Disc_Content" style="width:100%;height:105px;">
 
                                         </textarea>
                                     </td>
@@ -150,7 +150,7 @@
                             </table>
                         </form>
                         <div style="text-align:left;padding:0px">
-                            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="Save()">Submit</a>
                         </div>
                     </div>
                 </div>
@@ -160,11 +160,9 @@
 </div>
 
 <script type="text/javascript">
+    var modelId = '';
     $(function () {
-        EditLoad();
-    })
-    function EditLoad() {
-        var modelId = "@Model.Proj_Id";
+        modelId = "@Model.Proj_Id";
         if (modelId != null && modelId != 0 && modelId != "") {
             $("#modelForm input[name='Proj_Title']").val("@Model.Proj_Title");
             $("#modelForm input[name='Proj_Staff_Contact']").val("@Model.Proj_Staff_Contact");
@@ -172,7 +170,7 @@
             $("#modelForm input[name='Proj_Client_Company']").val("@Model.Proj_Client_Company");
             $("#modelForm input[name='Proj_Valid_Dates']").val("@Model.Proj_Valid_Dates");
             $("#Proj_Students_Num").val("@Model.Proj_Students_Num");
-            @*$("#Proj_Continuation").val("@Model.Proj_Continuation");*@
+            $("#Proj_Continuation").val("@Model.Proj_Continuation");
 
             $("#Proj_Description").val(unescape("@Model.Description"));
             $("#Proj_Skills_Required").val(unescape("@Model.Skills_Required"));
@@ -181,8 +179,59 @@
             $("#Proj_Features").val(unescape("@Model.Features"));
             $("#Proj_Challenges").val(unescape("@Model.Challenges"));
             $("#Proj_Opportunities").val(unescape("@Model.Opportunities"));
+            $('#Proj_Disc_Content').val('');
 
-            $("#modelForm input[name='Proj_Title']").focus();
+            Reload();
         }
+    })
+    function Save() {
+        $('#porjDiscForm').form('submit', {
+            url: '/Project/ProjDiscSave/?projId=' + modelId,
+            onSubmit: function () {
+                return $('#porjDiscForm').form('validate');
+            },
+            success: function (r) {
+                var rVal = $.parseJSON(r);
+                if (rVal.result) {
+                    $('#Proj_Disc_Content').val('');
+                    Reload();
+                } else {
+                    $.messager.alert('Error', 'Fail:' + rVal.message, 'error');
+                }
+            }
+        })
     }
+    function Reload() {
+        $.ajax({
+            url: '/Project/ProjDiscLoad/?projId=' + modelId,
+            type: "post",
+            dataType: "json",
+            success: function (retValue) {
+                if (retValue.result) {
+                    showContent(retValue.rows);
+                } else {
+                    $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                }
+            }
+        });
+    }
+    function showContent(Rows) {
+        var iShow = '';
+        $.each(Rows, function (index, item) {
+            iShow += "<a><span style='color:#dd0000'>" + item['UserName'] + "</span></a>&nbsp;&nbsp;&nbsp;&nbsp; <a>" + item['Disc_Time'] + "</a>";
+            iShow += "<br>";
+            iShow += "<a><span style='color:black'>" + item['Proj_Disc_Content'] + "</span></a>";
+            iShow += "<br><br>";
+            iShow += "<hr />";
+        });
+        $('#projDisc').panel({
+            content: iShow
+        });
+    }
+    //function userInfo(dd) {
+    //    alert(dd);
+    //    //alert(item['Proj_Disc_User_Id'] + item['UserName']);
+    //    //var url = "/User/UserPersonalProfile/?id=" + userId;
+    //    //parent.addTab(userName, url);
+    //}
 </script>

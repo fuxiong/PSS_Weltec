@@ -220,5 +220,55 @@ namespace PSS_Weltec.Controllers
             model.Opportunities = base.Server.UrlEncode(model.Proj_Opportunities).Replace("+", "%20");
             return View(model);
         }
+
+        [HttpPost]
+        public ContentResult ProjDiscSave(Proj_Discussion model, int projId)
+        {
+            JsonDataGridResult jsonResult = new JsonDataGridResult();
+            try
+            {
+                Proj_Discussion projDisc = new Proj_Discussion();
+                projDisc.Proj_Disc_Proj_Id = projId;
+                projDisc.Proj_Disc_Content = model.Proj_Disc_Content;
+                projDisc.Proj_Disc_Time = DateTime.Now;
+                projDisc.Proj_Disc_User_Id =Convert.ToInt32(User.Identity.Name.Split(',')[0]);
+                ProjDiscussionService.Save(projDisc);
+                jsonResult.result = true;
+                jsonResult.message = "";
+            }
+            catch (Exception ex)
+            {
+                jsonResult.result = false;
+                jsonResult.message = ex.Message;
+            }
+            string result = JsonConvert.SerializeObject(jsonResult);
+            return Content(result);
+        }
+
+        public ActionResult ProjDiscLoad(int projId)
+        {
+            JsonDataGridResult jsonDataGridResult = new JsonDataGridResult();
+            try
+            {
+                List<Proj_Discussion> list = ProjDiscussionService.GetList(projId);
+                List<User> listUser = UserService.GetList();
+                if (list != null && list.Count() > 0)
+                {
+                    foreach (Proj_Discussion model in list)
+                    {
+                        User user = listUser.Find(item => item.user_Id == model.Proj_Disc_User_Id);
+                        if (user != null)
+                            model.UserName = user.user_Name;
+                        jsonDataGridResult.rows.Add(model);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonDataGridResult.result = false;
+                jsonDataGridResult.message = ex.Message;
+            }
+            return Json(jsonDataGridResult, JsonRequestBehavior.AllowGet);
+        }
     }
 }

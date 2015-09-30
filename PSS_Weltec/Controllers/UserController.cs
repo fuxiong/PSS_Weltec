@@ -224,7 +224,7 @@ namespace PSS_Weltec.Controllers
             return Content(result);
         }
 
-        public ActionResult UserPersonalProfile()
+        public ActionResult UserPersonalProfile(int? Id)
         {
             SqlHelper.Initialization();
             List<SelectListItem> listTrimester = new List<SelectListItem>();
@@ -243,8 +243,16 @@ namespace PSS_Weltec.Controllers
             ViewData["listEmail_Visiable"] = listEmail_Visiable;
             ViewData["listTelephone_Visiable"] = listTelephone_Visiable;
 
-            string userName = User.Identity.Name.Split(',')[1];
-            int userId = Convert.ToInt32(User.Identity.Name.Split(',')[0]);
+            int userId;
+            if (!Id.HasValue)
+            {
+                string userName = User.Identity.Name.Split(',')[1];
+                userId = Convert.ToInt32(User.Identity.Name.Split(',')[0]);
+            }
+            else
+            {
+                userId = Id.Value;
+            }
 
             User user = UserService.GetModel(userId);
             user.Introduction_Code = base.Server.UrlEncode(user.user_Introduction);
