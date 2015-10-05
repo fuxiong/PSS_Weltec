@@ -1,10 +1,9 @@
-﻿@model PSS_Weltec.Models.Project
+﻿@model PSS_Weltec.Models.Idea
 
 @{
-    ViewBag.Title = "ProjectEditLoad";
+    ViewBag.Title = "IdeaEditLoad";
     Layout = "~/Views/Shared/FrameShare.cshtml";
 }
-
 
 <div region="center" title="" border="false" style="padding: 0px 0px 2px 0px; overflow: hidden;">
     <div class="easyui-panel" title="" fit="true" border="true" style="overflow: hidden;">
@@ -17,15 +16,15 @@
             <div region="center" border="true" style="overflow: auto;">
                 <form id="modelForm" method="post">
                     <fieldset style="padding: 10px; text-align: left;">
-                        <legend><b>Project Details</b></legend>
+                        <legend><b>Idea Details</b></legend>
                         <table style="width: 99%; margin: 10px auto;" border="1">
                             <tr style="height: 24px">
                                 <td style="width: 10%; text-align: right;">
-                                    <b>Project Title:&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                    <b>Idea Title:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;" colspan="3">
-                                    <input id="Proj_Title" name="Proj_Title" type="text" style="width: 95%;" />
-                                    <input id="Proj_Trimester_Id" name="Proj_Trimester_Id" name="Proj_Title" hidden="hidden" value="@Model.Proj_Trimester_Id"/>
+                                    <input id="Idea_Title" name="Idea_Title" type="text" style="width: 95%;" />
+                                    <input id="Idea_Trimester_Id" name="Idea_Trimester_Id" name="Idea_Title" hidden="hidden" value="@Model.Idea_Trimester_Id"/>
                                 </td>
                             </tr>
                             <tr>
@@ -33,13 +32,13 @@
                                     <b>Staff Contact:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Staff_Contact" name="Proj_Staff_Contact" type="text" style="width: 95%;" />
+                                    <input id="Idea_Staff_Contact" name="Idea_Staff_Contact" type="text" style="width: 95%;" />
                                 </td>
                                 <td style="width: 10%; text-align: right;" nowrap>
                                     <b>Client Contact:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Client_Contact" name="Proj_Client_Contact" type="text" style="width: 89%;" />
+                                    <input id="Idea_Client_Contact" name="Idea_Client_Contact" type="text" style="width: 89%;" />
                                 </td>
                             </tr>
                             <tr style="height: 24px">
@@ -47,7 +46,7 @@
                                     <b>Client Company:&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;" colspan="3">
-                                    <input id="Proj_Client_Company" name="Proj_Client_Company" type="text" style="width: 95%;" />
+                                    <input id="Idea_Client_Company" name="Idea_Client_Company" type="text" style="width: 95%;" />
                                 </td>
                             </tr>
                             <tr>
@@ -55,15 +54,15 @@
                                     <b>Valid Dates:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Valid_Dates" name="Proj_Valid_Dates" type="text" style="width: 95%;" />
+                                    <input id="Idea_Valid_Dates" name="Idea_Valid_Dates" type="text" style="width: 95%;" />
                                 </td>
                                 <td style="width: 10%; text-align: right;" nowrap>
                                     <b># Students:&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 </td>
                                 <td style="width: 40%; text-align: left;">
-                                    <input id="Proj_Students_Num" name="Proj_Students_Num" type="text" style="width: 20%;" />
+                                    <input id="Idea_Students_Num" name="Idea_Students_Num" type="text" style="width: 20%;" />
                                     <b>&nbsp;&nbsp;&nbsp;&nbsp;Continuation?&nbsp;&nbsp;&nbsp;&nbsp;</b>
-                                    @Html.DropDownList("Proj_Continuation", (IEnumerable<SelectListItem>)ViewData["list"], new { style = "width:50px;" })
+                                    @Html.DropDownList("Idea_Continuation", (IEnumerable<SelectListItem>)ViewData["list"], new { style = "width:50px;" })
                                 </td>
                             </tr>
                             <tr>
@@ -73,7 +72,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea id="Proj_Description" name="Proj_Description" style="width: 98%;" rows="8"></textarea>
+                                    <textarea id="Idea_Description" name="Idea_Description" style="width: 98%;" rows="8"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -83,7 +82,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Skills_Required" name="Proj_Skills_Required" rows="4"></textarea>
+                                    <textarea style="width: 98%;" id="Idea_Skills_Required" name="Idea_Skills_Required" rows="4"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -93,7 +92,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Context" name="Proj_Context" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Idea_Context" name="Idea_Context" rows="8"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -103,7 +102,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Goals" name="Proj_Goals" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Idea_Goals" name="Idea_Goals" rows="8"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -113,7 +112,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Features" name="Proj_Features" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Idea_Features" name="Idea_Features" rows="8"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -123,7 +122,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Challenges" name="Proj_Challenges" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Idea_Challenges" name="Idea_Challenges" rows="8"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -133,7 +132,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left;" colspan="4">
-                                    <textarea style="width: 98%;" id="Proj_Opportunities" name="Proj_Opportunities" rows="8"></textarea>
+                                    <textarea style="width: 98%;" id="Idea_Opportunities" name="Idea_Opportunities" rows="8"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -146,32 +145,32 @@
 
 <script type="text/javascript">
     $(function () {
-        EditLoad();
+        Load();
     })
-    function EditLoad() {
-        var modelId = "@Model.Proj_Id";
+    function Load() {
+        var modelId = "@Model.Idea_Id";
         if (modelId != null && modelId != 0 && modelId != "") {
-            $("#modelForm input[name='Proj_Title']").val("@Model.Proj_Title");
-            $("#modelForm input[name='Proj_Staff_Contact']").val("@Model.Proj_Staff_Contact");
-            $("#modelForm input[name='Proj_Client_Contact']").val("@Model.Proj_Client_Contact");
-            $("#modelForm input[name='Proj_Client_Company']").val("@Model.Proj_Client_Company");
-            $("#modelForm input[name='Proj_Valid_Dates']").val("@Model.Proj_Valid_Dates");
-            $("#Proj_Students_Num").val("@Model.Proj_Students_Num");
-            $("#Proj_Continuation").val("@Model.Proj_Continuation");
+            $("#Idea_Title").val("@Model.Idea_Title");
+            $("#Idea_Staff_Contact").val("@Model.Idea_Staff_Contact");
+            $("#Idea_Client_Contact").val("@Model.Idea_Client_Contact");
+            $("#Idea_Client_Company").val("@Model.Idea_Client_Company");
+            $("#Idea_Valid_Dates").val("@Model.Idea_Valid_Dates");
+            $("#Idea_Students_Num").val("@Model.Idea_Students_Num");
+            $("#Idea_Continuation").val("@Model.Idea_Continuation");
 
-            $("#Proj_Description").val(unescape("@Model.Description"));
-            $("#Proj_Skills_Required").val(unescape("@Model.Skills_Required"));
-            $("#Proj_Context").val(unescape("@Model.Context"));
-            $("#Proj_Goals").val(unescape("@Model.Goals"));
-            $("#Proj_Features").val(unescape("@Model.Features"));
-            $("#Proj_Challenges").val(unescape("@Model.Challenges"));
-            $("#Proj_Opportunities").val(unescape("@Model.Opportunities"));
+            $("#Idea_Description").val(unescape("@Model.Description"));
+            $("#Idea_Skills_Required").val(unescape("@Model.Skills_Required"));
+            $("#Idea_Context").val(unescape("@Model.Context"));
+            $("#Idea_Goals").val(unescape("@Model.Goals"));
+            $("#Idea_Features").val(unescape("@Model.Features"));
+            $("#Idea_Challenges").val(unescape("@Model.Challenges"));
+            $("#Idea_Opportunities").val(unescape("@Model.Opportunities"));
 
-            $("#modelForm input[name='Proj_Title']").focus();
+            $("#Idea_Title").focus();
         }
     }
     function Save() {
-        var modelId = "@Model.Proj_Id";
+        var modelId = "@Model.Idea_Id";
         var sUrl = '/Idea/IdeaSave/';
         if (modelId != null && modelId != 0 && modelId != "") {
             sUrl = '/Idea/IdeaSave/?id=' + modelId;

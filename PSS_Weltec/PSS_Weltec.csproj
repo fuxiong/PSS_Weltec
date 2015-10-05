@@ -183,9 +183,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\FrameController.cs" />
+    <Compile Include="Controllers\IdeaController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAL\IdeaCommService.cs" />
+    <Compile Include="DAL\IdeaDiscussionService.cs" />
+    <Compile Include="DAL\IdeaService.cs" />
     <Compile Include="DAL\NewsService.cs" />
     <Compile Include="DAL\ProjDiscussionService.cs" />
     <Compile Include="DAL\ProjectService.cs" />
@@ -197,6 +201,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Idea.cs" />
+    <Compile Include="Models\Idea_Comment.cs" />
+    <Compile Include="Models\Idea_Discussion.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Proj_Discussion.cs" />
@@ -493,6 +500,7 @@
     <Content Include="Scripts\images\menu.GIF" />
     <Content Include="Scripts\images\navbar.jpg" />
     <Content Include="Scripts\images\panel_title.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.3\themes\icons\approve.png" />
     <Content Include="Scripts\jquery.portal.js" />
     <Content Include="Sequence\User Management\LogIn.sequencediagram" />
     <None Include="Properties\PublishProfiles\11.pubxml" />
@@ -1289,6 +1297,9 @@
     </Content>
     <Content Include="Views\Project\ProjectSelect.cshtml" />
     <Content Include="Views\Project\ProjectDetail.cshtml" />
+    <Content Include="Views\Idea\IdeaIndex.cshtml" />
+    <Content Include="Views\Idea\IdeaEditLoad.cshtml" />
+    <Content Include="Views\Idea\IdeaDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

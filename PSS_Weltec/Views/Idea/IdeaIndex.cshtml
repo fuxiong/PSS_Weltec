@@ -1,0 +1,98 @@
+﻿@model PSS_Weltec.Models.User
+
+@{
+    ViewBag.Title = "IdeaIndex";
+    Layout = "~/Views/Shared/FrameShare.cshtml";
+}
+
+<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;overflow: hidden;">
+    <table id="dgIdea" title="Idea List" class="easyui-datagrid"> </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
+        @Html.DropDownList("trimester_Id", (IEnumerable<SelectListItem>)ViewData["listTrimester"], new { style = "width:130px;" })
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="New()">New</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="Edit()">Edit</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="Delete()">Remove</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var trimesterId = $('#trimester_Id').val();
+    $(function () {
+        $("#dgIdea").datagrid({
+            url: '../Idea/IdeaList/?trimesterId=' + trimesterId,
+            pagination: true,
+            pageSize: 30,
+            rownumbers: true,
+            singleSelect: true,
+            toolbar: '#toolbar',
+            fit:true,
+            autoRowHeight: true,
+            sortName: "Idea_Id",
+            sortOrder: "desc",
+            //checkOnSelect: false,
+            //selectOnCheck:false,
+            columns: [[
+                    //{ field: 'ck', checkbox:true},
+                    { field: 'Idea_Id', title: 'ID', width: 20, hidden: "true" },
+                    { field: 'Idea_Title', title: 'Title', width: 150 },
+                    { field: 'Idea_Students_Num', title: 'Students Numbers', width: 120 },
+                    { field: 'Idea_Description', title: 'Description', width: 300 },
+                    { field: 'Idea_Skills_Required', title: 'Skills', width: 200 },
+                    { field: 'Idea_Client_Contact', title: 'Client', width: 100 },
+                    { field: 'Update_Time', title: 'Last_Update_Time', width: 110, align: 'center' },
+                    { field: 'Status', title: 'Status', width: 100, align: 'center' }
+            ]],
+            onSelect: function (rowIndex, rowData) {
+            },
+            onDblClickRow: function (rowIndex, rowData) {
+                Discussion(rowData);
+            },
+            onLoadSuccess: function (data) {
+                $(this).datagrid('clearSelections');
+            }
+        });
+        $("#trimester_Id").change(function () { trimesterId = $('#trimester_Id').val(); Reload(); });
+    })
+    function Reload() {
+        var queryParams = $('#dgIdea').datagrid('options').queryParams;
+        queryParams.trimesterId = $("#trimester_Id").val();
+        $('#dgIdea').datagrid('reload');
+    }
+    function New() {
+        var url = "../Idea/IdeaEditLoad/?trimesterId=" + trimesterId;
+        parent.addTab('Add Idea', url);
+    }
+    function Edit() {
+        var selectRow = $('#dgIdea').datagrid('getSelected');
+        if (selectRow) {
+            var url = '../Idea/IdeaEditLoad/?Idea_Id=' + selectRow.Idea_Id + '&trimesterId=' + trimesterId;
+            parent.addTab('Edit Idea', url);
+        } else {
+            $.messager.alert('Info', 'Please select Idea！', 'info');
+        }
+    }
+    function Delete() {
+        var selectRow = $('#dgIdea').datagrid('getSelected');
+        if (selectRow) {
+            $.ajax({
+                url: '../Idea/IdeaDelete/?id=' + selectRow.Idea_Id,
+                type: "post",
+                dataType: "json",
+                success: function (retValue) {
+                    if (retValue.result) {
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                    }
+                }
+            });
+        } else {
+            $.messager.alert("Info", "Please Check Idea！", "info");
+        }
+    }
+    function Discussion(item) {
+        var url = "../Idea/IdeaDetail/?id=" + item.Idea_Id;
+        parent.addTab(item.Idea_Title, url);
+    }
+</script>

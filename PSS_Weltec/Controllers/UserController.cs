@@ -234,7 +234,7 @@ namespace PSS_Weltec.Controllers
             }
 
             List<SelectListItem> listEmail_Visiable = new List<SelectListItem>();
-            listEmail_Visiable.Add(new SelectListItem { Text = "Visiable", Value = "True" });
+            listEmail_Visiable.Add(new SelectListItem { Text = "Visible", Value = "True" });
             listEmail_Visiable.Add(new SelectListItem { Text = "Invisible", Value = "False" });
             List<SelectListItem> listTelephone_Visiable = listEmail_Visiable;
 
