@@ -207,7 +207,6 @@
             $('#Idea_Disc_Content').val('');
 
             Reload();
-            CommReload();
         }
     })
     function Save() {
@@ -235,6 +234,7 @@
             success: function (retValue) {
                 if (retValue.result) {
                     ShowContent(retValue.rows);
+                    CommReload();
                 } else {
                     $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
                 }
@@ -266,12 +266,23 @@
                 var rVal = $.parseJSON(r);
                 if (rVal.result) {
                     $('#auditIdea').window('close');
-                    CommReload();
+                    AddComm();
                 } else {
                     $.messager.alert('Error', 'Fail:' + rVal.message, 'error');
                 }
             }
         })
+    }
+    function AddComm() {
+        var com = $('#Idea_Comm_Content').val();
+        var vData= "@DateTime.Now.ToString("dd/MM/yyyy HH:mm")";
+        var iShow = "<tr><td style='text-align: left;' colspan='4'><a>" + vData + "</a>";
+            iShow += "<br>";
+            iShow += "<a><span style='color:red'>" + com + "</span></a>";
+            iShow += "<br><br>";
+            iShow += "</td><tr>";
+        $('#ideaTable').append(iShow);
+
     }
     function CommReload() {
         $.ajax({
@@ -287,8 +298,7 @@
             }
         });
     }
-    function ShowCommContent(Rows)
-    {
+    function ShowCommContent(Rows) {
         var iShow = '<tr><td style="text-align: left;" colspan="4"><b>Comments</b></td></tr>';
         $.each(Rows, function (index, item) {
             iShow += "<tr><td style='text-align: left;' colspan='4'><a>" + item['Comm_Time'] + "</a>";

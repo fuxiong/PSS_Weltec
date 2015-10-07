@@ -208,12 +208,20 @@ namespace PSS_Weltec.Controllers
                 int userId = Convert.ToInt32(User.Identity.Name.Split(',')[0]);
 
                 User user = UserService.GetModel(userId);
-                user.user_Password = SqlHelper.Fun_Secret(userModel.user_Password);
-                user.user_Update_Time = DateTime.Now;
+                if (SqlHelper.Fun_Secret(userModel.user_Password_Model) == user.user_Password)
+                {
+                    user.user_Password = SqlHelper.Fun_Secret(userModel.user_Password);
+                    user.user_Update_Time = DateTime.Now;
 
-                UserService.Update(user);
-                jsonResult.result = true;
-                jsonResult.message = "";
+                    UserService.Update(user);
+                    jsonResult.result = true;
+                    jsonResult.message = "";
+                }
+                else
+                {
+                    jsonResult.result = false;
+                    jsonResult.message = "The Old Password is not match!";
+                }
             }
             catch (Exception ex)
             {

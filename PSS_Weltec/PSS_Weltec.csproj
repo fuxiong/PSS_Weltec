@@ -186,6 +186,7 @@
     <Compile Include="Controllers\IdeaController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\IdeaCommService.cs" />
     <Compile Include="DAL\IdeaDiscussionService.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="DAL\NewsService.cs" />
     <Compile Include="DAL\ProjDiscussionService.cs" />
     <Compile Include="DAL\ProjectService.cs" />
+    <Compile Include="DAL\TeamService.cs" />
     <Compile Include="DAL\TrimesterService.cs" />
     <Compile Include="DAL\UserService.cs" />
     <Compile Include="DAL\SqlHelper.cs" />
@@ -207,6 +209,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Proj_Discussion.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Models\Trimester.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -271,6 +274,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\fileIcon.png" />
+    <Content Include="Images\TopLogo.gif" />
+    <Content Include="Images\weltec.jpg" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
     <Content Include="Scripts\ckeditor\ckeditor_basic.js" />
@@ -1300,6 +1305,7 @@
     <Content Include="Views\Idea\IdeaIndex.cshtml" />
     <Content Include="Views\Idea\IdeaEditLoad.cshtml" />
     <Content Include="Views\Idea\IdeaDetail.cshtml" />
+    <Content Include="Views\Team\TeamIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

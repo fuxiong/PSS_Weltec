@@ -262,17 +262,17 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
                     model.user_Register_Time = DateTime.Parse(dr["user_Register_Time"].ToString());
-                    model.Register_Time = model.user_Register_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Register_Time = model.user_Register_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Log_Time"].ToString()))
                 {
                     model.user_Log_Time = DateTime.Parse(dr["user_Log_Time"].ToString());
-                    model.Log_Time = model.user_Log_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Log_Time = model.user_Log_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Update_Time"].ToString()))
                 {
                     model.user_Update_Time = DateTime.Parse(dr["user_Update_Time"].ToString());
-                    model.Update_Time = model.user_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.user_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };
@@ -309,17 +309,17 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
                     model.user_Register_Time = DateTime.Parse(dr["user_Register_Time"].ToString());
-                    model.Register_Time = model.user_Register_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Register_Time = model.user_Register_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Log_Time"].ToString()))
                 {
                     model.user_Log_Time = DateTime.Parse(dr["user_Log_Time"].ToString());
-                    model.Log_Time = model.user_Log_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Log_Time = model.user_Log_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Update_Time"].ToString()))
                 {
                     model.user_Update_Time = DateTime.Parse(dr["user_Update_Time"].ToString());
-                    model.Update_Time = model.user_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.user_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };
@@ -354,17 +354,17 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
                     model.user_Register_Time = DateTime.Parse(dr["user_Register_Time"].ToString());
-                    model.Register_Time = model.user_Register_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Register_Time = model.user_Register_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Log_Time"].ToString()))
                 {
                     model.user_Log_Time = DateTime.Parse(dr["user_Log_Time"].ToString());
-                    model.Log_Time = model.user_Log_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Log_Time = model.user_Log_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Update_Time"].ToString()))
                 {
                     model.user_Update_Time = DateTime.Parse(dr["user_Update_Time"].ToString());
-                    model.Update_Time = model.user_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.user_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };
@@ -398,17 +398,17 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["user_Register_Time"].ToString()))
                 {
                     model.user_Register_Time = DateTime.Parse(dr["user_Register_Time"].ToString());
-                    model.Register_Time = model.user_Register_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Register_Time = model.user_Register_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Log_Time"].ToString()))
                 {
                     model.user_Log_Time = DateTime.Parse(dr["user_Log_Time"].ToString());
-                    model.Log_Time = model.user_Log_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Log_Time = model.user_Log_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 if (!string.IsNullOrEmpty(dr["user_Update_Time"].ToString()))
                 {
                     model.user_Update_Time = DateTime.Parse(dr["user_Update_Time"].ToString());
-                    model.Update_Time = model.user_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.user_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };

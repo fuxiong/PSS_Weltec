@@ -1,9 +1,14 @@
 ﻿@model PSS_Weltec.Models.User
 
 @{
-    ViewBag.Title = "Welcom to PSS_WelTec!";
+    ViewBag.Title = "Log In";
 }
 
+<style type="text/css">
+.border{
+border:dashed solid #0066FF;
+} 
+</style>
 <section id="loginForm">
 <h1>@ViewBag.Title</h1>
 @using (Html.BeginForm()){
@@ -33,4 +38,20 @@
         @Html.ActionLink("Register", "RegisterIndex") (If you don't have an account).
     </p>
     }
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h3>Welcome to IT7351 Project Selection.</h3>
+    <br />
+    <span>The main aim of "IT7351 Project Selection" is to bring
+different skilled students and different ideas together to make a good team with
+better understanding.</span>
+    <br />
+    <br />
+    <br />
+    <span>It is helpful for students to understand project detail and seek a suitable team member.</span>
+    <br />
+    <br />
+    <br />
+		<span>It also supports students share their own ideas and communicate with each other.</span>		
 </section>

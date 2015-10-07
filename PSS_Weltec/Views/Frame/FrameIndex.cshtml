@@ -10,19 +10,24 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>PSS_Weltec</title>
+    <title>IT7351 Project Selection</title>
     <link rel="stylesheet" type="text/css" href="../../Scripts/jquery-easyui-1.4.3/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../Scripts/jquery-easyui-1.4.3/themes/icon.css">
     <script type="text/javascript" src="../../Scripts/jquery-easyui-1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
 </head>
     <body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
-        <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;background: url(Images/layout-header.gif) #7f99be repeat-x center 50%; line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-            <span style="float:right; padding-right:20px;" class="head">@*欢迎 管理员 <a href="#" id="editpass">修改密码</a>*@ <a href="#" id="loginOut">Log Out</a></span> 
-            <span style="padding-left:10px; font-size: 16px; "><img src="Images/blocks.gif" width="20" height="20"/>Welcome to Project Selection System</span>
+        <div region="north" split="true" border="false" style="overflow: hidden; height: 50px;background: url(Images/layout-header.gif) #03A2D9 repeat-x center 50%; line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
+            
+            <span style="padding-left:0px; font-size: 16px; ">
+                <img src="~/Images/weltec.jpg" style="width:1000px; height:50px"/>
+            </span>
+            <span style="float:right; padding-right:10px;" class="head"><br />You are logged in as "@User.Identity.Name.Split(',')[1]"(<a href="#" id="loginOut">Log Out</a>)
+                
+             </span>
         </div>
         <div region="south" split="true" style="height: 25px; background: #D2E0F2; ">
-            <div class="footer"> @User.Identity.Name.Split(',')[1], Welcome to Project Selection System!</div>
+            <div class="footer"></div>
         </div>
         <div region="west" hide="true" split="true" title="Navigation" style="width:180px;" id="west">
             <div id="nav" class="easyui-accordion" fit="true" border="false"> 
@@ -75,10 +80,7 @@
        },
        {
            "menuid": "4", "icon": "icon-sys", "menuname": "Team Management",
-           "menus": [{ "menuid": "41", "menuname": "Build a Team", "icon": "icon-nav", "url": "demo.html" },
-                   { "menuid": "42", "menuname": "Join a Team", "icon": "icon-nav", "url": "demo1.html" },
-                   { "menuid": "43", "menuname": "Sumbit a bid", "icon": "icon-nav", "url": "demo2.html" },
-                   { "menuid": "44", "menuname": "Approved Team", "icon": "icon-nav", "url": "demo2.html" }
+           "menus": [{ "menuid": "41", "menuname": "Build a Team", "url": "../Team/TeamIndex" }
            ]
        },
        {

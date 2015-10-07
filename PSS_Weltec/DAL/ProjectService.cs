@@ -296,7 +296,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["Proj_Update_Time"].ToString()))
                 {
                     model.Proj_Update_Time = DateTime.Parse(dr["Proj_Update_Time"].ToString());
-                    model.Update_Time = model.Proj_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.Proj_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };
@@ -341,7 +341,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["Proj_Update_Time"].ToString()))
                 {
                     model.Proj_Update_Time = DateTime.Parse(dr["Proj_Update_Time"].ToString());
-                    model.Update_Time = model.Proj_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.Proj_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };
@@ -386,7 +386,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["Proj_Update_Time"].ToString()))
                 {
                     model.Proj_Update_Time = DateTime.Parse(dr["Proj_Update_Time"].ToString());
-                    model.Update_Time = model.Proj_Update_Time.ToString("yyyy-MM-dd HH:mm");
+                    model.Update_Time = model.Proj_Update_Time.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 list.Add(model);
             };

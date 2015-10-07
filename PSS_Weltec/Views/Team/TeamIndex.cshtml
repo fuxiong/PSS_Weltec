@@ -1,0 +1,96 @@
+﻿@model PSS_Weltec.Models.Idea
+
+@{
+    ViewBag.Title = "TeamIndex";
+    Layout = "~/Views/Shared/FrameShare.cshtml";
+}
+
+<div region="center" title="" border="false" style="padding:0px 0px 0px 0px;overflow: hidden;">
+    <table id="dgTeam" title="Team List" class="easyui-datagrid"> </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="Reload()">Reload</a>
+        @Html.DropDownList("Team_Status", (IEnumerable<SelectListItem>)ViewData["listStatus"], new { style = "width:110px;" })
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="New()">New</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="Edit()">Edit</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="Delete()">Remove</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var status = $('#Team_Status').val();
+    $(function () {
+        $("#dgTeam").datagrid({
+            url: '../Idea/IdeaList/?status=' + status,
+            pagination: true,
+            pageSize: 30,
+            rownumbers: true,
+            singleSelect: true,
+            toolbar: '#toolbar',
+            fit:true,
+            autoRowHeight: true,
+            sortName: "Team_Id",
+            sortOrder: "desc",
+            //checkOnSelect: false,
+            //selectOnCheck:false,
+            columns: [[
+                    //{ field: 'ck', checkbox:true},
+                    { field: 'Team_Id', title: 'ID', width: 20, hidden: "true" },
+                    { field: 'Team_Title', title: 'Title', width: 150 },
+                    { field: 'Leader', title: 'Leader', width: 120 },
+                    { field: 'Project', title: 'Project', width: 300 },
+                    { field: 'Update_Time', title: 'Last_Update_Time', width: 110, align: 'center' },
+                    { field: 'Status', title: 'Status', width: 100, align: 'center' }
+            ]],
+            onSelect: function (rowIndex, rowData) {
+            },
+            onDblClickRow: function (rowIndex, rowData) {
+                //Discussion(rowData);
+            },
+            onLoadSuccess: function (data) {
+                $(this).datagrid('clearSelections');
+            }
+        });
+        $("#trimester_Id").change(function () { status = $('#trimester_Id').val(); Reload(); });
+    })
+    function Reload() {
+        var queryParams = $('#dgTeam').datagrid('options').queryParams;
+        queryParams.status = $("#Team_Status").val();
+        $('#dgTeam').datagrid('reload');
+    }
+    function New() {
+        //var url = "../Team/IdeaEditLoad/?status=" + status;
+        //parent.addTab('Add Idea', url);
+    }
+    function Edit() {
+        //var selectRow = $('#dgTeam').datagrid('getSelected');
+        //if (selectRow) {
+        //    var url = '../Team/TeamEdit/?id=' + selectRow.Team_Id;
+        //    parent.addTab('Edit Team', url);
+        //} else {
+        //    $.messager.alert('Info', 'Please select Idea！', 'info');
+        //}
+    }
+    function Delete() {
+        var selectRow = $('#dgTeam').datagrid('getSelected');
+        if (selectRow) {
+            $.ajax({
+                url: '../Team/TeamDelete/?id=' + selectRow.Team_Id,
+                type: "post",
+                dataType: "json",
+                success: function (retValue) {
+                    if (retValue.result) {
+                        Reload();
+                    } else {
+                        $.messager.alert('Warning', 'Fail:' + retValue.message, 'error');
+                    }
+                }
+            });
+        } else {
+            $.messager.alert("Info", "Please Check Idea！", "info");
+        }
+    }
+    function Discussion(item) {
+        //var url = "../Idea/IdeaDetail/?id=" + item.Team_Id;
+        //parent.addTab(item.Idea_Title, url);
+    }
+</script>
