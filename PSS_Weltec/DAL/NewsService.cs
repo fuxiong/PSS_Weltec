@@ -34,7 +34,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["news_Update_Time"].ToString()))
                 {
                     model.news_Update_Time = DateTime.Parse(ds.Tables[0].Rows[0]["news_Update_Time"].ToString());
-                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd HH:mm:ss");
+                    model.Update_Time = model.news_Update_Time.ToString("dd-MM-yyyy HH:mm:ss");
                 }
             }
             if (ds != null)
@@ -116,7 +116,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["news_Update_Time"].ToString()))
                 {
                     model.news_Update_Time = DateTime.Parse(dr["news_Update_Time"].ToString());
-                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd");
+                    model.Update_Time = model.news_Update_Time.ToString("dd-MM-yyyy");
                 }
                 list.Add(model);
             };
@@ -148,7 +148,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["news_Update_Time"].ToString()))
                 {
                     model.news_Update_Time = DateTime.Parse(dr["news_Update_Time"].ToString());
-                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd");
+                    model.Update_Time = model.news_Update_Time.ToString("dd-MM-yyyy");
                 }
                 list.Add(model);
             };
@@ -179,7 +179,7 @@ namespace PSS_Weltec.DAL
                 if (!string.IsNullOrEmpty(dr["news_Update_Time"].ToString()))
                 {
                     model.news_Update_Time = DateTime.Parse(dr["news_Update_Time"].ToString());
-                    model.Update_Time = model.news_Update_Time.ToString("yyyy-MM-dd");
+                    model.Update_Time = model.news_Update_Time.ToString("dd-MM-yyyy");
                 }
                 list.Add(model);
             };
